@@ -34,7 +34,7 @@ class RegisterFaculty extends Controller
             'password' => Hash::make($validated['birth_date']),
         ]);
 
-        // Create a new student with the validated data
+        // Create a new faculty with the validated data
         $faculty = Faculty::create([
             'user_id' => $user->id,
             'first_name' => $validated['first_name'],

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\QuestionBank;
 
+use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,4 +38,13 @@ class QuestionController extends Controller
             'question' => $question,
         ], 201);
     }
+
+    public function getQuestions(Request $request){
+        $questions = Question::all();
+
+        return response()->json([
+            'questions' => $questions,
+        ], 200);
+    }
+
 }
