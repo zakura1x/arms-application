@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'faculty_id',
+        'topic_id',
+        'question_text',
+        'options',
+        'correct_answer',
+        'is_approved',
+    ];
+
+    public function faculty(){
+        return $this->belongsTo(Faculty::class);
+    }
+
+    public function topic(){
+        return $this->belongsTo(Topic::class);
+    }
 }

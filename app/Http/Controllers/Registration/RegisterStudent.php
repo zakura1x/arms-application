@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Registration;
 
 use App\Http\Controllers\Controller;
-use App\Models\Faculty;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterFaculty extends Controller
+class RegisterStudent extends Controller
 {
-    public function facultyRegister(Request $request)
+    public function studentRegister(Request $request)
     {
         // Validate the incoming request
         $validated = $request->validate([
@@ -20,7 +20,7 @@ class RegisterFaculty extends Controller
             'id_number' => 'required|string|unique:users',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required|string|min:3',
-            'birth_date' => 'required|date_format:Y-m-d', // Correct date format
+            'birth_date' => 'required|date_format:Y-M-D', // Correct date format
             'gender' => 'required|string',
             'address' => 'required|string',
         ]);
@@ -35,7 +35,7 @@ class RegisterFaculty extends Controller
         ]);
 
         // Create a new student with the validated data
-        $faculty = Faculty::create([
+        $student = Student::create([
             'user_id' => $user->id,
             'first_name' => $validated['first_name'],
             'middle_name' => $validated['middle_name'],
@@ -51,8 +51,32 @@ class RegisterFaculty extends Controller
         // Return a JSON response with the created student
         return response()->json([
             'message' => 'Student registered successfully',
-            'faculty' => $faculty,
+            'student' => $student,
             'user' => $user,
+        ], 201);
+    }
+
+    public function studentLogin(Request $request){
+        // Validate the incoming request
+        $validated = $request->validate([
+            'id_number' => 'required|string|min:4',
+            'password' => 'required|min:6',
+        ]);
+
+        $user = User::whereUsername($request->id_number)->first();
+        if(!$user || !Hash::check($request->passwordd, $user->password)){
+            return response()->json([
+                'message' => 'Invalid credentials',
+            ], 422);
+        }
+
+        $token = $user->createToken('authToken')->plainTextToken;
+
+        // Return a JSON response with the created user
+        return response()->json([
+            'message' => 'User logged in successfully',
+            'user' => $user,
+            'token' => $token,
         ], 201);
     }
 }

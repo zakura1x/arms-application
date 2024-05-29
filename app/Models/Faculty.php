@@ -10,6 +10,7 @@ class Faculty extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'first_name',
         'middle_name',
         'last_name',
@@ -26,6 +27,6 @@ class Faculty extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected $table = 'faculty';
+    protected $table = 'faculties';
 
 }

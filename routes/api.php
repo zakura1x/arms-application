@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\QuestionBank\DeanQuestionController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\Registration\RegisterFaculty;
+use App\Http\Controllers\Registration\RegisterStudent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,14 +12,22 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get('/test', function(){
-    return response([
-        'message' => 'Hello World'],
-        200);
-});
 
-Route::post('/register', [AuthenticationController::class, 'register']);
+//Login Authentication
 Route::post('/login', [AuthenticationController::class, 'login']);
 
-//Registration of Users
-Route::post('/student-register', [AuthenticationController::class, 'studentRegister']);
+//Registration
+//Student
+Route::post('/student-register', [RegisterStudent::class, 'studentRegister']);
+//Faculty
+Route::post('/faculty-register', [RegisterFaculty::class, 'facultyRegister']);
+//Dean
+// Route::post('/dean-register', [RegisterFaculty::class, 'deanRegister']);
+
+
+Route::middleware('auth:sanctum') ->group(function(){
+    //Question Bank
+    Route::post('/questionadd', [QuestionController::class, 'createQuestion']);
+    //Dean
+    Route::post('/questions/{id}/approve', [DeanQuestionController::class, 'approval'])->middleware('role:dean');
+});
