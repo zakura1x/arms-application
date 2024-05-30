@@ -20,7 +20,7 @@ class RegisterStudent extends Controller
             'id_number' => 'required|string|unique:users',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required|string|min:3',
-            'birth_date' => 'required|date_format:Y-M-D', // Correct date format
+            'birth_date' => 'required|date_format:Y-m-d', // Correct date format
             'gender' => 'required|string',
             'address' => 'required|string',
         ]);
@@ -79,4 +79,14 @@ class RegisterStudent extends Controller
             'token' => $token,
         ], 201);
     }
+
+    //Get all students
+    public function getStudents(Request $request){
+        $students = Student::all();
+
+        return response()->json([
+            'students' => $students,
+        ], 200);
+    }
+
 }

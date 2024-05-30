@@ -26,6 +26,8 @@ Route::post('/faculty-register', [RegisterFaculty::class, 'facultyRegister']);
 // Route::post('/dean-register', [RegisterFaculty::class, 'deanRegister']);
 
 
+
+
 Route::middleware('auth:sanctum') ->group(function(){
     //Question Bank
     Route::post('/questionadd', [QuestionController::class, 'createQuestion']);
@@ -38,7 +40,10 @@ Route::middleware('auth:sanctum') ->group(function(){
     Route::get('/generate-assessment', [AssessmentController:: class, 'createAssessment']);
     //Get All Assessments
     Route::get('/get-assessments', [AssessmentController::class, 'viewAssessments']);
-    //View Assessment
+    //View Assessment by name
     Route::get('/assessments/name/{name}', [AssessmentController::class, 'getAssessmentByName']);
+
+    // Get all the students
+    Route::get('/students', [RegisterStudent::class, 'getStudents']);
 
 });
