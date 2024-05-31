@@ -19,19 +19,17 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 
 //Registration
 //Student
-Route::post('/student-register', [RegisterStudent::class, 'studentRegister']);
+
 //Faculty
 Route::post('/faculty-register', [RegisterFaculty::class, 'facultyRegister']);
 //Dean
 // Route::post('/dean-register', [RegisterFaculty::class, 'deanRegister']);
 
 
-
-
 Route::middleware('auth:sanctum') ->group(function(){
-    //Question Bank
+    //Question Bank Add Questionjs
     Route::post('/questionadd', [QuestionController::class, 'createQuestion']);
-    //Dean
+    //Dean approval
     Route::post('/questions/{id}/approve', [DeanQuestionController::class, 'approval'])->middleware('role:dean');
     //Get All Questions
     Route::get('/questions', [QuestionController::class, 'getQuestions']);
@@ -45,5 +43,7 @@ Route::middleware('auth:sanctum') ->group(function(){
 
     // Get all the students
     Route::get('/students', [RegisterStudent::class, 'getStudents']);
+    //Student Registration
+    Route::post('/student-register', [RegisterStudent::class, 'studentRegister']);
 
 });

@@ -33,7 +33,7 @@ class AuthenticationController extends Controller
             'message' => 'User logged in successfully',
             'user' => $user,
             'token' => $token,
-        ], 201);
+        ], 200);
     }
     
 }
