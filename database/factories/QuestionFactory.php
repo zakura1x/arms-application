@@ -19,7 +19,7 @@ class QuestionFactory extends Factory
     public function definition(): array
     {
         return [
-            'faculty_id' => 2,
+            'faculty_id' => 1,
             'topic_id' => 1,
             'question_text' => $this->faker->sentence,
             'options' => json_encode([
