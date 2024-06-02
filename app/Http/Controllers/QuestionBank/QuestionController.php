@@ -19,7 +19,7 @@ class QuestionController extends Controller
         }
         
         $request->validate([
-            'topic_id' => 'required|exists:topics,id',
+            'topic_name' => 'required|string|exists:topics,name',
             'question_text' => 'required|string',
             'options' => 'required|array',
             'correct_answer' => 'required|string',
@@ -40,6 +40,15 @@ class QuestionController extends Controller
     }
 
     public function getQuestions(Request $request){
+        
+        $user = Auth::user();        
+        if(!in_array($user->role, ['faculty', 'dean'])){
+            return response()->json(
+                ['message' => 'Unauthorized'],
+                403
+            );
+        }
+
         $questions = Question::all();
 
         return response()->json([
