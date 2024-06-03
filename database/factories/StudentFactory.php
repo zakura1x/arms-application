@@ -16,7 +16,7 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => '2',
+            'user_id' => '1',
             'first_name' => $this->faker->firstName(),
             'middle_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
