@@ -12,17 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('questions', function (Blueprint $table) {
-        $table->id();
-        $table->unsignedBigInteger('faculty_id');
-        $table->unsignedBigInteger('topic_id');
-        $table->string('question_text');
-        $table->text('options'); // You can use JSON for multiple options
-        $table->string('correct_answer');
-        $table->boolean('is_approved')->default(false);
-        $table->timestamps();
+            $table->id();
+    $table->unsignedBigInteger('faculty_id');
+    $table->string('topic_name');
+    $table->string('question_text');
+    $table->text('options'); // You can use JSON for multiple options
+    $table->string('correct_answer');
+    $table->boolean('is_approved')->default(false);
+    $table->timestamps();
 
-        $table->foreign('faculty_id')->references('id')->on('users')->onDelete('cascade');
-        $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
+    $table->foreign('faculty_id')->references('id')->on('users')->onDelete('cascade');
+    $table->foreign('topic_name')->references('name')->on('topics')->onDelete('cascade');
         });
     }
 

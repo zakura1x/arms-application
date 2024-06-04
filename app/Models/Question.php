@@ -11,7 +11,7 @@ class Question extends Model
 
     protected $fillable = [
         'faculty_id',
-        'topic_id',
+        'topic_name',
         'question_text',
         'options',
         'correct_answer',

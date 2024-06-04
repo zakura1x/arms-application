@@ -20,7 +20,7 @@ class QuestionFactory extends Factory
     {
         return [
             'faculty_id' => 1,
-            'topic_id' => 1,
+            'topic_name' => 'Taxation',
             'question_text' => $this->faker->sentence,
             'options' => json_encode([
                 'A' => $this->faker->sentence,
