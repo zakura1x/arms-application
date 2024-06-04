@@ -35,7 +35,7 @@ Route::middleware('auth:sanctum') ->group(function(){
     Route::get('/questions', [QuestionController::class, 'getQuestions']);
     
     //Create Assessment
-    Route::get('/generate-assessment', [AssessmentController:: class, 'createAssessment']);
+    Route::post('/generate-assessment', [AssessmentController:: class, 'createAssessment']);
     //Get All Assessments
     Route::get('/get-assessments', [AssessmentController::class, 'viewAssessments']);
     //View Assessment by name

@@ -8,48 +8,49 @@ use App\Models\Assessment;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AssessmentController extends Controller
 {
     public function createAssessment(Request $request){
-        
         $user = Auth::user();
-        if($user->role !== 'faculty'){
-            return response()->json([
-                'message' => 'Unauthorized',],
-                403);
+        if ($user->role !== 'faculty') {
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
-        
+
+        // Debug: Log incoming request data
+        Log::debug('Incoming request data: ', $request->all());
+
         $validated = $request->validate([
-            'topic_ids' => 'required|array',
-            'topic_ids.*' => 'exists:topics,id',
+            'topic_name' => 'required|array',
+            'topic_name.*' => 'exists:topics,name',
             'question_count' => 'required|integer|min:1',
             'name' => 'required|string',
         ]);
 
+        // Debug: Check the validated input
+        Log::debug('Validated input: ', $validated);
 
-        //Fetch question based on topic ids
-        $questions = Question::where('topic_id', $validated['topic_ids'])
-            ->where('is_approved',1)
+        // Fetch questions based on topic names
+        $questions = Question::whereIn('topic_name', $validated['topic_name'])
+            ->where('is_approved', 1)
             ->get();
 
-        //Check if there are enough questions 
-        if($questions->count() < $validated['question_count']){
-            return response()->json([
-                'message' => 'Insufficient questions'],
-                400);
+        // Check if there are enough questions
+        if ($questions->count() < $validated['question_count']) {
+            return response()->json(['message' => 'Insufficient questions'], 400);
         }
 
-        //Randomly select questions
+        // Randomly select questions
         $selected_questions = $questions->random($validated['question_count']);
 
-        //Create assessment
+        // Create assessment
         $assessment = Assessment::create([
             'faculty_id' => $user->id,
             'name' => $validated['name'],
         ]);
 
-        //Attach selected questions to assessment
+        // Attach selected questions to assessment
         $assessment->questions()->attach($selected_questions->pluck('id'));
 
         return response()->json([
