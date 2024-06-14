@@ -20,11 +20,16 @@ class Student extends Model
         'birth_date',
         'gender',
         'address',
+        'class_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function course(){
+        return $this->belongsTo(Course::class, 'class_id');
     }
 
     protected $table = 'students';

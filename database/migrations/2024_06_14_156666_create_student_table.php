@@ -23,9 +23,12 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('gender');
             $table->string('address');
+            $table->unsignedBigInteger('class_id')->nullable();
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('class_id')->references('id')->on('classes')->onDelete('set null');
         });
     }
 

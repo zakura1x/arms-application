@@ -10,19 +10,25 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-        'faculty_id',
-        'topic_name',
-        'question_text',
+        'question',
         'options',
         'correct_answer',
         'is_approved',
+        'module_id',
+        'attachment_id',
+        'faculty_id'
     ];
+
+    public function module(){
+        return $this->belongsTo(Module::class);
+    }
+
+    public function attachment(){
+        return $this->belongsTo(Attachment::class);
+    }
 
     public function faculty(){
         return $this->belongsTo(Faculty::class);
     }
 
-    public function topic(){
-        return $this->belongsTo(Topic::class);
-    }
 }

@@ -27,6 +27,18 @@ class Faculty extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function courses(){
+        return $this->hasMany(Course::class);
+    }
+
+    public function subjects(){
+        return $this->belongsToMany(Subject::class, 'faculty_subject');
+    }
+
+    public function learningDevelopmentPlans(){
+        return $this->hasMany(LearningDevelopmentPlan::class);
+    }
+
     protected $table = 'faculties';
 
 }

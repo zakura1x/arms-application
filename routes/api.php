@@ -6,6 +6,7 @@ use App\Http\Controllers\QuestionBank\DeanQuestionController;
 use App\Http\Controllers\QuestionBank\QuestionController;
 use App\Http\Controllers\Registration\RegisterFaculty;
 use App\Http\Controllers\Registration\RegisterStudent;
+use App\Http\Controllers\ToDo\ToDoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,9 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 Route::post('/faculty-register', [RegisterFaculty::class, 'facultyRegister']);
 //Dean
 // Route::post('/dean-register', [RegisterFaculty::class, 'deanRegister']);
+
+//Student
+Route::post('/student-register', [RegisterStudent::class, 'studentRegister']);
 
 
 Route::middleware('auth:sanctum') ->group(function(){
@@ -44,6 +48,19 @@ Route::middleware('auth:sanctum') ->group(function(){
     // Get all the students
     Route::get('/students', [RegisterStudent::class, 'getStudents']);
     //Student Registration
-    Route::post('/student-register', [RegisterStudent::class, 'studentRegister']);
+    //Route::post('/student-register', [RegisterStudent::class, 'studentRegister']);
+    
+
+    //Task Functions
+    //Create a Task
+    Route::post('/create-task', [ToDoController::class, 'create']);
+    //Get all the tasks created by the user
+    Route::get('/get-tasks', [ToDoController::class, 'getTasks']);
+    //Update a Task
+    Route::put('/update-task/{id}', [ToDoController::class, 'update']);
+    //Delete a Task
+    Route::delete('/delete-task/{id}', [ToDoController::class, 'delete']);
+    //Get a Task
+    
 
 });

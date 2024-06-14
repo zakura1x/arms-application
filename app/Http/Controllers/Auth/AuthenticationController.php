@@ -15,7 +15,7 @@ class AuthenticationController extends Controller
     public function login(Request $request)
     {
         $validated = $request->validate([
-            'id_number' => 'required|string|min:4',
+            'id_number' => 'required|string|min:8|max:8',
             'password' => 'required|min:6',
         ]);
 
