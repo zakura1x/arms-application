@@ -15,19 +15,29 @@ class Course extends Model
         'class_school_year',
     ];
 
-    public function classCodes(){
+    // One-to-Many relationship with ClassCode
+    public function classCodes()
+    {
         return $this->hasMany(ClassCode::class);
     }
 
-    public function faculties(){
+    // Many-to-Many relationship with Faculty through the faculty_class pivot table
+    public function faculties()
+    {
         return $this->belongsToMany(Faculty::class, 'faculty_class');
     }
 
-    public function students(){
+    // One-to-Many relationship with Student
+    public function students()
+    {
         return $this->hasMany(Student::class, 'class_id');
     }
 
-    public function learningDevelopmentPlans(){
-        return $this->belongsToMany(LearningDevelopmentPlan::class, 'class_ldp')->withPivot('subject_id')->withTimestamps();
+    // Many-to-Many relationship with LearningDevelopmentPlan through the class_ldp pivot table
+    public function learningDevelopmentPlans()
+    {
+        return $this->belongsToMany(LearningDevelopmentPlan::class, 'class_ldp')
+                    ->withPivot('subject_id')
+                    ->withTimestamps();
     }
 }

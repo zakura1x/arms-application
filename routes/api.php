@@ -1,12 +1,18 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\ClassManagement\AttachmentController;
+use App\Http\Controllers\Course\CourseController;
+use App\Http\Controllers\Module\LearningDevelopmentPlanController;
+use App\Http\Controllers\Module\ModuleController;
+use App\Http\Controllers\Module\TopicController;
 use App\Http\Controllers\QuestionBank\AssessmentController;
 use App\Http\Controllers\QuestionBank\DeanQuestionController;
 use App\Http\Controllers\QuestionBank\QuestionController;
 use App\Http\Controllers\Registration\RegisterFaculty;
 use App\Http\Controllers\Registration\RegisterStudent;
 use App\Http\Controllers\ToDo\ToDoController;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,5 +68,30 @@ Route::middleware('auth:sanctum') ->group(function(){
     Route::delete('/delete-task/{id}', [ToDoController::class, 'delete']);
     //Get a Task
     
+    //createLDP -1st step
+    Route::post('/courses/{courseId}/create-ldp', [LearningDevelopmentPlanController::class, 'createLDP']);
+    //getApprovedLDPs
+    Route::get('/courses/{courseId}/approved-ldps', [LearningDevelopmentPlanController::class, 'getApprovedLDPs']);
+    //approveLDP
+    Route::post('/ldps/{ldpId}/approve', [LearningDevelopmentPlanController::class, 'approveLDP']);
+    //assignLDP to a course
+    Route::post('/ldps/{ldpId}/assign', [LearningDevelopmentPlanController::class, 'assignLDP']);
+
+    //createAttachment - 4th step
+    //Assign it to the module
+    Route::post('/create-attachment', [AttachmentController::class, 'createAttachment']);
+
+    //getModules
+    Route::get('/topics/{topicId}/modules', [ModuleController::class, 'getModules']);
+    //createModule -3rd step
+    //Assign it to the topic
+    Route::post('/create-module', [ModuleController::class, 'createModule']);
+
+    //Create topic -2nd step
+    //Assign it to the ldp
+    Route::post('/create-topic', [TopicController
+    ::class, 'createTopic']);
+    //getTopics
+    Route::get('/ldps/{ldpId}/topics', [TopicController::class, 'getTopics']);
 
 });
