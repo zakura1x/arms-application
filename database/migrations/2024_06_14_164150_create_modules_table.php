@@ -19,7 +19,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
-        
         });
     }
 

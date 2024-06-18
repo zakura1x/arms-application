@@ -3,33 +3,32 @@
 namespace Database\Factories;
 
 use App\Models\Question;
+use App\Models\Module;
+use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Question>
- */
 class QuestionFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     protected $model = Question::class;
-    public function definition(): array
+
+    public function definition()
     {
         return [
-            'faculty_id' => 1,
-            'topic_name' => 'Taxation',
-            'question_text' => $this->faker->sentence,
+            'question' => $this->faker->sentence,
             'options' => json_encode([
-                'A' => $this->faker->sentence,
-                'B' => $this->faker->sentence,
-                'C' => $this->faker->sentence,
-                'D' => $this->faker->sentence,
+                'A' => $this->faker->word,
+                'B' => $this->faker->word,
+                'C' => $this->faker->word,
+                'D' => $this->faker->word,
             ]),
-            'correct_answer' => 'A',
-            'is_approved' => 1,
+            'correct_answer' => 'B',
+            'is_approved' => true,
+            'module_id' => Module::factory(), // Assuming you have ModuleFactory
+            'topic' => Topic::factory(), // Assuming you have TopicFactory
+            'difficulty' => $this->faker->randomElement(['Easy', 'Medium', 'Hard']),
+            'attachment_id' => null,
+            'faculty_id' => User::factory()->state(['role' => 'faculty']), // Using UserFactory with faculty role
         ];
     }
 }

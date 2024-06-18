@@ -25,6 +25,11 @@ class Assessment extends Model
         'due_date' => 'date', // Cast due_date attribute to date
     ];
 
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
+
     public function assessmentByTopics()
     {
         return $this->hasMany(AssessmentByTopic::class);
