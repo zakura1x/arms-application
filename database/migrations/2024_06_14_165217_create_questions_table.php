@@ -17,6 +17,8 @@ return new class extends Migration
             $table->json('options')->nullable();
             $table->string('correct_answer');
             $table->boolean('is_approved')->default(false);
+            $table->string('difficulty_level');
+            $table->string('topic');
 
             $table->unsignedBigInteger('module_id');
             $table->unsignedBigInteger('attachment_id')->nullable();
@@ -26,8 +28,8 @@ return new class extends Migration
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
             $table->foreign('attachment_id')->references('id')->on('attachments')->onDelete('set null');
             $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('cascade');
-        
-        
+
+
         });
     }
 

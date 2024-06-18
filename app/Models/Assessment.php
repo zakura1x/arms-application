@@ -12,11 +12,21 @@ class Assessment extends Model
     protected $fillable = [
         'faculty_id',
         'name',
+        'description',
+        'total_items',
+        'approval',
+        'questions',
+        'duration',
+        'due_date'
     ];
 
-    public function questions()
-    {
-        return $this->belongsToMany(Question::class, 'assessment_question');
-    }
+    protected $casts = [
+        'questions' => 'json', // Cast questions attribute to JSON
+        'due_date' => 'date', // Cast due_date attribute to date
+    ];
 
+    public function assessmentByTopics()
+    {
+        return $this->hasMany(AssessmentByTopic::class);
+    }
 }
