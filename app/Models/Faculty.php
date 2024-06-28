@@ -28,7 +28,7 @@ class Faculty extends Model
     }
 
     public function courses(){
-        return $this->hasMany(Course::class);
+        return $this->hasMany(ClassModel::class);
     }
 
     public function subjects(){
