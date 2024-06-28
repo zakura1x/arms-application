@@ -25,8 +25,8 @@ class LearningDevelopmentPlan extends Model
     
     }
 
-    public function classes(){
-        return $this->belongsToMany(Course::class, 'class_ldp')->withPivot('subject_id')->withTimestamps();
+    public function courses(){
+        return $this->belongsToMany(ClassModel::class, 'class_ldp')->withPivot('subject_id')->withTimestamps();
     }
 
     public function topics(){

@@ -94,4 +94,12 @@ Route::middleware('auth:sanctum') ->group(function(){
     //getTopics
     Route::get('/ldps/{ldpId}/topics', [TopicController::class, 'getTopics']);
 
+    //Create course
+    Route::post('/create-course', [CourseController::class, 'createCourse']);
+    //Create class code
+    Route::post('/courses/{courseID}/create-class-code', [CourseController::class, 'createClassCode']);
+    //Add student to the course
+    Route::post('/courses/{courseID}/add-student', [CourseController::class, 'addStudent']);
+    
+
 });

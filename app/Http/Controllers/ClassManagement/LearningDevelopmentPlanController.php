@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Module;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClassModel;
 use App\Models\Course;
 use App\Models\LearningDevelopmentPlan;
 use App\Models\Subject;
@@ -74,7 +75,7 @@ class LearningDevelopmentPlanController extends Controller
             'subject_id' => 'required|exists:subjects,id', // Ensure the subject exists
         ]);
 
-        $course = Course::where('class_name', $validated['course_name'])->first();
+        $course = ClassModel::where('class_name', $validated['course_name'])->first();
         if(!$course){
             return response()->json([
                 'message' => 'Course not found'
@@ -113,7 +114,7 @@ class LearningDevelopmentPlanController extends Controller
         }
 
         //Fetch the course details
-        $course = Course::findOrFail($courseID);
+        $course = ClassModel::findOrFail($courseID);
 
         //Fetch the approved LDPs of the course
         $approvedLDPs = $course -> learningDevelopmentPlans()->where('is_approved', true)->get();

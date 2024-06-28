@@ -5,20 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class ClassModel extends Model
 {
     use HasFactory;
 
+    protected $table = 'classes';
+
     protected $fillable = [
-        'class_name',
-        'class_code',
+        'name',
+        'code',
         'class_school_year',
     ];
 
     // One-to-Many relationship with ClassCode
     public function classCodes()
     {
-        return $this->hasMany(ClassCode::class);
+        return $this->hasMany(ClassCode::class, 'class_id');
     }
 
     // Many-to-Many relationship with Faculty through the faculty_class pivot table

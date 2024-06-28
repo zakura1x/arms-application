@@ -11,10 +11,12 @@ class ClassCode extends Model
 
     protected $fillable = [
         'code',
-        'is_active'
+        'is_active',
+        'class_id'
+    
     ];
 
     public function course(){
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(ClassModel::class, 'class_id');
     }
 }
