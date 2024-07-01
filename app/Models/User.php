@@ -37,6 +37,10 @@ class User extends Authenticatable
         return $this->hasOne(Dean::class);
     }
 
+    public function programHead(){
+        return $this->hasOne(ProgramHead::class);
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
