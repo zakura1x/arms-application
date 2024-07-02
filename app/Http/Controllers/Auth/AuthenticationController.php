@@ -7,9 +7,15 @@ use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class AuthenticationController extends Controller
 {
+
+    public function create(): View
+    {
+        return view('auth.login');
+    }
 
     //Login for both dean and faculty
     public function login(Request $request)
@@ -35,5 +41,5 @@ class AuthenticationController extends Controller
             'token' => $token,
         ], 200);
     }
-    
+
 }
