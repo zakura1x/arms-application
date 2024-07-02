@@ -16,9 +16,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="font-sans antialiased dark:bg-black dark:text-white/50">
+<body class="font-sans antialiased">
 
-    {{ $slot }}
+    <div class="font-poppins antialiased text-black flex flex-col md:h-screen">
+        {{ $slot }}
+    </div>
+
+
 
 </body>
 

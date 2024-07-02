@@ -1,12 +1,8 @@
-<x-layout>
-    <div class="font-poppins antialiased text-black flex flex-col md:h-screen">
-        <!-- Header -->
-        <div class="hidden md:flex flex-row items-center justify-end bg-[#383333] p-4 space-x-4">
-            <div class="text-white text-lg font-bold">University of Nueva Caceres</div>
-            <!-- LOGO HERE SIZE 50 -->
-        </div>
+<x-guest-layout>
 
-        <!-- Login -->
+    <div class="font-poppins antialiased text-black flex flex-col md:h-screen">
+        @include('auth.header')
+
         <div
             class="flex flex-col md:flex-row bg-gradient-to-b from-[#FFFFFF] from-10 to-[#258245] h-screen items-center justify-center">
             <div class="w-full lg:w-[35%] xl:w-[30%] p-4 mx-auto lg:ml-28 xl:ml-36 ">
@@ -15,23 +11,40 @@
                         <p class="font-poppins font-semibold text-[40px] text-[#14B56A]">Welcome Back</p>
                         <p class="font-semibold text-gray-400">Login to your account</p>
                     </div>
-                    <form action="#" method="POST" class="text-black">
+                    <form action="{{ route('login') }}" method="POST" class="text-black">
+                        @csrf
                         <div class="mb-4">
-                            <label for="username" class="block font-medium text-gray-400">ID-Number</label>
-                            <input type="text" id="username" name="username"
+                            <label for="email" class="block font-medium text-gray-400">Email</label>
+                            <input type="text" id="email" name="email"
                                 class="input input-bordered bg-white w-full border-[#9BB1AF]" />
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                         <div class="mb-4">
                             <label for="password" class="block font-medium text-gray-400">Password</label>
                             <input type="password" id="password" name="password"
                                 class="input input-bordered bg-white w-full border-[#9BB1AF]" />
+                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
-                        <div class="flex justify-end mb-4">
-                            <input type="checkbox" id="remember" name="remember" class="checkbox checkbox-success" />
-                            <label for="remember" class="ml-2 text-gray-700">Remember me</label>
+                        <!-- Remember Me -->
+                        <div class="block mt-4">
+                            <label for="remember_me" class="inline-flex items-center">
+                                <input id="remember_me" type="checkbox"
+                                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+                                    name="remember">
+                                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                            </label>
                         </div>
+                        {{-- <div class="flex justify-end mb-4">
+                            <input type="checkbox" id="remember_me" name="remember_me"
+                                class="checkbox checkbox-success" />
+                            <label for="remember_me" class="ml-2 text-gray-700">Remember me</label>
+                        </div> --}}
                         <div class="flex flex-row justify-between">
-                            <a href="#" class="text-[#12AB63]">Forgot Password?</a>
+
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}" {{ __('Forgot your password?') }}
+                                    class="text-[#12AB63]">Forgot Password?</a>
+                            @endif
                             <button type="submit"
                                 class="text-white px-6 py-2 rounded-lg cursor-pointer bg-[#12AB63]">Login</button>
                         </div>
@@ -48,37 +61,51 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="bg-[#383333] p-4 text-white">
-            <div class="flex flex-col md:flex-row justify-between md:mx-14">
-                <div class="flex flex-col md:flex-row space-x-6 items-start md:items-end">
-                    <div>
-                        <!-- LOGO HERE SIZE 50 -->
-                    </div>
-                    <div class="flex flex-col mb-2 md:mb-0">
-                        <p class="font-semibold text-[14px]">UNIVERSITY OF NUEVA CACERES</p>
-                        <p class="font-semibold text-[14px]">J. Hernandez Avenue, Naga City 4400</p>
-                    </div>
-                    <div class="flex flex-row items-end ml-4 justify-center mb-2 md:mb-0">
-                        <p class="font-semibold text-[12px]">09100210141</p>
-                        <p class="font-semibold text-[12px]">| 09119823812</p>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row space-x-6 ">
-                    <div class="flex flex-col mb-2 md:mb-0 pl-6 md:pl-0">
-                        <p class="font-semibold text-[14px]">info@unc.edu.ph</p>
-                        <p class="font-semibold text-[14px]">admission@unc.edu.ph</p>
-                    </div>
-                    <div class=" mb-2 md:mb-0">
-                        <p>Follow Us</p>
-                        <div class="flex flex-row space-x-4">
-                            <a class="fab fa-facebook" href="#"></a>
-                            <a class="fab fa-twitter" href="#"></a>
-                            <a class="fab fa-instagram" href="#"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        @include('auth.footer')
     </div>
-</x-layout>
+
+    {{-- <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
+                autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox"
+                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+            </label>
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
+
+            <x-primary-button class="ms-3">
+                {{ __('Log in') }}
+            </x-primary-button>
+        </div>
+    </form> --}}
+</x-guest-layout>

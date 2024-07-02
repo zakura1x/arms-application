@@ -3,9 +3,9 @@
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\ClassManagement\AttachmentController;
 use App\Http\Controllers\Course\CourseController;
-use App\Http\Controllers\Module\LearningDevelopmentPlanController;
-use App\Http\Controllers\Module\ModuleController;
-use App\Http\Controllers\Module\TopicController;
+use App\Http\Controllers\ClassManagement\LearningDevelopmentPlanController;
+use App\Http\Controllers\ClassManagement\ModuleController;
+use App\Http\Controllers\ClassManagement\TopicController;
 use App\Http\Controllers\QuestionBank\AssessmentController;
 use App\Http\Controllers\QuestionBank\DeanQuestionController;
 use App\Http\Controllers\QuestionBank\QuestionController;
