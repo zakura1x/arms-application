@@ -16,11 +16,8 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if(!Auth::check()|| Auth::user()->role !== $role){
-            return response()->json([
-                'message' => 'Unauthorized',
-            ], 403);
-        
+        if (!Auth::check() || Auth::user()->role !== $role) {
+            return redirect('/'); // or redirect to a different page or show an error message
         }
         
         return $next($request);
