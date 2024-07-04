@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <div class="navbar mx-50 bg-custom1 transition-all duration-300 ease-in-out w-[100%]">
   <div class="flex-1">
-      <b><a class="ml-4 text-xl">ARMS - Program Head's Workspace</a></b>
+      <b><a class="ml-4 text-xl">ARMS - Dean's Workspace</a></b>
   </div>
   <div class="flex-none gap-2">
       <div class="form-control">

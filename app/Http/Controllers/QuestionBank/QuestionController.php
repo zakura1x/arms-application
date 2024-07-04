@@ -41,8 +41,8 @@ class QuestionController extends Controller
 
 
     public function getQuestions(Request $request){
-        
-        $user = Auth::user();        
+
+        $user = Auth::user();
         if(!in_array($user->role, ['faculty', 'dean'])){
             return response()->json(
                 ['message' => 'Unauthorized'],

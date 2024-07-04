@@ -2,16 +2,16 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-  @include('programhead.css')
+  @include('dean.css')
 </head>
 
 <body class="bg-custom2 font-sans antialiased dark:bg-black dark:text-white/50">
     <div id="layout" class="flex">
-        @include('programhead.sidebar')
+        @include('dean.sidebar')
 
         <!-- Main container -->
         <div id="main-container" class="flex-1 transition-all duration-300 ease-in-out">
-          @include('programhead.header')
+          @include('dean.header')
 
             <!-- Main content -->
             <div id="main-content" class="h-screen flex-1 transition-all duration-300 ease-in-out">

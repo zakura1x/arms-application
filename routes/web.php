@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticationController;
-use App\Http\Controllers\PHHomeController;
+use App\Http\Controllers\PHController;
+use App\Http\Controllers\DController;
+use App\Http\Controllers\FController;
 use Illuminate\Support\Facades\Route;
 
 // Route for displaying the login form
@@ -14,9 +16,23 @@ Route::post('/login', [AuthenticationController::class, 'login'])->name('login')
 Route::get('/login',[AuthenticationController::class, 'create'])->name('create');
 
 // ROUTES FOR PROGRAM HEAD UI
-Route::get('/programhead/home',[PHHomeController::class, 'index'])->name('home');
-Route::get('/programhead/plan',[PHHomeController::class, 'plan'])->name('plan');
-Route::get('/programhead/questionbank',[PHHomeController::class, 'questionbank'])->name('questionbank');
-Route::get('/programhead/class',[PHHomeController::class, 'class'])->name('class');
-Route::get('/programhead/settings',[PHHomeController::class, 'settings'])->name('settings');
+Route::get('/programhead/home',[PHController::class, 'index'])->name('home');
+Route::get('/programhead/plan',[PHController::class, 'plan'])->name('plan');
+Route::get('/programhead/questionbank',[PHController::class, 'questionbank'])->name('questionbank');
+Route::get('/programhead/class',[PHController::class, 'class'])->name('class');
+Route::get('/programhead/settings',[PHController::class, 'settings'])->name('settings');
 
+// ROUTES FOR DEAN UI
+Route::get('/dean/home',[DController::class, 'index'])->name('home');
+Route::get('/dean/plan',[DController::class, 'plan'])->name('plan');
+Route::get('/dean/questionbank',[DController::class, 'questionbank'])->name('questionbank');
+Route::get('/dean/class',[DController::class, 'class'])->name('class');
+Route::get('/dean/settings',[DController::class, 'settings'])->name('settings');
+
+// ROUTES FOR FACULTY UI
+Route::get('/faculty/home',[FController::class, 'index'])->name('home');
+Route::get('/faculty/plan',[FController::class, 'plan'])->name('plan');
+Route::get('/faculty/questionbank',[FController::class, 'questionbank'])->name('questionbank');
+Route::get('/faculty/class',[FController::class, 'class'])->name('class');
+Route::get('/faculty/settings',[FController::class, 'settings'])->name('settings');
+Route::get('/faculty/class/nameofclass',[FController::class, 'clickedClass'])->name('class1');

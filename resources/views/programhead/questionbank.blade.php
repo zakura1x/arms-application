@@ -34,7 +34,7 @@
                     </header>
                     <div class="p-4">
                         <div class="overflow-x-auto">
-                            <table class="table-auto w-full">
+                            <table class="table-auto w-full border">
                                 <thead class="text-xs font-semibold uppercase bg-custom4">
                                     <tr>
                                         <th class="w-1/4 p-2">
