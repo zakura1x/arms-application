@@ -8,7 +8,7 @@ class PHController extends Controller
 {
     public function index()
     {
-        return view('programhead.home');
+      return view('programhead.home');
     }
 
     public function plan()
@@ -23,6 +23,16 @@ class PHController extends Controller
     public function class()
     {
       return view('programhead.class');
+    }
+
+    public function faculty()
+    {
+      return view('programhead.faculty');
+    }
+
+    public function addfaculty()
+    {
+      return view('programhead.addfaculty');
     }
 
     public function settings()

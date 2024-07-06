@@ -15,7 +15,8 @@
                         <p class="font-poppins font-semibold text-[40px] text-[#14B56A]">Welcome Back</p>
                         <p class="font-semibold text-gray-400">Login to your account</p>
                     </div>
-                    <form action="{{ route('home') }}" method="#" class="text-black">
+                    <form action="{{ route('ph.home') }}" method="#" class="text-black">
+
                         <div class="mb-4">
                             <label for="username" class="block font-medium text-gray-400">ID-Number</label>
                             <input type="text" id="username" name="username"

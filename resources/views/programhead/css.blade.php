@@ -1,6 +1,7 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sidebar Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Accountancy Review Management</title>
 
     @vite('resources/css/app.css')
     <style>
@@ -59,6 +60,9 @@
         }
 
         .shadow-right {
-            box-shadow: 2px 0 3px #739072; /* Adjust the values as needed */
+            box-shadow: 2px 0 3px #739072;
         }
+
     </style>
+
+
