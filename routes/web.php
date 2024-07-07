@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\PHController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DController;
 use App\Http\Controllers\FController;
 use Illuminate\Support\Facades\Route;
@@ -17,11 +18,17 @@ Route::get('/login',[AuthenticationController::class, 'create'])->name('create')
 
 // ROUTES FOR PROGRAM HEAD UI
 Route::get('/programhead/home', [PHController::class, 'index'])->name('ph.home');
+
 Route::get('/programhead/plan', [PHController::class, 'plan'])->name('ph.plan');
+
 Route::get('/programhead/questionbank', [PHController::class, 'questionbank'])->name('ph.questionbank');
+
 Route::get('/programhead/class', [PHController::class, 'class'])->name('ph.class');
+Route::get('/programhead/class/createclass', [ClassController::class, 'index'])->name('ph.createclass');
+
 Route::get('/programhead/facultymanagement', [PHController::class, 'faculty'])->name('ph.faculty');
 Route::get('/programhead/facultymanagement/assignfaculty', [PHController::class, 'addfaculty'])->name('ph.addfaculty');
+
 Route::get('/programhead/settings', [PHController::class, 'settings'])->name('ph.settings');
 
 // // ROUTES FOR DEAN UI

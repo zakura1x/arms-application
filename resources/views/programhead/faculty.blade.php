@@ -26,9 +26,15 @@
                           <input type="text" placeholder="Search Faculty" class="ml-2" />
                         </div>
 
-                        <button class="flex items-center text-white border rounded-lg p-5 w-35 h-8 bg-custom3">
-                          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                          <a href="{{route('ph.addfaculty')}}" class="ml-2">Add Faculty</a>
+                        <button id="addfaculty" class="flex items-center text-white border rounded-lg p-5 w-35 h-8 bg-custom3">
+                          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                              <path d="M4 12H20M12 4V20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                          </svg>
+                          <span class="ml-2">Add Faculty</span>
                         </button>
 
                         <button class="flex items-center border rounded-lg p-5 w-30 h-8 bg-custom1">
@@ -109,10 +115,15 @@
         const navButton = document.getElementById('nav-button');
         const sidebar = document.getElementById('sidebar');
         const mainContainer = document.getElementById('main-container');
+        const addFaculty = document.getElementById('addfaculty');
 
         navButton.addEventListener('click', function() {
             sidebar.classList.toggle('show');
             mainContainer.classList.toggle('shifted');
+        });
+
+        addFaculty.addEventListener('click', function() {
+        window.location.href = '{{ route('ph.addfaculty') }}';
         });
     });
 </script>

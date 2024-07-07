@@ -63,6 +63,32 @@
             box-shadow: 2px 0 3px #739072;
         }
 
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+          margin: 15% auto;
+        }
+
+        #classForm {
+          padding: 20px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: rgb(226, 45, 45);
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 
 

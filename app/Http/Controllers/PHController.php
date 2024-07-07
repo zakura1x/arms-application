@@ -32,7 +32,7 @@ class PHController extends Controller
 
     public function addfaculty()
     {
-      return view('programhead.addfaculty');
+      return view('programhead.facultymanage.addfaculty');
     }
 
     public function settings()
