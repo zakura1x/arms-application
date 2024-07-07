@@ -63,7 +63,7 @@
             box-shadow: 2px 0 3px #739072;
         }
 
-        .modal {
+        /* .modal {
           display: none;
           position: fixed;
           z-index: 1;
@@ -88,7 +88,7 @@
             color: rgb(226, 45, 45);
             text-decoration: none;
             cursor: pointer;
-        }
+        } */
     </style>
 
 
