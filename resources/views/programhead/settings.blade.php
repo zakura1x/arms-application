@@ -62,7 +62,7 @@
     </style>
 </head>
 
-<body class="font-sans bg-custom2 antialiased dark:bg-black dark:text-white/50">
+<body class="font-poppins bg-custom2 antialiased dark:bg-black text-black">
     <div id="layout" class="flex">
         <!-- Sidebar -->
         @include('programhead.sidebar')

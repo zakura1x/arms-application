@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassManagement\ClassController;
 use App\Http\Controllers\PHHomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Registration\RegisterFaculty;
@@ -10,9 +11,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,4 +36,8 @@ Route::middleware(['auth', CheckRole::class.':program_head'])->group(function ()
     Route::get('/program-head/faculty-list',[RegisterFaculty::class, 'view_faculty'])->name('ph.faculty-list');
     Route::get('/program-head/faculty-add',[RegisterFaculty::class, 'add_faculty'])->name('ph.faculty-add');
     Route::post('/program-head/add-faculty',[RegisterFaculty::class, 'store_faculty']);
+
+    Route::get('/program-head/class-list',[ClassController::class, 'index'])->name('ph.class-list');
+    Route::post('/program-head/add-class',[ClassController::class, 'store'])->name('ph.add-class');
+
 });

@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -28,8 +29,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Debugging: Log the user's role
+        Log::info('User Role: ' . $request->user()->role);
+
         if($request->user()->role === 'program_head') {
-            return redirect('program-head/dashboard');
+            return redirect()->intended(route('ph.dashboard'));
         }
 
 

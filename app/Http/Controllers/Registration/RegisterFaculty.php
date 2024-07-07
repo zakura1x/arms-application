@@ -69,37 +69,44 @@ class RegisterFaculty extends Controller
 
     public function store_faculty(Request $request){
 
-        $faculty = new Faculty();
-        $user = new User();
+        // Validate the incoming request
+        $validated = $request->validate([
+            'first_name' => 'required|string',
+            'middle_name' => 'nullable|string',
+            'last_name' => 'required|string',
+            'id_number' => 'required|string|unique:users',
+            'email' => 'required|email|unique:users',
+            'phone_number' => 'required|string|min:3',
+            'birth_date' => 'required|date_format:Y-m-d', // Correct date format
+            'gender' => 'required|string',
+            'address' => 'required|string',
+        ]);
 
-        $user->name = $request->first_name.' '.$request->last_name;
-        $user->id_number = $request->id_number;
-        $user->role = 'faculty';
-        $user->email = $request->email;
-        $user->password = Hash::make($request->birth_date);
+        // Create a new user where password is the birthdate
+        $user = User::create([
+            'name' => $validated['first_name'].' '.$validated['last_name'],
+            'id_number' => $validated['id_number'],
+            'role' => 'faculty',
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['birth_date']),
+        ]);
 
-        $user->save();
+        // Create a new faculty with the validated data
+        Faculty::create([
+            'user_id' => $user->id,
+            'first_name' => $validated['first_name'],
+            'middle_name' => $validated['middle_name'],
+            'last_name' => $validated['last_name'],
+            'id_number' => $validated['id_number'],
+            'email' => $validated['email'],
+            'phone_number' => $validated['phone_number'],
+            'birth_date' => $validated['birth_date'],
+            'gender' => $validated['gender'],
+            'address' => $validated['address'],
+        ]);
 
-        $faculty->first_name = $request->first_name;
-        $faculty->middle_name = $request->middle_name;
-        $faculty->last_name = $request->last_name;
-        $faculty->id_number = $request->id_number;
-        $faculty->email = $request->email;
-        $faculty->phone_number = $request->phone_number;
-        $faculty->birth_date = $request->birth_date;
-        $faculty->gender = $request->gender;
-        $faculty->address = $request->address;
-        $faculty->user_id = $user->id;
-
-        $faculty->save();
-
-
-
-        return redirect()->back()->with('success', 'Faculty added successfully');
-    
-
-        
-
+        // Redirect to the faculty list view
+        return redirect()->route('ph.faculty-list')->with('success', 'Faculty registered successfully');
 
     }
     
