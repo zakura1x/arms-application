@@ -1,6 +1,7 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Accountancy Review Management</title>
 
     @vite('resources/css/app.css')
@@ -63,32 +64,12 @@
             box-shadow: 2px 0 3px #739072;
         }
 
-        /* .modal {
-          display: none;
-          position: fixed;
-          z-index: 1;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          overflow: auto;
-          background-color: rgba(0, 0, 0, 0.5);
+        .modal {
+            transition: opacity 0.25s ease;
         }
-
-        .modal-content {
-          margin: 15% auto;
+        .modal-active {
+            overflow-x: hidden;
+            overflow-y: visible !important;
         }
-
-        #classForm {
-          padding: 20px;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: rgb(226, 45, 45);
-            text-decoration: none;
-            cursor: pointer;
-        } */
     </style>
-
 
