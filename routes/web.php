@@ -37,10 +37,17 @@ Route::get('/programhead/settings', [PHController::class, 'settings'])->name('ph
 // Route::get('/dean/class',[DController::class, 'class'])->name('class');
 // Route::get('/dean/settings',[DController::class, 'settings'])->name('settings');
 
-// // ROUTES FOR FACULTY UI
-// Route::get('/faculty/home',[FController::class, 'index'])->name('home');
-// Route::get('/faculty/plan',[FController::class, 'plan'])->name('plan');
-// Route::get('/faculty/questionbank',[FController::class, 'questionbank'])->name('questionbank');
-// Route::get('/faculty/class',[FController::class, 'class'])->name('class');
-// Route::get('/faculty/settings',[FController::class, 'settings'])->name('settings');
-// Route::get('/faculty/class/nameofclass',[FController::class, 'clickedClass'])->name('class1');
+// ROUTES FOR FACULTY UI
+Route::get('/faculty/home',[FController::class, 'index'])->name('f.home');
+
+Route::get('/faculty/plan',[FController::class, 'plan'])->name('f.plan');
+Route::get('/faculty/plan/createplan',[FController::class, 'createplan'])->name('f.createplan');
+
+Route::get('/faculty/questionbank',[FController::class, 'questionbank'])->name('f.questionbank');
+
+Route::get('/faculty/class',[FController::class, 'class'])->name('f.class');
+
+Route::get('/faculty/settings',[FController::class, 'settings'])->name('f.settings');
+
+Route::get('/faculty/class/nameofclass',[FController::class, 'clickedClass'])->name('f.class1');
+

@@ -19,7 +19,7 @@
                 <div class="p-8 bg-white shadow-lg rounded-lg border border-gray-200 h-full" x-data="{ tab: 'student' }">
                     <header class="flex items-center bg-custom1 text-black border-b border-gray-100">
                         <div class="px-4 flex items-center">
-                            <a href="{{route('class')}}">
+                            <a href="{{route('f.class')}}">
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M14.7402 28.4805C22.3288 28.4805 28.4805 22.3288 28.4805 14.7402C28.4805 7.15171 22.3288 1 14.7402 1C7.15171 1 1 7.15171 1 14.7402C1 22.3288 7.15171 28.4805 14.7402 28.4805Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M20.117 14.7402H9.96094" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

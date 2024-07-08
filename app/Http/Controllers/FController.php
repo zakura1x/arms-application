@@ -34,4 +34,9 @@ class FController extends Controller
   {
     return view('faculty.classclicked.class1');
   }
+
+  public function createplan()
+  {
+    return view('faculty.ldpmanage.createldp');
+  }
 }

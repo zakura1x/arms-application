@@ -17,7 +17,7 @@
             <div id="main-content" class="h-screen flex-1 transition-all duration-300 ease-in-out">
 
                 <div class="antialiased p-8 h-full">
-                  <a href="{{route('class1')}}">
+                  <a href="{{route('f.class1')}}">
                     <div class="p-4 bg-custom1 bg-cover bg-center border rounded-t-lg w-1/4 h-1/4 flex items-center" style="background-image: url('public/images/classbg.png');">
                     </div>
                     <div class="flex flex-col p-4 bg-white border rounded-b-lg shadow-lg w-1/4">
