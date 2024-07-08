@@ -22,7 +22,7 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="flex-row w-full" href="{{ route('ph.plan') }}">
+            <a class="flex-row w-full" href="{{ route('ph.ldp-list') }}">
                 <svg width="35" height="41" viewBox="0 0 35 41" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -56,7 +56,7 @@
             </a>
         </li>
         <li class="sidebar-item">
-            <a class="flex-row w-full" href="{{ route('ph.class') }}">
+            <a class="flex-row w-full" href="{{ route('ph.class-list') }}">
                 <svg width="35" height="35" viewBox="0 0 35 35" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path

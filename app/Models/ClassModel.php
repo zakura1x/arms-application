@@ -15,6 +15,7 @@ class ClassModel extends Model
         'name',
         'code',
         'class_school_year',
+        'background_image',
     ];
 
     // One-to-Many relationship with ClassCode

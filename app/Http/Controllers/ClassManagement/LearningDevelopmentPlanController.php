@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class LearningDevelopmentPlanController extends Controller
 {
+    public function index(){
+        $ldp = LearningDevelopmentPlan::all();
+        return view('programhead.plan', compact('ldp'));
+    }
+
+    public function new_ldp(){
+        return view('programhead.ldp_create');
+    }
+
     public function createLDP(Request $request){
         $user = Auth::user();
         if($user->role !== 'faculty'){

@@ -13,8 +13,7 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $classes = ClassModel::all();
-
+        $classes  = ClassModel::all();
         return view('programhead.class', compact('classes'));
     
     }
@@ -36,16 +35,33 @@ class ClassController extends Controller
         $validated = $request->validate([
             'name' => 'required|string',
             'class_school_year' => 'required|string',
+            'background_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120'
         ]);
 
+        if($validated['background_image']){
+            $imageName = time(). '.' .$validated['background_image']->extension();
+            $validated['background_image']->move('class_background', $imageName);
+
+            $validated['background_image'] = $imageName;
+        
+
+        }
+
+        // $user = User::create([
+        //     'name' => $validated['first_name'].' '.$validated['last_name'],
+        //     'id_number' => $validated['id_number'],
+        //     'role' => 'faculty',
+        //     'email' => $validated['email'],
+        //     'password' => Hash::make($validated['birth_date']),
+        // ]);
 
         $class = ClassModel::create([
             'name' => $validated['name'],
             'class_school_year' => $validated['class_school_year'],
+            'background_image' => $imageName,
         ]);
-
         
-        return redirect()->route('ph.class')->with('success', 'Faculty registered successfully');
+        return redirect()->route('ph.class-list')->with('success', 'Faculty registered successfully');
 
     }
 
