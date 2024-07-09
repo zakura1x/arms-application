@@ -20,6 +20,7 @@ Route::get('/login',[AuthenticationController::class, 'create'])->name('create')
 Route::get('/programhead/home', [PHController::class, 'index'])->name('ph.home');
 
 Route::get('/programhead/plan', [PHController::class, 'plan'])->name('ph.plan');
+Route::get('/programhead/plan/createplan',[PHController::class, 'createplan'])->name('ph.createplan');
 
 Route::get('/programhead/questionbank', [PHController::class, 'questionbank'])->name('ph.questionbank');
 

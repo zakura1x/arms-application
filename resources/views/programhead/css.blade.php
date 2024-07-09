@@ -71,5 +71,17 @@
             overflow-x: hidden;
             overflow-y: visible !important;
         }
+
+        .uploadedFiles a {
+          color: #000000; /* Default text color */
+          text-decoration: none; /* Remove underline */
+          transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .uploadedFiles a:hover {
+          color: #007BFF; /* Change text color on hover */
+          text-decoration: underline; /* Add underline on hover */
+        }
+
     </style>
 
