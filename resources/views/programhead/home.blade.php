@@ -5,7 +5,7 @@
     @include('programhead.css')
 </head>
 
-<body class="font-poppins bg-custom2 antialiased dark:bg-black text-black">
+<body class="font-poppins bg-custom2 antialiased no-scrollbar text-black">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 

@@ -12,12 +12,12 @@ class LearningDevelopmentPlan extends Model
     protected $fillable = [
         'plan_name',
         'is_approved',
-        'faculty_id',
+        'user_id',
         'subject_id'
     ];
 
-    public function faculty(){
-        return $this->belongsTo(Faculty::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function subject(){

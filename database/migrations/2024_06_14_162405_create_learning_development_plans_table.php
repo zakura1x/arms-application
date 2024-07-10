@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('plan_name');
             $table->boolean('is_approved')->default(false);
-            $table->unsignedBigInteger('faculty_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('subject_id');
             $table->timestamps();
 
-            $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
         
         });

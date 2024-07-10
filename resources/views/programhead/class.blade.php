@@ -16,7 +16,7 @@
     </style>
 </head>
 
-<body class="font-poppins bg-custom2 antialiased text-black">
+<body class="font-poppins bg-custom2 antialiased text-black no-scrollbar">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 

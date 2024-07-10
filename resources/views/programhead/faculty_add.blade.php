@@ -61,7 +61,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="font-poppins bg-custom2 antialiased dark:bg-black text-black">
+<body class="font-poppins bg-[#EFF4F6] antialiased  text-black no-scrollbar">
     <div id="layout" class="flex">
         <!-- Sidebar -->
         @include('programhead.sidebar')

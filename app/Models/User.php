@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->hasOne(ProgramHead::class);
     }
 
+    public function learningDevelopmentPlans(){
+        return $this->hasMany(LearningDevelopmentPlan::class);
+    
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

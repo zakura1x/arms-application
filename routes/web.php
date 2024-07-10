@@ -41,5 +41,6 @@ Route::middleware(['auth', CheckRole::class.':program_head'])->group(function ()
 
     Route::get('/program-head/ldp',[LearningDevelopmentPlanController::class, 'index'])->name('ph.ldp-list');
     Route::get('/program-head/ldp-add',[LearningDevelopmentPlanController::class, 'new_ldp'])->name('ph.ldp-add');
+    Route::post('/program-head/new-ldp',[LearningDevelopmentPlanController::class, 'create_ldp'])->name('ph.add-ldp');
 
 });

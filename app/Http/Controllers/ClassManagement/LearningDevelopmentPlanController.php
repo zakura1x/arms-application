@@ -14,40 +14,43 @@ class LearningDevelopmentPlanController extends Controller
 {
     public function index(){
         $ldp = LearningDevelopmentPlan::all();
+        //I also want to fetch the subject name of the LDP and the name of the user
+        $ldp->load('subject', 'user');
+        
         return view('programhead.plan', compact('ldp'));
     }
 
     public function new_ldp(){
-        return view('programhead.ldp_create');
+        $subjects = Subject::all();
+        //debug
+        //dd($subjects);
+        
+        return view('programhead.ldp_create', compact('subjects'));
     }
 
-    public function createLDP(Request $request){
-        $user = Auth::user();
-        if($user->role !== 'faculty'){
-            return response()->json([
-                'message' => 'Unauthorized',],
-                403);
-        }
-
+    public function create_ldp(Request $request){
         $validated = $request->validate([
-            'plan_name' => 'required|string',
-            'subject' => 'required|string',
+            'plan_name'=> 'required|string',
+            'subject_name' => 'required|string',
         ]);
 
-        //Get the subject details
-        $subject = Subject::where('name', $validated['subject'])->first();
+        $subject = Subject::where('name', $validated['subject_name'])->first();
+        //Check if the subject exists
         if(!$subject){
-            return response()->json([
-                'message' => 'Subject not found'],
-                404);
+            //Create a new subject
+            $subject = Subject::create([
+                'name' => $validated['subject_name']
+            ]);
         }
 
-        //Create the LDP
         $ldp = LearningDevelopmentPlan::create([
-            'faculty_id' => $user->id,
             'plan_name' => $validated['plan_name'],
-            'subject_id' => $subject->id,
+            'user_id' => Auth::id(),
+            'subject_id' => $subject->id
         ]);
+
+        return redirect()->route('ph.ldp-list')->with('success', 'LDP created successfully');
+
     }
 
     //Approve the LDP

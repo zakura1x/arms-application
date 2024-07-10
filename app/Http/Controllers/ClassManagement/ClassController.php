@@ -47,14 +47,6 @@ class ClassController extends Controller
 
         }
 
-        // $user = User::create([
-        //     'name' => $validated['first_name'].' '.$validated['last_name'],
-        //     'id_number' => $validated['id_number'],
-        //     'role' => 'faculty',
-        //     'email' => $validated['email'],
-        //     'password' => Hash::make($validated['birth_date']),
-        // ]);
-
         $class = ClassModel::create([
             'name' => $validated['name'],
             'class_school_year' => $validated['class_school_year'],
