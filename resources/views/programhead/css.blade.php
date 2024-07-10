@@ -2,6 +2,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2" defer></script>
+
     <title>Accountancy Review Management</title>
 
     @vite('resources/css/app.css')
@@ -64,24 +66,15 @@
             box-shadow: 2px 0 3px #739072;
         }
 
-        .modal {
-            transition: opacity 0.25s ease;
-        }
-        .modal-active {
-            overflow-x: hidden;
-            overflow-y: visible !important;
-        }
-
         .uploadedFiles a {
-          color: #000000; /* Default text color */
-          text-decoration: none; /* Remove underline */
+          color: #000000;
+          text-decoration: none;
           transition: color 0.3s ease, text-decoration 0.3s ease;
         }
 
         .uploadedFiles a:hover {
-          color: #007BFF; /* Change text color on hover */
-          text-decoration: underline; /* Add underline on hover */
+          color: #16a145;
+          text-decoration: underline;
         }
-
     </style>
 

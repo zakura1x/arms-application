@@ -18,9 +18,13 @@ class PHController extends Controller
 
     public function createplan()
     {
-      return view('programhead.classmanage.createldp');
+      return view('programhead.planmanage.createldp');
     }
 
+    public function plandetails()
+    {
+      return view('programhead.planmanage.editldp');
+    }
     public function questionbank()
     {
       return view('programhead.questionbank');
@@ -29,6 +33,11 @@ class PHController extends Controller
     public function class()
     {
       return view('programhead.class');
+    }
+
+    public function clickedClass()
+    {
+      return view('programhead.classmanage.class1inside');
     }
 
     public function faculty()

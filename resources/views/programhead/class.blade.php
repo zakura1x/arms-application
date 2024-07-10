@@ -16,8 +16,32 @@
             <!-- Main content -->
             <div id="main-content" class="h-screen flex-1 transition-all duration-300 ease-in-out">
 
-                <div class="antialiased p-8 h-full">
-                    <div id="classContainer" class="flex flex-wrap gap-10 justify-start mb-28">
+                <div class="antialiased p-8 h-full"> <!-- SAMPLE CLASS CARD ONLY FOR ROUTING -->
+                    <div id="class1" class="flex flex-wrap gap-10 justify-start mb-28">
+                      <div class="rounded-t-lg rounded-b-lg w-1/4 cursor-pointer">
+                        <div class="p-4 bg-custom1 border rounded-t-lg h-40 flex items-center justify-center" style="background-image: url('{{ asset('images/classbg.png') }}'); background-size: cover; background-position: center;"></div>
+                          <div class="p-4 bg-white border rounded-b-lg shadow-lg w-full items-center justify-center">
+                            <div class="flex items-center justify-between">
+                              <div class="flex-col">
+                                <p class="text-left"><b>BSA421k - Taxation</b></p>
+                                <p class="text-left italic">Taxation</p>
+                              </div>
+                              <div class="flex-col">
+                                <div class="dropdown dropdown-end">
+                                  <div tabindex="0" role="button" class="btn btn-circle avatar">
+                                      <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> <circle cx="12" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> <circle cx="19" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> </g></svg>
+                                  </div>
+                                  <ul tabindex="0"
+                                      class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-custom1 rounded-box w-52">
+                                      <li><a>Edit Class</a></li>
+                                      <li><a>Delete Class</a></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                         <div id="openModal" class="rounded-t-lg rounded-b-lg w-1/4 cursor-pointer">
                           <div class="p-4 bg-custom1 border rounded-t-lg w-ful h-40 flex items-center justify-center">
                                 <svg width="120" height="120" viewBox="0 0 147 147" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,6 +100,7 @@
             const navButton = document.getElementById('nav-button');
             const sidebar = document.getElementById('sidebar');
             const mainContainer = document.getElementById('main-container');
+            const class1 = document.getElementById('class1');
 
             navButton.addEventListener('click', function() {
                 sidebar.classList.toggle('show');
@@ -172,6 +197,10 @@
                 modal.classList.add('hidden');
                 document.body.classList.remove('modal-active');
                 classForm.reset();
+            });
+
+            class1.addEventListener('click', function() {
+            window.location.href = '{{ route('ph.class1') }}';
             });
         });
     </script>

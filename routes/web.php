@@ -21,10 +21,12 @@ Route::get('/programhead/home', [PHController::class, 'index'])->name('ph.home')
 
 Route::get('/programhead/plan', [PHController::class, 'plan'])->name('ph.plan');
 Route::get('/programhead/plan/createplan',[PHController::class, 'createplan'])->name('ph.createplan');
+Route::get('/programhead/plan/createplan/addplandetails',[PHController::class, 'plandetails'])->name('ph.plandetails');
 
 Route::get('/programhead/questionbank', [PHController::class, 'questionbank'])->name('ph.questionbank');
 
 Route::get('/programhead/class', [PHController::class, 'class'])->name('ph.class');
+Route::get('/programhead/class/nameofclass', [PHController::class, 'clickedClass'])->name('ph.class1');
 
 Route::get('/programhead/facultymanagement', [PHController::class, 'faculty'])->name('ph.faculty');
 Route::get('/programhead/facultymanagement/assignfaculty', [PHController::class, 'addfaculty'])->name('ph.addfaculty');
