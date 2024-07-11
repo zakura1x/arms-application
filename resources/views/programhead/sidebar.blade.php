@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<div id="sidebar" class="bg-custom1 shadow-right h-screen fixed transition-transform duration-300 ease-in-out">
+<div id="sidebar" class="bg-[#D0D9D3] shadow-right h-screen fixed transition-transform duration-300 ease-in-out">
   <ul class="menu">
       <li class="sidebar-item">
           <button id="nav-button" class="btn btn-square btn-ghost">

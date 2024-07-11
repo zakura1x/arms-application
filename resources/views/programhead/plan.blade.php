@@ -5,7 +5,7 @@
   @include('programhead.css')
 </head>
 
-<body class="bg-custom2 font-sans antialiased dark:bg-black dark:text-white/50">
+<body class="bg-[#EFF4F6] font-sans antialiased dark:bg-black dark:text-white/50">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 
@@ -19,13 +19,13 @@
               <section class="bg-white p-4 antialiased">
                 <div class="flex items-center justify-end space-x-6">
                   <div class="form-control w-1/4 text-white">
-                    <div class="flex items-center input input-bordered bg-custom3">
+                    <div class="flex items-center input input-bordered bg-[#42604C]">
                       <svg width="26" height="26" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>search</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-256.000000, -1139.000000)" fill="#ffffff"> <path d="M269.46,1163.45 C263.17,1163.45 258.071,1158.44 258.071,1152.25 C258.071,1146.06 263.17,1141.04 269.46,1141.04 C275.75,1141.04 280.85,1146.06 280.85,1152.25 C280.85,1158.44 275.75,1163.45 269.46,1163.45 L269.46,1163.45 Z M287.688,1169.25 L279.429,1161.12 C281.591,1158.77 282.92,1155.67 282.92,1152.25 C282.92,1144.93 276.894,1139 269.46,1139 C262.026,1139 256,1144.93 256,1152.25 C256,1159.56 262.026,1165.49 269.46,1165.49 C272.672,1165.49 275.618,1164.38 277.932,1162.53 L286.224,1170.69 C286.629,1171.09 287.284,1171.09 287.688,1170.69 C288.093,1170.3 288.093,1169.65 287.688,1169.25 L287.688,1169.25 Z" id="search" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
                       <input type="text" placeholder="Search Lesson Plan Name" class="ml-2"/>
                     </div>
                   </div>
 
-                  <button id="createldp" class="flex items-center text-white rounded-lg p-5 w-39 h-8 bg-custom3">
+                  <button id="createldp" class="flex items-center text-white rounded-lg p-5 w-39 h-8 bg-[#42604C]">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     <span class="ml-2">CREATE</span>
                   </button>
@@ -34,7 +34,7 @@
 
                   <!-- Table -->
                   <div class="p-4 bg-white shadow-lg border border-gray-200 h-full">
-                    <header class="bg-custom3 text-white border-b border-gray-100">
+                    <header class="bg-[#42604C] text-white border-b border-gray-100">
                       <div class="p-4 flex items-center">
                         <svg width="25" height="25" viewBox="0 0 33 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M27.0249 24.1337C27.0249 24.4576 26.76 24.7228 26.4361 24.7228H6.56271C6.23863 24.7228 5.97363 24.4577 5.97363 24.1337V23.7413C5.97363 23.4175 6.23851 23.1523 6.56271 23.1523H26.4361C26.7599 23.1523 27.0249 23.4173 27.0249 23.7413V24.1337Z" fill="white"/>
@@ -49,7 +49,7 @@
                     </header>
                         <div class="overflow-x-auto">
                             <table class="table-auto w-full border">
-                                <thead class="text-xs font-semibold uppercase bg-custom4">
+                                <thead class="text-xs font-semibold uppercase bg-[#E1EDE5]">
                                     <tr>
                                         <th class="w-1/4 p-2">
                                             <div class="font-semibold text-left">Name</div>
@@ -99,7 +99,7 @@
                                         </td>
                                         <td class="p-2">
                                           <div class="flex items-center justify-end space-x-6">
-                                            <button id="editldp" class="flex items-center text-white rounded-lg p-5 w-24 h-8 bg-custom3">
+                                            <button id="editldp" class="flex items-center text-white rounded-lg p-5 w-24 h-8 bg-[#42604C]">
                                               <svg width="26" height="26" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M18.1497 5.93991L6.27971 17.8099C5.21971 18.8799 2.04971 19.3698 1.27971 18.6598C0.509711 17.9498 1.06969 14.7799 2.12969 13.7099L13.9997 1.83994C14.5478 1.31795 15.2783 1.03091 16.0351 1.04013C16.7919 1.04936 17.5151 1.35412 18.0503 1.88932C18.5855 2.42451 18.8903 3.14775 18.8995 3.90457C18.9088 4.6614 18.6217 5.39183 18.0997 5.93991H18.1497Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M19 19H10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -107,7 +107,7 @@
                                               <span class="ml-2">EDIT</span>
                                             </button>
 
-                                            <button id="approveldp" class="flex items-center text-white rounded-lg p-5 w-30 h-8 bg-custom3">
+                                            <button id="approveldp" class="flex items-center text-white rounded-lg p-5 w-30 h-8 bg-[#42604C]">
                                               <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M23.3387 14.723H18.6002C17.2002 14.723 16.0156 13.5384 16.0156 12.1384C16.231 8.31534 18.0079 8.09996 18.1695 5.62304C18.331 3.03842 16.7156 0.723036 14.1848 0.184575C10.8464 -0.515425 7.83099 2.01534 7.83099 5.24611C7.83099 8.09996 9.76945 8.09996 9.98484 12.1384C9.98484 13.5384 8.80023 14.723 7.40023 14.723H2.66176C1.26176 14.723 0.0771484 15.8538 0.0771484 17.3077V19.0307C0.0771484 19.5153 0.454071 19.8923 0.938687 19.8923H25.0618C25.5464 19.8923 25.9233 19.5153 25.9233 19.0307V17.3077C25.9233 15.8538 24.7387 14.723 23.3387 14.723ZM23.3925 22.4769H2.60792C2.1233 22.4769 1.80023 22.8538 1.80023 23.2846V23.3384C1.80023 24.7384 2.98484 25.923 4.38484 25.923H21.6695C23.0695 25.923 24.2002 24.7384 24.2002 23.3384V23.2846C24.2002 22.8538 23.8233 22.4769 23.3925 22.4769Z" fill="white"/>
                                               </svg>

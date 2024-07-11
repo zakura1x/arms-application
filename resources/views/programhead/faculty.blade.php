@@ -5,7 +5,7 @@
   @include('programhead.css')
 </head>
 
-<body class="bg-custom2 font-sans antialiased dark:bg-black dark:text-white/50">
+<body class="bg-[#EFF4F6] font-sans antialiased dark:bg-black dark:text-white/50">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 
@@ -26,7 +26,7 @@
                           <input type="text" placeholder="Search Faculty" class="ml-2" />
                         </div>
 
-                        <button id="addfaculty" class="flex items-center text-white border rounded-lg p-5 w-35 h-8 bg-custom3">
+                        <button id="addfaculty" class="flex items-center text-white border rounded-lg p-5 w-35 h-8 bg-[#42604C]">
                           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -37,16 +37,16 @@
                           <span class="ml-2">Add Faculty</span>
                         </button>
 
-                        <button class="flex items-center border rounded-lg p-5 w-30 h-8 bg-custom1">
+                        <button class="flex items-center border rounded-lg p-5 w-30 h-8 bg-[#D0D9D3]">
                           <a>Edit</a>
                         </button>
-                        <button class="flex items-center border rounded-lg p-5 w-30 h-8 bg-custom1">
+                        <button class="flex items-center border rounded-lg p-5 w-30 h-8 bg-[#D0D9D3]">
                           <a>Assign to Subject</a>
                         </button>
                       </div>
                     </section>
 
-                    <header class="bg-custom3 text-white border-b border-gray-100">
+                    <header class="bg-[#42604C] text-white border-b border-gray-100">
                       <div class="p-4 flex items-center">
                         <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10.0495 2.52979L4.02953 6.45979C2.09953 7.71979 2.09953 10.5398 4.02953 11.7998L10.0495 15.7298C11.1295 16.4398 12.9095 16.4398 13.9895 15.7298L19.9795 11.7998C21.8995 10.5398 21.8995 7.72979 19.9795 6.46979L13.9895 2.53979C12.9095 1.81979 11.1295 1.81979 10.0495 2.52979Z" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="0.4" d="M5.62914 13.0801L5.61914 17.7701C5.61914 19.0401 6.59914 20.4001 7.79914 20.8001L10.9891 21.8601C11.5391 22.0401 12.4491 22.0401 13.0091 21.8601L16.1991 20.8001C17.3991 20.4001 18.3791 19.0401 18.3791 17.7701V13.1301" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="0.4" d="M21.4004 15V9" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                           <h2 class="ml-4 font-semibold">FACULTY LIST</h2>
@@ -55,7 +55,7 @@
 
                       <div class="overflow-x-auto">
                           <table class="table-auto w-full border">
-                              <thead class="text-xs font-semibold uppercase bg-custom4">
+                              <thead class="text-xs font-semibold uppercase bg-[#E1EDE5]">
                                   <tr>
                                       <th class="w-1/12 p-2">
                                         <div class="font-semibold text-left"></div>

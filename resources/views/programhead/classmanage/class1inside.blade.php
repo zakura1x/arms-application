@@ -3,10 +3,10 @@
 
 <head>
     @include('programhead.css')
-    
+
 </head>
 
-<body class="bg-custom2 font-sans antialiased dark:bg-black dark:text-white/50">
+<body class="bg-[#EFF4F6] font-sans antialiased dark:bg-black dark:text-white/50">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 
@@ -16,8 +16,8 @@
 
             <!-- Main content -->
             <div id="main-content" class="h-screen flex-1 transition-all duration-300 ease-in-out">
-                <div class="p-8 bg-custom2 shadow-lg rounded-lg border border-gray-200 h-full" x-data="{ tab: 'student' }">
-                    <header class="flex items-center bg-custom1 text-black">
+                <div class="p-8 bg-[#EFF4F6] shadow-lg rounded-lg border border-gray-200 h-full" x-data="{ tab: 'student' }">
+                    <header class="flex items-center bg-[#D0D9D3] text-black">
                         <div class="px-4 flex items-center">
                             <a href="{{route('ph.class')}}">
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +39,7 @@
                     <div>
                         <div x-show="tab === 'student'" class="tab-content">
                             <!-- Student Content -->
-                            <header class="bg-custom1 text-white border-b border-gray-100">
+                            <header class="bg-[#D0D9D3] text-white border-b border-gray-100">
                               <div class="p-4 flex items-center">
                                 <svg width="25" height="25" viewBox="0 0 33 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M27.0249 24.1337C27.0249 24.4576 26.76 24.7228 26.4361 24.7228H6.56271C6.23863 24.7228 5.97363 24.4577 5.97363 24.1337V23.7413C5.97363 23.4175 6.23851 23.1523 6.56271 23.1523H26.4361C26.7599 23.1523 27.0249 23.4173 27.0249 23.7413V24.1337Z" fill="white"/>
@@ -56,7 +56,7 @@
                         </div>
                         <div x-show="tab === 'module'" class="tab-content">
                             <!-- Module Content -->
-                            <header class="bg-custom3 text-white border-b border-gray-100">
+                            <header class="bg-[#42604C] text-white border-b border-gray-100">
                               <div class="p-4 flex items-center">
                                 <svg width="25" height="25" viewBox="0 0 33 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M27.0249 24.1337C27.0249 24.4576 26.76 24.7228 26.4361 24.7228H6.56271C6.23863 24.7228 5.97363 24.4577 5.97363 24.1337V23.7413C5.97363 23.4175 6.23851 23.1523 6.56271 23.1523H26.4361C26.7599 23.1523 27.0249 23.4173 27.0249 23.7413V24.1337Z" fill="white"/>
@@ -73,7 +73,7 @@
                         </div>
                         <div x-show="tab === 'assessment'" class="tab-content">
                             <!-- Assessment Content -->
-                            <header class="bg-custom3 text-white border-b border-gray-100">
+                            <header class="bg-[#42604C] text-white border-b border-gray-100">
                               <div class="p-4 flex items-center">
                                 <svg width="25" height="25" viewBox="0 0 33 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M27.0249 24.1337C27.0249 24.4576 26.76 24.7228 26.4361 24.7228H6.56271C6.23863 24.7228 5.97363 24.4577 5.97363 24.1337V23.7413C5.97363 23.4175 6.23851 23.1523 6.56271 23.1523H26.4361C26.7599 23.1523 27.0249 23.4173 27.0249 23.7413V24.1337Z" fill="white"/>

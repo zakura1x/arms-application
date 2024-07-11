@@ -46,22 +46,6 @@
             height: 24px;
         }
 
-        .bg-custom1 {
-            background-color: #D0D9D3;
-        }
-
-        .bg-custom2 { /* dae pa nagamit */
-            background-color: #EFF4F6;
-        }
-
-        .bg-custom3 {
-            background-color: #42604C;
-        }
-
-        .bg-custom4 {
-            background-color: #E1EDE5;
-        }
-
         .shadow-right {
             box-shadow: 2px 0 3px #739072;
         }

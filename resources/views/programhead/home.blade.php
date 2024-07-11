@@ -5,7 +5,7 @@
   @include('programhead.css')
 </head>
 
-<body class="font-sans bg-custom2 antialiased dark:bg-black dark:text-white/50">
+<body class="font-sans bg-[#EFF4F6] antialiased dark:bg-black dark:text-white/50">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 

@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<div class="navbar mx-50 bg-custom1 transition-all duration-300 ease-in-out w-[100%]">
+<div class="navbar mx-50 bg-[#D0D9D3] transition-all duration-300 ease-in-out w-[100%]">
   <div class="flex-1">
       <b><a class="ml-4 text-xl">ARMS - Program Head's Workspace</a></b>
   </div>

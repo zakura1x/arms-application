@@ -5,7 +5,7 @@
   @include('programhead.css')
 </head>
 
-<body class="font-sans bg-custom2 antialiased dark:bg-black dark:text-white/50">
+<body class="font-sans bg-[#EFF4F6] antialiased dark:bg-black dark:text-white/50">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 
@@ -19,7 +19,7 @@
                 <div class="antialiased p-8 h-full"> <!-- SAMPLE CLASS CARD ONLY FOR ROUTING -->
                     <div id="class1" class="flex flex-wrap gap-10 justify-start mb-28">
                       <div class="rounded-t-lg rounded-b-lg w-1/4 cursor-pointer">
-                        <div class="p-4 bg-custom1 border rounded-t-lg h-40 flex items-center justify-center" style="background-image: url('{{ asset('images/classbg.png') }}'); background-size: cover; background-position: center;"></div>
+                        <div class="p-4 bg-[#D0D9D3] border rounded-t-lg h-40 flex items-center justify-center" style="background-image: url('{{ asset('images/classbg.png') }}'); background-size: cover; background-position: center;"></div>
                           <div class="p-4 bg-white border rounded-b-lg shadow-lg w-full items-center justify-center">
                             <div class="flex items-center justify-between">
                               <div class="flex-col">
@@ -32,7 +32,7 @@
                                       <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> <circle cx="12" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> <circle cx="19" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> </g></svg>
                                   </div>
                                   <ul tabindex="0"
-                                      class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-custom1 rounded-box w-52">
+                                      class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#D0D9D3] rounded-box w-52">
                                       <li><a>Edit Class</a></li>
                                       <li><a>Delete Class</a></li>
                                   </ul>
@@ -43,7 +43,7 @@
                         </div>
 
                         <div id="openModal" class="rounded-t-lg rounded-b-lg w-1/4 cursor-pointer">
-                          <div class="p-4 bg-custom1 border rounded-t-lg w-ful h-40 flex items-center justify-center">
+                          <div class="p-4 bg-[#D0D9D3] border rounded-t-lg w-ful h-40 flex items-center justify-center">
                                 <svg width="120" height="120" viewBox="0 0 147 147" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M80.7913 7.87492C80.7913 3.84788 77.5269 0.583252 73.4997 0.583252C69.4725 0.583252 66.208 3.84788 66.208 7.87492V66.2083H7.87467C3.84763 66.2083 0.583008 69.4727 0.583008 73.4999C0.583008 77.5271 3.84763 80.7916 7.87467 80.7916H66.208V139.125C66.208 143.152 69.4725 146.417 73.4997 146.417C77.5269 146.417 80.7913 143.152 80.7913 139.125V80.7916H139.125C143.152 80.7916 146.416 77.5271 146.416 73.4999C146.416 69.4727 143.152 66.2083 139.125 66.2083H80.7913V7.87492Z" fill="#5E866B"/>
                                 </svg>
@@ -57,17 +57,17 @@
                     <!-- Modal -->
                     <div id="modal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-25 hidden">
                       <div class="bg-white rounded-lg shadow-lg w-1/2">
-                          <header class="bg-custom3 text-white border-b border-gray-100 rounded-t-lg">
+                          <header class="bg-[#42604C] text-white border-b border-gray-100 rounded-t-lg">
                             <div class="p-4 flex items-center">
                                 <h2 class="font-semibold">Create Class</h2>
                             </div>
                           </header>
                           <div class="p-8">
                             <form id="classForm" action="#" method="#">
-                              <input id="className" type="text" placeholder="Class Name" required class="bg-custom1 border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
-                              <input id="classSubject" type="text" placeholder="Subject" required class="bg-custom1 border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150"></input>
+                              <input id="className" type="text" placeholder="Class Name" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
+                              <input id="classSubject" type="text" placeholder="Subject" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150"></input>
                               <div class="relative rounded-lg">
-                                <div class="flex items-center justify-center rounded-lg bg-custom1 border-dashed border-2 border-black border-opacity-50">
+                                <div class="flex items-center justify-center rounded-lg bg-[#D0D9D3] border-dashed border-2 border-black border-opacity-50">
                                   <input id="bgImage" type="file" class="inset-0 border-1 text-black border-black border-dashed w-1/2 h-full cursor-pointer p-8" accept="image/*">
                                   <div class="flex items-center justify-center">
                                       <div class="ml-2 text-center">
@@ -79,10 +79,10 @@
                               </div>
 
                               <div class="flex items-center justify-center space-x-6 p-4">
-                                <button type="button" id="closeModal" class="close bg-custom1 font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                                <button type="button" id="closeModal" class="close bg-[#D0D9D3] font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
                                   Cancel
                                 </button>
-                                <button type="submit" class="bg-custom3 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                                <button type="submit" class="bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
                                   Create Class
                                 </button>
                               </div>
@@ -128,7 +128,7 @@
                         const bgImageUrl = e.target.result;
                         newCard.innerHTML = `
                             <div class="rounded-t-lg rounded-b-lg w-full cursor-pointer">
-                              <div class="p-4 bg-custom1 border rounded-t-lg h-40 flex items-center justify-center" style="background-image: url('${bgImageUrl}'); background-size: cover; background-position: center;"></div>
+                              <div class="p-4 bg-[#D0D9D3] border rounded-t-lg h-40 flex items-center justify-center" style="background-image: url('${bgImageUrl}'); background-size: cover; background-position: center;"></div>
                                 <div class="p-4 bg-white border rounded-b-lg shadow-lg w-full items-center justify-center">
                                   <div class="flex items-center justify-between">
                                     <div class="flex-col">
@@ -141,7 +141,7 @@
                                             <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> <circle cx="12" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> <circle cx="19" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> </g></svg>
                                         </div>
                                         <ul tabindex="0"
-                                            class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-custom1 rounded-box w-52">
+                                            class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#D0D9D3] rounded-box w-52">
                                             <li><a>Edit Class</a></li>
                                             <li><a>Delete Class</a></li>
                                         </ul>
@@ -159,7 +159,7 @@
                 } else {
                     newCard.innerHTML = `
                         <div class="rounded-t-lg rounded-b-lg w-full cursor-pointer">
-                          <div class="p-4 bg-custom1 border rounded-t-lg w-full h-40 flex items-center justify-center"></div>
+                          <div class="p-4 bg-[#D0D9D3] border rounded-t-lg w-full h-40 flex items-center justify-center"></div>
                             <div class="p-4 bg-white border rounded-b-lg shadow-lg w-full items-center justify-center">
                               <div class="flex items-center justify-between">
                                 <div class="flex-col">
@@ -172,7 +172,7 @@
                                         <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> <circle cx="12" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> <circle cx="19" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle> </g></svg>
                                     </div>
                                     <ul tabindex="0"
-                                        class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-custom1 rounded-box w-52">
+                                        class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#D0D9D3] rounded-box w-52">
                                         <li><a>Edit Class</a></li>
                                         <li><a>Delete Class</a></li>
                                     </ul>
