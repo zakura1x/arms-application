@@ -44,6 +44,60 @@
               <a>CREATE NEW TOPIC</a>
             </button>
 
+            <div class="bg-custom2 border border-gray-300 rounded-lg p-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <button id="togglePanelButton" class="text-gray-500 focus:outline-none">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path id="panelToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+                  <h3 class="font-semibold ml-4">SAMPLE TOPIC TITLE</h3>
+                </div>
+
+                <div class="ml-auto flex items-center">
+                  <div id="openMaterialModal" class="bg-custom3 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
+                    <button type="button" class="ml-2 mr-2">
+                      ADD MATERIALS
+                    </button>
+                  </div>
+                  <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-circle avatar">
+                      <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" stroke="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <circle cx="5" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
+                            <circle cx="12" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
+                            <circle cx="19" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
+                        </g>
+                      </svg>
+                    </div>
+                    <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-custom2 rounded-box w-52 border border-black border-opacity-50">
+                      <li><a>Edit Class</a></li>
+                      <li><a>Delete Class</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div id="panelContent" class="hidden">
+                <ul class="uploadedFiles list-disc pl-5">
+                  <li class="flex items-center">
+                    <button id="toggleFileButton" class="text-gray-500 focus:outline-none">
+                      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path id="fileToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </button>
+                    <span class="ml-4"><a href="#" target="_blank">Sample Material Title</a></span>
+                  </li>
+                  <div id="fileContent" class="hidden">
+                    <p>Description: Sample Material Description</p>
+                  </div>
+                </ul>
+              </div>
+            </div>
+
             <div id="expansionPanels" class="space-y-4"></div>
 
             <div class="flex items-end justify-end space-x-6 p-4 w-full">
@@ -136,7 +190,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-      const navButton = document.getElementById('nav-button');
+    const navButton = document.getElementById('nav-button');
       const sidebar = document.getElementById('sidebar');
       const mainContainer = document.getElementById('main-container');
 
@@ -147,12 +201,12 @@
       const closeModalButton = document.getElementById('closeTopicModal');
       const topicModal = document.getElementById('topicModal');
 
-      const topicForm = document.getElementById('topicForm');
-      const expansionPanelsContainer = document.getElementById('expansionPanels');
-
+      const openMaterialModal = document.getElementById('openMaterialModal');
       const closeMaterialModal = document.getElementById('closeMaterialModal');
       const materialModal = document.getElementById('materialModal');
-      const materialForm = document.getElementById('materialForm');
+
+      const panelContentToggle = document.getElementById('togglePanelButton');
+      const fileContentToggle = document.getElementById('toggleFileButton');
 
       navButton.addEventListener('click', function() {
         sidebar.classList.toggle('show');
@@ -171,82 +225,8 @@
         topicModal.classList.add('hidden');
       });
 
-      let panelElement; // Declare panelElement outside the scope
-
-      topicForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const topicTitle = document.getElementById('topicTitle').value;
-
-        // Create expansion panel HTML
-        const panelHTML = `
-          <div class="bg-custom2 border border-gray-300 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <button id="togglePanelButton" class="text-gray-500 focus:outline-none">
-                  <svg id="panelToggleIcon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path class="fileToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-                <h3 class="font-semibold ml-4">${topicTitle}</h3>
-              </div>
-
-              <div class="ml-auto flex items-center">
-                <div class="materialModal bg-custom3 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
-                  <button type="button" class="ml-2 mr-2">
-                    ADD MATERIALS
-                  </button>
-                </div>
-                <div class="dropdown dropdown-end">
-                  <div tabindex="0" role="button" class="btn btn-circle avatar">
-                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" stroke="#000000">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <circle cx="5" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                            <circle cx="12" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                            <circle cx="19" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                        </g>
-                    </svg>
-                  </div>
-                  <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-custom2 rounded-box w-52 border border-black border-opacity-50">
-                    <li><a>Edit Class</a></li>
-                    <li><a>Delete Class</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div id="panelContent">
-              <ul class="uploadedFiles list-disc pl-5"></ul>
-            </div>
-          </div>
-        `;
-
-        // Append panel HTML to expansion panels container
-        panelElement = document.createElement('div');
-        panelElement.innerHTML = panelHTML;
-        expansionPanelsContainer.appendChild(panelElement);
-
-        // Reset the form and close modal
-        topicForm.reset();
-        topicModal.classList.add('hidden');
-
-        // Toggle panel content visibility
-        const togglePanelButton = panelElement.querySelector('#togglePanelButton');
-        const panelContent = panelElement.querySelector('#panelContent');
-        togglePanelButton.addEventListener('click', function() {
-          panelContent.classList.toggle('hidden');
-          const icon = togglePanelButton.querySelector('#panelToggleIcon');
-          icon.setAttribute('d', panelContent.classList.contains('hidden') ? 'M19 9l-7 7-7-7' : 'M19 15l-7-7-7 7');
-        });
-
-        // Open material modal
-        const openMaterialButton = panelElement.querySelector('.materialModal button');
-        openMaterialButton.addEventListener('click', function() {
-          materialModal.classList.remove('hidden');
-        });
-
+      openMaterialModal.addEventListener('click', function() {
+        materialModal.classList.remove('hidden');
       });
 
       closeMaterialModal.addEventListener('click', function() {
@@ -254,47 +234,28 @@
           materialModal.classList.add('hidden');
       });
 
-      // Material Form Submission Handling
-      materialForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+      // Toggle panel content
+      panelContentToggle.addEventListener('click', function () {
+        const panelContent = document.getElementById('panelContent');
+        const panelToggleIcon = document.getElementById('panelToggleIcon');
+        panelContent.classList.toggle('hidden');
+        if (panelContent.classList.contains('hidden')) {
+          panelToggleIcon.setAttribute('d', 'M19 9l-7 7-7-7');
+        } else {
+          panelToggleIcon.setAttribute('d', 'M19 15l-7-7-7 7');
+        }
+      });
 
-        const materialTitle = document.getElementById('materialTitle').value;
-        const materialDescription = document.getElementById('materialDescription').value;
-        const materialFile = document.getElementById('materialFile').files[0];
-
-        // Create material HTML
-        const materialHTML = `
-          <li class="flex items-center">
-            <button class="toggleFileButton text-gray-500 focus:outline-none">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path class="fileToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <span class="ml-4"><a href="${URL.createObjectURL(materialFile)}" target="_blank">${materialTitle}</a></span>
-          </li>
-          <div class="fileContent hidden">
-            <p>Description: ${materialDescription}</p>
-          </div>
-        `;
-
-        // Append material HTML to panel content
-        const uploadedFiles = panelElement.querySelector('.uploadedFiles');
-        const materialElement = document.createElement('div');
-        materialElement.innerHTML = materialHTML;
-        uploadedFiles.appendChild(materialElement);
-
-        // Reset the form and close material modal
-        materialForm.reset();
-        materialModal.classList.add('hidden');
-
-        // Toggle file content visibility
-        const toggleFileButton = materialElement.querySelector('.toggleFileButton');
-        const fileContent = materialElement.querySelector('.fileContent');
-        toggleFileButton.addEventListener('click', function() {
+      // Toggle file content
+      fileContentToggle.addEventListener('click', function () {
+          const fileContent = document.getElementById('fileContent');
+          const fileToggleIcon = document.getElementById('fileToggleIcon');
           fileContent.classList.toggle('hidden');
-          const icon = toggleFileButton.querySelector('.fileToggleIcon');
-          icon.setAttribute('d', fileContent.classList.contains('hidden') ? 'M19 9l-7 7-7-7' : 'M19 15l-7-7-7 7');
-        });
+          if (fileContent.classList.contains('hidden')) {
+            fileToggleIcon.setAttribute('d', 'M19 9l-7 7-7-7');
+          } else {
+            fileToggleIcon.setAttribute('d', 'M19 15l-7-7-7 7');
+          }
       });
   });
 </script>
