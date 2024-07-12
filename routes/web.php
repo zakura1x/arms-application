@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ClassManagement\ClassController;
-use App\Http\Controllers\ClassManagement\LearningDevelopmentPlanController;
+use App\Http\Controllers\LearningDevelopmentPlan\LearningDevelopmentPlanController;
+use App\Http\Controllers\LearningDevelopmentPlan\ModuleController;
+use App\Http\Controllers\LearningDevelopmentPlan\TopicController;
 use App\Http\Controllers\PHHomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Registration\RegisterFaculty;
@@ -42,5 +44,11 @@ Route::middleware(['auth', CheckRole::class.':program_head'])->group(function ()
     Route::get('/program-head/ldp',[LearningDevelopmentPlanController::class, 'index'])->name('ph.ldp-list');
     Route::get('/program-head/ldp-add',[LearningDevelopmentPlanController::class, 'new_ldp'])->name('ph.ldp-add');
     Route::post('/program-head/new-ldp',[LearningDevelopmentPlanController::class, 'create_ldp'])->name('ph.add-ldp');
+    Route::get('/program-head/ldp-edit/{ldpID}',[LearningDevelopmentPlanController::class, 'edit_ldp'])->name('ph.edit-ldp');
+    
+    //Topic Store
+    Route::post('/program-head/topic/store',[TopicController::class, 'store'])->name('ph.topic.store');
+    //Module Store
+    Route::post('/program-head/module/store',[ModuleController::class, 'store'])->name('ph.module.store');
 
 });

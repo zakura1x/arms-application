@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\ClassManagement;
+namespace App\Http\Controllers\LearningDevelopmentPlan;
+
 
 use App\Http\Controllers\Controller;
+use App\Models\Attachment;
 use App\Models\Module;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -10,6 +12,42 @@ use Illuminate\Support\Facades\Auth;
 
 class ModuleController extends Controller
 {
+    public function store(Request $request){
+        $validated = $request->validate([
+            'module_name' => 'required|string',
+            'module_description' => 'string',
+            'attachment_path' => 'required|file|mimes:pdf',
+        ]);
+
+        if ($request->hasFile('attachment_path')) {
+            $attachment = $request->file('attachment_path');
+            $attachmentName = time() . '.' . $attachment->extension();
+            $attachment->move(public_path('Attachments'), $attachmentName);
+        } else {
+            $attachmentName = null; // Handle the case where the file is not uploaded
+        }
+        
+        $module = Module::create([
+            'module_name' => $validated['module_name'],
+            'module_description' => $validated['module_description'],
+            'topic_id' => $request->topic_id,
+        ]);
+        
+        if ($attachmentName) {
+            Attachment::create([
+                'module_id' => $module->id,
+                'attachment_path' => $attachmentName,
+                'attachment_name' => $attachmentName,
+                'attachment_type' => 'pdf',
+            ]);
+        }
+        
+
+        return redirect()->route('ph.edit-ldp', ['ldpID' => $request->ldp_id]);
+
+    
+    }
+
     //Get the modules 
     public function getModules($topicID){
         $user = Auth::user();

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ClassManagement;
+namespace App\Http\Controllers\LearningDevelopmentPlan;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClassModel;
@@ -49,9 +49,19 @@ class LearningDevelopmentPlanController extends Controller
             'subject_id' => $subject->id
         ]);
 
-        return redirect()->route('ph.ldp-list')->with('success', 'LDP created successfully');
-
+        //Redirect to the edit ldp page with the ldp id
+        return redirect()->route('ph.edit-ldp', ['ldpID' => $ldp->id]);
+    
     }
+
+    public function edit_ldp($ldpID)
+    {
+        $ldp = LearningDevelopmentPlan::findOrFail($ldpID);
+        $ldp->load('subject', 'topics.modules.attachments'); // Load nested relationships
+    
+        return view('programhead.ldp_edit', compact('ldp'));
+    }
+    
 
     //Approve the LDP
     public function approveLDP($ldpID){

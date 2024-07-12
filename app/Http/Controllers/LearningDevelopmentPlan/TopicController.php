@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\ClassManagement;
+namespace App\Http\Controllers\LearningDevelopmentPlan;
+
 
 use App\Http\Controllers\Controller;
 use App\Models\LearningDevelopmentPlan;
@@ -10,6 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class TopicController extends Controller
 {
+
+    public function store(Request $request){
+        $validated = $request->validate([
+            'topic_name'=> 'required|string',
+            'topic_description' => 'string',
+        ]);
+
+        $topic = Topic::create([
+            'topic_name' => $validated['topic_name'],
+            'topic_description' => $validated['topic_description'],
+            'learning_development_plan_id' => $request->ldp_id,
+        ]);
+
+
+        return redirect()->route('ph.edit-ldp', ['ldpID' => $request->ldp_id]);
+    }
+
     //Fetch the topics by LDP id
     public function getTopics($ldpID){
         // Fetch the topics of the LDP

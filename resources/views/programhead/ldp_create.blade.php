@@ -66,36 +66,41 @@
                                     </div>
                                 </div>
 
-                                <div class="flex items-center">
-                                    <div class="flex items-end justify-end space-x-6 p-4 w-1/2">
-                                        <button type="button"
-                                            class="close bg-custom1 font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
-                                            CANCEL
+                                <div class="flex items-end justify-end space-x-6">
+                                    <button type="button" id="backButton"
+                                        class="close bg-custom1 font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
+                                        CANCEL
+                                    </button>
+                                    <div
+                                        class="flex items-center justify-center bg-custom3 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
+                                        <svg width="23px" height="23px" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M18.1716 1C18.702 1 19.2107 1.21071 19.5858 1.58579L22.4142 4.41421C22.7893 4.78929 23 5.29799 23 5.82843V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H18.1716ZM4 3C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21L5 21L5 15C5 13.3431 6.34315 12 8 12L16 12C17.6569 12 19 13.3431 19 15V21H20C20.5523 21 21 20.5523 21 20V6.82843C21 6.29799 20.7893 5.78929 20.4142 5.41421L18.5858 3.58579C18.2107 3.21071 17.702 3 17.1716 3H17V5C17 6.65685 15.6569 8 14 8H10C8.34315 8 7 6.65685 7 5V3H4ZM17 21V15C17 14.4477 16.5523 14 16 14L8 14C7.44772 14 7 14.4477 7 15V21L17 21ZM9 3H15V5C15 5.55228 14.5523 6 14 6H10C9.44772 6 9 5.55228 9 5V3Z"
+                                                    fill="#ffffff"></path>
+                                            </g>
+                                        </svg>
+                                        <button id="saveButton" type="submit" class="ml-2">
+                                            SAVE
                                         </button>
-                                        <div id="firstsaveButtonContainer"
-                                            class="flex items-center justify-center bg-custom3 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
-                                            <svg width="23px" height="23px" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                    stroke-linejoin="round"></g>
-                                                <g id="SVGRepo_iconCarrier">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M18.1716 1C18.702 1 19.2107 1.21071 19.5858 1.58579L22.4142 4.41421C22.7893 4.78929 23 5.29799 23 5.82843V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H18.1716ZM4 3C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21L5 21L5 15C5 13.3431 6.34315 12 8 12L16 12C17.6569 12 19 13.3431 19 15V21H20C20.5523 21 21 20.5523 21 20V6.82843C21 6.29799 20.7893 5.78929 20.4142 5.41421L18.5858 3.58579C18.2107 3.21071 17.702 3 17.1716 3H17V5C17 6.65685 15.6569 8 14 8H10C8.34315 8 7 6.65685 7 5V3H4ZM17 21V15C17 14.4477 16.5523 14 16 14L8 14C7.44772 14 7 14.4477 7 15V21L17 21ZM9 3H15V5C15 5.55228 14.5523 6 14 6H10C9.44772 6 9 5.55228 9 5V3Z"
-                                                        fill="#ffffff"></path>
-                                                </g>
-                                            </svg>
-                                            <button type="submit" class="ml-2">
-                                                SAVE
-                                            </button>
-                                        </div>
                                     </div>
                                 </div>
-                            </form>
-
+                                <div class="border-2 border-green-700 mt-4 mb-4"></div>
                         </div>
                     </div>
                 </div>
+                </form>
+
+
+
+            </div>
+
+        </div>
+    </div>
 
 </body>
 
@@ -104,15 +109,34 @@
         const navButton = document.getElementById('nav-button');
         const sidebar = document.getElementById('sidebar');
         const mainContainer = document.getElementById('main-container');
-        const addFaculty = document.getElementById('addfaculty');
+        const backbtn = document.getElementById('backButton');
+        const saveButton = document.getElementById('saveButton');
+        const ldpForm = document.getElementById('ldpForm');
 
         navButton.addEventListener('click', function() {
             sidebar.classList.toggle('show');
             mainContainer.classList.toggle('shifted');
         });
 
-        addFaculty.addEventListener('click', function() {
-            window.location.href = '{{ route('ph.faculty-add') }}';
+        backbtn.addEventListener('click', function() {
+            window.location.href = '{{ route('ph.ldp-list') }}';
+        });
+
+        saveButton.addEventListener('click', function(event) {
+            // Validate form
+            const lessonTitle = document.getElementById('lessontitle').value;
+            const subject = document.getElementById('subject').value;
+
+            if (!lessonTitle || !subject) {
+                event.preventDefault();
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            localStorage.setItem('lessonTitle', lessonTitle);
+            localStorage.setItem('subject', subject);
+
+            ldpForm.submit();
         });
     });
 </script>

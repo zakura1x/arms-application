@@ -3,6 +3,15 @@
 
 <head>
     @include('programhead.css')
+    <style>
+        /* Custom styles to make the placeholder text white */
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.445);
+            /* Sets the placeholder text color to white */
+            opacity: 1;
+            /* Ensures the placeholder text is fully opaque */
+        }
+    </style>
 </head>
 
 <body class="bg-custom2 font-poppins antialiased dark:bg-black text-black no-scrollbar">
@@ -16,9 +25,9 @@
             <!-- Buttons -->
             <div id="main-content" class="h-screen flex-1 transition-all duration-300 ease-in-out">
 
-                <section class="bg-white p-4 antialiased">
+                <section class="bg-white p-4">
                     <div class="flex items-center justify-end space-x-6">
-                        <div class="form-control w-1/4 text-white">
+                        {{-- <div class="form-control w-1/4 text-white">
                             <div class="flex items-center input input-bordered bg-custom3">
                                 <svg width="26" height="26" viewBox="0 0 32 32" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -42,7 +51,18 @@
                                 </svg>
                                 <input type="text" placeholder="Search Lesson Plan Name" class="ml-2" />
                             </div>
-                        </div>
+                        </div> --}}
+                        <label class="input input-bordered flex items-center gap-2 p-5 text-white bg-[#42604c] h-8">
+                            <input type="text" class="grow px-6 border-none outline-none placeholder-white"
+                                placeholder="Search Lesson Plan Name" />
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                class="h-4 w-4 opacity-70">
+                                <path fill-rule="evenodd"
+                                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </label>
+
 
                         <button id="createldp" class="flex items-center text-white rounded-lg p-5 w-39 h-8 bg-custom3">
                             <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
@@ -55,28 +75,6 @@
                                 </g>
                             </svg>
                             <span class="ml-2">CREATE</span>
-                        </button>
-
-                        <button id="editldp" class="flex items-center text-white rounded-lg p-5 w-24 h-8 bg-custom3">
-                            <svg width="26" height="26" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M18.1497 5.93991L6.27971 17.8099C5.21971 18.8799 2.04971 19.3698 1.27971 18.6598C0.509711 17.9498 1.06969 14.7799 2.12969 13.7099L13.9997 1.83994C14.5478 1.31795 15.2783 1.03091 16.0351 1.04013C16.7919 1.04936 17.5151 1.35412 18.0503 1.88932C18.5855 2.42451 18.8903 3.14775 18.8995 3.90457C18.9088 4.6614 18.6217 5.39183 18.0997 5.93991H18.1497Z"
-                                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M19 19H10" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            <span class="ml-2">EDIT</span>
-                        </button>
-
-                        <button id="approveldp" class="flex items-center text-white rounded-lg p-5 w-30 h-8 bg-custom3">
-                            <svg width="20" height="20" viewBox="0 0 26 26" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M23.3387 14.723H18.6002C17.2002 14.723 16.0156 13.5384 16.0156 12.1384C16.231 8.31534 18.0079 8.09996 18.1695 5.62304C18.331 3.03842 16.7156 0.723036 14.1848 0.184575C10.8464 -0.515425 7.83099 2.01534 7.83099 5.24611C7.83099 8.09996 9.76945 8.09996 9.98484 12.1384C9.98484 13.5384 8.80023 14.723 7.40023 14.723H2.66176C1.26176 14.723 0.0771484 15.8538 0.0771484 17.3077V19.0307C0.0771484 19.5153 0.454071 19.8923 0.938687 19.8923H25.0618C25.5464 19.8923 25.9233 19.5153 25.9233 19.0307V17.3077C25.9233 15.8538 24.7387 14.723 23.3387 14.723ZM23.3925 22.4769H2.60792C2.1233 22.4769 1.80023 22.8538 1.80023 23.2846V23.3384C1.80023 24.7384 2.98484 25.923 4.38484 25.923H21.6695C23.0695 25.923 24.2002 24.7384 24.2002 23.3384V23.2846C24.2002 22.8538 23.8233 22.4769 23.3925 22.4769Z"
-                                    fill="white" />
-                            </svg>
-                            <span class="ml-2">REQUEST APPROVAL</span>
                         </button>
                     </div>
                 </section>
@@ -113,27 +111,55 @@
                         <table class="table-auto w-full border">
                             <thead class="text-xs font-semibold uppercase bg-custom4">
                                 <tr>
-                                    <th class="w-1/4 p-2">
-                                        <div class="font-semibold text-left">Name</div>
+                                    <th class="w-1/4 p-2" data-sort="name">
+                                        <div class="flex space-x-2">
+                                            <div class="font-semibold text-left">Learning Plan Name</div>
+                                            <svg width="16" height="16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 7l4 4 4-4H4z" fill="currentColor" />
+                                            </svg>
+                                        </div>
                                     </th>
-                                    <th class="w-1/4 p-2">
-                                        <div class="font-semibold text-left">Owner</div>
+                                    <th class="w-1/4 p-2" data-sort="owner">
+                                        <div class="flex space-x-2">
+                                            <div class="font-semibold text-left">Owner</div>
+                                            <svg width="16" height="16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 7l4 4 4-4H4z" fill="currentColor" />
+                                            </svg>
+                                        </div>
                                     </th>
-                                    <th class="w-1/4 p-2">
-                                        <div class="font-semibold text-left">Date</div>
+                                    <th class="w-1/4 p-2" data-sort="date">
+                                        <div class="flex space-x-2">
+                                            <div class="font-semibold text-left">Date</div>
+                                            <svg width="16" height="16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 7l4 4 4-4H4z" fill="currentColor" />
+                                            </svg>
+                                        </div>
                                     </th>
-                                    <th class="w-1/4 p-2">
-                                        <div class="font-semibold text-left">Status</div>
+                                    <th class="w-1/4 p-2" data-sort="status">
+                                        <div class="flex space-x-2">
+                                            <div class="font-semibold text-left">Status</div>
+                                            <svg width="16" height="16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4 7l4 4 4-4H4z" fill="currentColor" />
+                                            </svg>
+                                        </div>
                                     </th>
+                                    <th class="w-2/4 p-2">
+
+                                    </th>
+
                                 </tr>
                             </thead>
                             <tbody class="text-sm divide-y divide-gray-100">
                                 @foreach ($ldp as $ldp)
                                     <tr>
-                                        <td class="w-1/4 p-2">
+                                        <td class="w-1/4 p-2" data-sort="name">
                                             <div class="flex items-center">
-                                                <svg width="22" height="22" viewBox="0 0 22 22"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
                                                     <path opacity="0.5" d="M17 9H12" stroke="#1C274C"
                                                         stroke-width="1.5" stroke-linecap="round" />
                                                     <path opacity="0.5"
@@ -147,7 +173,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="p-2 whitespace-nowrap">
+                                        <td class="p-2 whitespace-nowrap" data-sort="owner">
                                             <div class="flex items-center">
                                                 <svg width="24" height="24" viewBox="0 0 24 24"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,7 +184,7 @@
                                                 <div class="ml-4 text-left">{{ $ldp->user->name }}</div>
                                             </div>
                                         </td>
-                                        <td class="p-2 whitespace-nowrap">
+                                        <td class="p-2 whitespace-nowrap" data-sort="date">
                                             <div class="flex items-center">
                                                 <svg width="22" height="22" viewBox="0 0 22 22"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +195,7 @@
                                                 <div class="ml-4 text-left font-medium">{{ $ldp->created_at }}</div>
                                             </div>
                                         </td>
-                                        <td class="p-2 whitespace-nowrap">
+                                        <td class="p-2 whitespace-nowrap" data-sort="status">
                                             {{-- if ldp status is 0 = Pending  --}}
                                             @if ($ldp->is_approved == 0)
                                                 <div class="text-lg text-left">Pending</div>
@@ -177,6 +203,34 @@
                                                 <div class="text-lg text-left">Approved</div>
                                             @endif
 
+                                        </td>
+                                        <td class="p-2">
+                                            <div class="flex items-center justify-end space-x-6">
+                                                <button id="editldp" data-ldp-id="{{ $ldp->id }}"
+                                                    class="flex items-center text-white rounded-lg p-5 w-24 h-8 bg-[#42604C]">
+                                                    <svg width="26" height="26" viewBox="0 0 20 20"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M18.1497 5.93991L6.27971 17.8099C5.21971 18.8799 2.04971 19.3698 1.27971 18.6598C0.509711 17.9498 1.06969 14.7799 2.12969 13.7099L13.9997 1.83994C14.5478 1.31795 15.2783 1.03091 16.0351 1.04013C16.7919 1.04936 17.5151 1.35412 18.0503 1.88932C18.5855 2.42451 18.8903 3.14775 18.8995 3.90457C18.9088 4.6614 18.6217 5.39183 18.0997 5.93991H18.1497Z"
+                                                            stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M19 19H10" stroke="white" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    <span class="ml-2">EDIT</span>
+                                                </button>
+
+                                                <button id="approveldp"
+                                                    class="flex items-center text-white rounded-lg p-5 w-30 h-8 bg-[#42604C]">
+                                                    <svg width="26" height="26" viewBox="0 0 26 26"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M23.3387 14.723H18.6002C17.2002 14.723 16.0156 13.5384 16.0156 12.1384C16.231 8.31534 18.0079 8.09996 18.1695 5.62304C18.331 3.03842 16.7156 0.723036 14.1848 0.184575C10.8464 -0.515425 7.83099 2.01534 7.83099 5.24611C7.83099 8.09996 9.76945 8.09996 9.98484 12.1384C9.98484 13.5384 8.80023 14.723 7.40023 14.723H2.66176C1.26176 14.723 0.0771484 15.8538 0.0771484 17.3077V19.0307C0.0771484 19.5153 0.454071 19.8923 0.938687 19.8923H25.0618C25.5464 19.8923 25.9233 19.5153 25.9233 19.0307V17.3077C25.9233 15.8538 24.7387 14.723 23.3387 14.723ZM23.3925 22.4769H2.60792C2.1233 22.4769 1.80023 22.8538 1.80023 23.2846V23.3384C1.80023 24.7384 2.98484 25.923 4.38484 25.923H21.6695C23.0695 25.923 24.2002 24.7384 24.2002 23.3384V23.2846C24.2002 22.8538 23.8233 22.4769 23.3925 22.4769Z"
+                                                            fill="white" />
+                                                    </svg>
+                                                    <span class="ml-2">REQUEST APPROVAL</span>
+                                                </button>
+                                            </div>
                                         </td>
                                 @endforeach
                                 </tr>
@@ -206,6 +260,60 @@
         createLdp.addEventListener('click', function() {
             window.location.href = '/program-head/ldp-add';
         });
+
+        //Edit ldp
+        const editLdp = document.querySelectorAll('#editldp');
+        editLdp.forEach((button) => {
+            button.addEventListener('click', function() {
+                const ldpId = button.getAttribute('data-ldp-id');
+                window.location.href = `/program-head/ldp-edit/${ldpId}`;
+            });
+        });
+
+        //Sort
+        const table = document.querySelector('table');
+        const headers = table.querySelectorAll('th');
+        const tableBody = table.querySelector('tbody');
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const sortKey = header.dataset.sort;
+                const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+                // Determine the sort order
+                const isAscending = header.classList.contains('asc');
+                const newOrder = isAscending ? 'desc' : 'asc';
+
+                // Remove the current sort classes from all headers
+                headers.forEach(h => h.classList.remove('asc', 'desc'));
+
+                // Add the new sort class to the clicked header
+                header.classList.add(newOrder);
+
+                // Sort the rows
+                rows.sort((a, b) => {
+                    const cellA = a.querySelector(`td[data-sort="${sortKey}"]`)
+                        .textContent.trim();
+                    const cellB = b.querySelector(`td[data-sort="${sortKey}"]`)
+                        .textContent.trim();
+
+                    // Determine the sorting order
+                    if (newOrder === 'asc') {
+                        return cellA.localeCompare(cellB, undefined, {
+                            numeric: true
+                        });
+                    } else {
+                        return cellB.localeCompare(cellA, undefined, {
+                            numeric: true
+                        });
+                    }
+                });
+
+                // Append sorted rows to the table body
+                rows.forEach(row => tableBody.appendChild(row));
+            });
+        });
+
     });
 </script>
 

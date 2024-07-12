@@ -11,9 +11,9 @@ class Attachment extends Model
 
     protected $fillable = [
         'module_id',
-        'file_name',
-        'file_path',
-        'file_type'
+        'attachment_path',
+        'attachment_name',
+        'attachment_type',
     ];
 
     public function module(){
