@@ -22,29 +22,12 @@
             </div>
           </div >
         </header>
+
         <div class="overflow-x-auto h-screen bg-[#D0D9D3]">
-          <div class="p-4">
-              <div class="flex items-center">
-                <div class="w-1/2 mr-5">
-                  <label for="assessName"><b>Assessment Name</b></label>
-                  <input id="assessName" type="text" disabled class="bg-[#EFF4F6] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
-                </div>
-                <div class="w-1/2">
-                  <label for="assessDescrip"><b>Assessment Description</b></label>
-                  <input id="assessDescrip" disabled class="bg-[#EFF4F6] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
-                </div>
-              </div>
-
-            <div class="border-2 border-green-700 mt-4 mb-4"></div>
-
-            <button id="openAssessmentModal" class="bg-[#42604C] text-white font-medium m-2 py-2 px-4 mb-4 rounded-lg focus:outline-none focus:shadow-outline">
-              <a>GENERATE ASSESSMENT</a>
-            </button>
-
-            <div class="bg-[#EFF4F6] border border-gray-300 rounded-lg p-2">
+            <div class="border-b-8 border-green-700">
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                  <button id="togglePanelButton" class="text-gray-500 focus:outline-none">
+                  <button id="togglePanelButton" class="ml-4 text-gray-500 focus:outline-none">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path id="panelToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
@@ -52,42 +35,198 @@
                   <h3 class="font-semibold ml-4">SAMPLE ASSESSMENT NAME</h3>
                 </div>
 
-                <div class="ml-auto flex items-center">
-                  <div class=" text-white font-medium py-2 px-2 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
-                    <button type="button" class="ml-2 mr-2">
-                      <svg fill="#42604C" width="30px" height="30px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#42604C"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M26 0H6a6 6 0 0 0-6 6v20a6 6 0 0 0 6 6h20a6 6 0 0 0 6-6V6a6 6 0 0 0-6-6zm-6 2v3a1 1 0 1 0 2 0V2h1v7H9V2zm10 24a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h1v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V2h1a4 4 0 0 1 4 4zM24 14H8a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V15a1 1 0 0 0-1-1zm-1 12H9V16h14zM12 20h8a1 1 0 0 0 0-2h-8a1 1 0 0 0 0 2zM12 24h8a1 1 0 0 0 0-2h-8a1 1 0 0 0 0 2z"></path> </g></svg>
-                    </button>
-                    <button type="button" class="ml-2 mr-2">
-                      <svg width="30px" height="30px" viewBox="-102.4 -102.4 1228.80 1228.80" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ff0000" d="M160 256H96a32 32 0 0 1 0-64h256V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V256zm448-64v-64H416v64h192zM224 896h576V256H224v640zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zm192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32z"></path></g></svg>
-                    </button>
+                <div class="flex items-center justify-center">
+
+                  <button id="openAssessmentModal" class="bg-[#42604C] text-white font-medium cursor-pointer m-2 py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                    <a>SELECT PARAMETERS</a>
+                  </button>
+
+                  <button type="button" class="ml-2 mr-4">
+                    <svg width="30px" height="30px" viewBox="-102.4 -102.4 1228.80 1228.80" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ff0000" d="M160 256H96a32 32 0 0 1 0-64h256V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V256zm448-64v-64H416v64h192zM224 896h576V256H224v640zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zm192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32z"></path></g></svg>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+            <div id="panelContent" class="">
+              <header class="bg-[#42604C] text-white border-b border-gray-100 mb-1">
+                <div class="p-2 flex items-start justify-between">
+                  <h2 class="ml-4 font-semibold">EASY QUESTIONS</h2>
+                </div>
+              </header>
+
+              <div class="flex flex-wrap justify-center space-x-2">
+                <div class="bg-white rounded-lg border border-black w-2/5 mb-4">
+                  <div class="flex items-center border-b border-black rounded-t-lg p-2">
+                    <p>1.</p>
+                    <p class="ml-2">What is the capital of the Philippines?</p>
+                  </div>
+                  <div class="flex flex-col p-2 space-y-2 ml-5">
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="a" disabled>
+                      <label for="a" class="ml-2">A. Manila</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="b" disabled>
+                      <label for="b" class="ml-2">B. Cebu</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="c" disabled>
+                      <label for="c" class="ml-2">C. Davao</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="d" disabled>
+                      <label for="d" class="ml-2">D. Quezon City</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-white rounded-lg border border-black w-2/5 mb-4">
+                  <div class="flex items-center border-b border-black rounded-t-lg p-2">
+                    <p>2.</p>
+                    <p class="ml-2">What is the capital of the Philippines?</p>
+                  </div>
+                  <div class="flex flex-col p-2 space-y-2 ml-5">
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="a" disabled>
+                      <label for="a" class="ml-2">A. Manila</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="b" disabled>
+                      <label for="b" class="ml-2">B. Cebu</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="c" disabled>
+                      <label for="c" class="ml-2">C. Davao</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="d" disabled>
+                      <label for="d" class="ml-2">D. Quezon City</label>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div id="panelContent" class="hidden">
-                <ul class="uploadedFiles list-disc pl-5">
-                  <li class="flex items-center">
-                    <button id="toggleFileButton" class="text-gray-500 focus:outline-none">
-                      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path id="fileToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                      </svg>
-                    </button>
-                    <span class="ml-4"><a href="#" target="_blank">Sample Material Title</a></span>
-                  </li>
-                  <div id="fileContent" class="hidden">
-                    <p>Description: Sample Material Description</p>
+              <header class="bg-[#42604C] text-white border-b border-gray-100 mb-1">
+                <div class="p-2 flex items-start justify-between">
+                  <h2 class="ml-4 font-semibold">MODERATE QUESTIONS</h2>
+                </div>
+              </header>
+              <div class="flex flex-wrap justify-center space-x-2">
+                <div class="bg-white rounded-lg border border-black w-2/5 mb-4">
+                  <div class="flex items-center border-b border-black rounded-t-lg p-2">
+                    <p>1.</p>
+                    <p class="ml-2">What is the capital of the Philippines?</p>
                   </div>
-                </ul>
-              </div>
-            </div>
+                  <div class="flex flex-col p-2 space-y-2 ml-5">
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="a" disabled>
+                      <label for="a" class="ml-2">A. Manila</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="b" disabled>
+                      <label for="b" class="ml-2">B. Cebu</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="c" disabled>
+                      <label for="c" class="ml-2">C. Davao</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="d" disabled>
+                      <label for="d" class="ml-2">D. Quezon City</label>
+                    </div>
+                  </div>
+                </div>
 
+                <div class="bg-white rounded-lg border border-black w-2/5 mb-4">
+                  <div class="flex items-center border-b border-black rounded-t-lg p-2">
+                    <p>2.</p>
+                    <p class="ml-2">What is the capital of the Philippines?</p>
+                  </div>
+                  <div class="flex flex-col p-2 space-y-2 ml-5">
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="a" disabled>
+                      <label for="a" class="ml-2">A. Manila</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="b" disabled>
+                      <label for="b" class="ml-2">B. Cebu</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="c" disabled>
+                      <label for="c" class="ml-2">C. Davao</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="d" disabled>
+                      <label for="d" class="ml-2">D. Quezon City</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <header class="bg-[#42604C] text-white border-b border-gray-100 mb-1">
+                <div class="p-2 flex items-start justify-between">
+                  <h2 class="ml-4 font-semibold">DIFFICULT QUESTIONS</h2>
+                </div>
+              </header>
+              <div class="flex flex-wrap justify-center space-x-2">
+                <div class="bg-white rounded-lg border border-black w-2/5 mb-4">
+                  <div class="flex items-center border-b border-black rounded-t-lg p-2">
+                    <p>1.</p>
+                    <p class="ml-2">What is the capital of the Philippines?</p>
+                  </div>
+                  <div class="flex flex-col p-2 space-y-2 ml-5">
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="a" disabled>
+                      <label for="a" class="ml-2">A. Manila</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="b" disabled>
+                      <label for="b" class="ml-2">B. Cebu</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="c" disabled>
+                      <label for="c" class="ml-2">C. Davao</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question1" value="d" disabled>
+                      <label for="d" class="ml-2">D. Quezon City</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-white rounded-lg border border-black w-2/5 mb-4">
+                  <div class="flex items-center border-b border-black rounded-t-lg p-2">
+                    <p>2.</p>
+                    <p class="ml-2">What is the capital of the Philippines?</p>
+                  </div>
+                  <div class="flex flex-col p-2 space-y-2 ml-5">
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="a" disabled>
+                      <label for="a" class="ml-2">A. Manila</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="b" disabled>
+                      <label for="b" class="ml-2">B. Cebu</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="c" disabled>
+                      <label for="c" class="ml-2">C. Davao</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" name="question2" value="d" disabled>
+                      <label for="d" class="ml-2">D. Quezon City</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
-      </div>
 
       <!-- Modal -->
       <div id="assessmentModal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-25 hidden">
-        <div class="bg-white rounded-lg shadow-lg w-1/2">
+        <div class="bg-white rounded-lg shadow-lg">
           <header class="bg-[#42604C] text-white border-b border-gray-100 rounded-t-lg">
             <div class="p-4 flex items-center">
               <h2 class="font-semibold">Assessment Parameters</h2>
@@ -95,16 +234,16 @@
           </header>
           <div class="p-4">
             <form id="assessmentForm" action="#" method="#">
-              <div id="parametersContainer" class="parameterSet">
-                <div class="flex">
-                  <div class="flex flex-col">
+              <div id="parametersContainer">
+                <div class="flex items-center justify-center">
+                  <div class="flex flex-col mr-4">
                     <label for="numItems"><b>Number of Items</b></label>
-                    <input id="numItems" type="number" min="1" name="numItems" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-24 h-12 p-5 mr-24 mb-2 ease-linear transition-all duration-150">
+                    <input id="numItems" type="number" min="1" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-2 ease-linear transition-all duration-150">
                   </div>
 
-                  <div class="flex flex-col">
+                  <div class="flex flex-col mr-4">
                     <label for="levelDifficulty"><b>Level of Difficulty</b></label>
-                    <input id="levelDifficulty" list=difficulty type="text" name="levelDifficulty" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-36 h-12 p-5 mr-24 mb-2 ease-linear transition-all duration-150">
+                    <input id="levelDifficulty" list=difficulty type="text" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-2 ease-linear transition-all duration-150">
                     <datalist id="difficulty">
                       <option value="Easy">
                       <option value="Moderate">
@@ -112,14 +251,10 @@
                       </datalist>
                   </div>
 
-                  <div id="topicsContainer" class="flex flex-col">
+                  <div class="flex flex-col">
                     <label for="topicCovered"><b>Topic Covered</b></label>
-                    <input id="topicCovered" type="text" name="topicCovered" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-96 h-12 p-5 mb-2 ease-linear transition-all duration-150">
+                    <input id="topicCovered" type="text" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-2 ease-linear transition-all duration-150">
                   </div>
-
-                  <button type="button" id="addParameterSet" class="font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline mb-4">
-                    <svg width="64px" height="64px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="10" stroke="#42604C" stroke-width="1.5"></circle> <path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="#42604C" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
-                  </button>
                 </div>
               </div>
 
@@ -127,10 +262,10 @@
                 <button type="button" id="closeAssessmentModal" class="close font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">CANCEL</button>
                 <div id="generateButton" class="flex items-center bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
                   <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.71986 1.72855C2.84248 3.13072 0.859863 6.08382 0.859863 9.49999C0.859863 14.2718 4.72812 18.14 9.49986 18.14C14.2716 18.14 18.1399 14.2718 18.1399 9.49999C18.1399 4.72824 14.2716 0.859985 9.49986 0.859985V11.66" stroke="white" stroke-width="1.2"/>
-                    <path d="M13.2797 7.88L9.49973 11.66L5.71973 7.88" stroke="white" stroke-width="1.2"/>
+                    <path d="M5.72003 1.72868C2.84265 3.13084 0.860031 6.08394 0.860031 9.50011C0.860031 14.2719 4.72829 18.1401 9.50003 18.1401C14.2718 18.1401 18.14 14.2719 18.14 9.50011C18.14 4.72837 14.2718 0.860107 9.50003 0.860107V11.6601" stroke="white" stroke-width="1.2"/>
+                    <path d="M13.28 7.88013L9.50003 11.6601L5.72003 7.88013" stroke="white" stroke-width="1.2"/>
                   </svg>
-                  <button type="submit" class="ml-2">GENERATE</button>
+                <button type="submit" class="ml-2">GENERATE</button>
                 </div>
               </div>
             </form>

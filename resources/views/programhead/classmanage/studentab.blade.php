@@ -5,7 +5,7 @@
 <table class="min-w-full bg-white">
   <thead class="bg-[#A7C1AE]">
       <tr>
-          <th class="py-2 px-4 border-b border-gray-200"><input type="checkbox"></th>
+          <th class="py-2 px-4 border-b border-gray-200">Select</th>
           <th class="py-2 px-4 border-b border-gray-200">Student Number</th>
           <th class="py-2 px-4 border-b border-gray-200">Name</th>
           <th class="py-2 px-4 border-b border-gray-200">Email Address</th>
