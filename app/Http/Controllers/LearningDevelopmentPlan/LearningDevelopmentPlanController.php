@@ -17,7 +17,7 @@ class LearningDevelopmentPlanController extends Controller
         //I also want to fetch the subject name of the LDP and the name of the user
         $ldp->load('subject', 'user');
         
-        return view('programhead.plan', compact('ldp'));
+        return view('programhead.ldpManage.plan', compact('ldp'));
     }
 
     public function new_ldp(){
@@ -25,7 +25,7 @@ class LearningDevelopmentPlanController extends Controller
         //debug
         //dd($subjects);
         
-        return view('programhead.ldp_create', compact('subjects'));
+        return view('programhead.ldpManage.ldp_create', compact('subjects'));
     }
 
     public function create_ldp(Request $request){
@@ -59,7 +59,7 @@ class LearningDevelopmentPlanController extends Controller
         $ldp = LearningDevelopmentPlan::findOrFail($ldpID);
         $ldp->load('subject', 'topics.modules.attachments'); // Load nested relationships
     
-        return view('programhead.ldp_edit', compact('ldp'));
+        return view('programhead.ldpManage.ldp_edit', compact('ldp'));
     }
     
 

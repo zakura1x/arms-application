@@ -19,9 +19,7 @@ class QuestionFactory extends Factory
     public function definition(): array
     {
         return [
-            'faculty_id' => 1,
-            'topic_name' => 'Taxation',
-            'question_text' => $this->faker->sentence,
+            'question' => $this->faker->sentence,
             'options' => json_encode([
                 'A' => $this->faker->sentence,
                 'B' => $this->faker->sentence,
@@ -30,6 +28,10 @@ class QuestionFactory extends Factory
             ]),
             'correct_answer' => 'A',
             'is_approved' => 1,
+            'module_id' => 2,
+            'user_id' => 1,
+            'points' => 1,
+            'difficulty_level' => 'Moderate',
         ];
     }
 }

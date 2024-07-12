@@ -59,12 +59,12 @@ class RegisterFaculty extends Controller
     public function view_faculty(){
 
         $faculty = Faculty::all();
-        return view('programhead.faculty_list', compact('faculty'));
+        return view('programhead.userManage.faculty_list', compact('faculty'));
     }
 
     public function add_faculty(){
             
-        return view('programhead.faculty_add');
+        return view('programhead.userManage.faculty_add');
     }
 
     public function store_faculty(Request $request){

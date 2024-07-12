@@ -16,6 +16,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name');
             $table->string('description');
+            $table->boolean('is_approved')->default(false);
+            $table->boolean('is_published')->default(false);
+            $table->timestamp('published_at')->nullable();
+            $table->unsignedBigInteger('class_id');
+            $table->boolean('status')->default(false);
+
+            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
             $table->timestamps();
         });
 

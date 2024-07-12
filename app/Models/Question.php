@@ -16,7 +16,9 @@ class Question extends Model
         'is_approved',
         'module_id',
         'attachment_id',
-        'faculty_id'
+        'user_id',
+        'points',
+        'difficulty_level',
     ];
 
     public function module(){
@@ -27,8 +29,13 @@ class Question extends Model
         return $this->belongsTo(Attachment::class);
     }
 
-    public function faculty(){
-        return $this->belongsTo(Faculty::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
+
+    public function assessments(){
+        return $this->belongsToMany(Assessment::class, 'assessment_question');
+    }
+
 
 }

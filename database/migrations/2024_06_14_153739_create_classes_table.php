@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('code')->unique()->nullable();
             $table->string('class_school_year');
             $table->boolean('active')->default(true);
+            $table->string('background_image')->nullable();
             $table->timestamps();
         });
     }

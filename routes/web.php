@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssessmentManagement\AssessmentController;
 use App\Http\Controllers\ClassManagement\ClassController;
 use App\Http\Controllers\LearningDevelopmentPlan\LearningDevelopmentPlanController;
 use App\Http\Controllers\LearningDevelopmentPlan\ModuleController;
@@ -38,9 +39,6 @@ Route::middleware(['auth', CheckRole::class.':program_head'])->group(function ()
     Route::get('/program-head/faculty-add',[RegisterFaculty::class, 'add_faculty'])->name('ph.faculty-add');
     Route::post('/program-head/add-faculty',[RegisterFaculty::class, 'store_faculty']);
 
-    Route::get('/program-head/class',[ClassController::class, 'index'])->name('ph.class-list');
-    Route::post('/program-head/add-class',[ClassController::class, 'store'])->name('ph.add-class');
-
     Route::get('/program-head/ldp',[LearningDevelopmentPlanController::class, 'index'])->name('ph.ldp-list');
     Route::get('/program-head/ldp-add',[LearningDevelopmentPlanController::class, 'new_ldp'])->name('ph.ldp-add');
     Route::post('/program-head/new-ldp',[LearningDevelopmentPlanController::class, 'create_ldp'])->name('ph.add-ldp');
@@ -50,5 +48,20 @@ Route::middleware(['auth', CheckRole::class.':program_head'])->group(function ()
     Route::post('/program-head/topic/store',[TopicController::class, 'store'])->name('ph.topic.store');
     //Module Store
     Route::post('/program-head/module/store',[ModuleController::class, 'store'])->name('ph.module.store');
+
+    //Class View
+    Route::get('/program-head/class-view/{classID}',[ClassController::class, 'class_view'])->name('ph.class-view');
+    Route::get('/program-head/class',[ClassController::class, 'index'])->name('ph.class-list');
+    Route::post('/program-head/add-class',[ClassController::class, 'store'])->name('ph.add-class');
+
+    //Assessment
+    Route::get('/program-head/assessment-create/{classID}',[AssessmentController::class, 'assessment_create'])->name('ph.assessment-create');
+    Route::post('/program-head/assessment-add',[AssessmentController::class, 'assessment_add'])->name('ph.assessment-add');
+    Route::get('/program-head/assessment-edit/{assessmentID}',[AssessmentController::class, 'assessment_edit'])->name('ph.assessment-edit');
+    Route::post('/program-head/assessment-store',[AssessmentController::class, 'store'])->name('ph.assessment-store');
+    Route::get('/program-head/assessment-view',[AssessmentController::class, 'assessment_view'])->name('ph.assessment-view');
+
+
+   
 
 });

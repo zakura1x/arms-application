@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
             QuestionSeeder::class,
         ]);
 
-        $this->call([
-            StudentSeeder::class,
-        ]);
+        // $this->call([
+        //     StudentSeeder::class,
+        // ]);
 
         // User::factory()->create([
         //     'name' => 'Test User',

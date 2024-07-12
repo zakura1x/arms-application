@@ -17,15 +17,17 @@ return new class extends Migration
             $table->json('options')->nullable();
             $table->string('correct_answer');
             $table->boolean('is_approved')->default(false);
+            $table->integer('points')->default(1);
+            $table->string('difficulty_level');
 
             $table->unsignedBigInteger('module_id');
             $table->unsignedBigInteger('attachment_id')->nullable();
-            $table->unsignedBigInteger('faculty_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
             $table->foreign('attachment_id')->references('id')->on('attachments')->onDelete('set null');
-            $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         
         
         });

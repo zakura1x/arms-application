@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ClassManagement;
 
 use App\Http\Controllers\Controller;
+use App\Models\Assessment;
 use App\Models\ClassModel;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,15 @@ class ClassController extends Controller
     public function index()
     {
         $classes  = ClassModel::all();
-        return view('programhead.class', compact('classes'));
+        return view('programhead.classManage.class', compact('classes'));
+    }
+
+    public function class_view($classID){
+        $class = ClassModel::findOrFail($classID);
+        $assessments = Assessment::where('class_id', $classID)->get();
+       
+        
+        return view('programhead.classManage.home', compact('class', 'assessments'));
     
     }
 
