@@ -1,4 +1,4 @@
-<div class="bg-white shadow-lg border border-gray-200 h-full">
+<div class="bg-white shadow-lg border border-gray-200 h-screen">
   <header class="flex items-end justify-between bg-[#42604C] text-white border-b border-gray-100">
     <div class="p-4 flex items-center">
       <svg width="25" height="25" viewBox="0 0 33 37" fill="none" xmlns="http://www.w3.org/2000/svg">

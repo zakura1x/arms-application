@@ -27,16 +27,16 @@
   </style>
 </head>
 
-<body class="bg-[#EFF4F6] font-sans antialiased dark:bg-black dark:text-white/50">
+<body class="bg-white font-sans antialiased dark:bg-black dark:text-white/50">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 
         <!-- Main container -->
-        <div id="main-container" class="flex-1 transition-all duration-300 ease-in-out">
+        <div id="main-container" class="h-screen flex-1 transition-all duration-300 ease-in-out">
             @include('programhead.header')
 
             <!-- Main content -->
-            <div id="main-content" class="h-screen flex-1 transition-all duration-300 ease-in-out">
+            <div id="main-content" class=" flex-1 transition-all duration-300 ease-in-out">
                 <div class="p-8 bg-[#EFF4F6] shadow-lg rounded-lg border border-gray-200 h-full">
                     <header class="flex items-center bg-[#D0D9D3] text-black p-2">
                         <div class="px-4 flex items-center mr-96">
@@ -67,7 +67,7 @@
                     </header>
 
                     <!-- Tab Contents -->
-                    <div class="tab-contents mt-4">
+                    <div class="tab-contents">
                         <div id="tab1" class="tab-content bg-white border border-gray-200 rounded-lg active">
                             @include('programhead.classmanage.studentab')
                         </div>
@@ -92,6 +92,8 @@
             const sidebar = document.getElementById('sidebar');
             const mainContainer = document.getElementById('main-container');
             const createAssessment = document.getElementById('createAssessment');
+
+            const panelContentToggle = document.getElementById('togglePanelButton');
 
             navButton.addEventListener('click', function() {
                 sidebar.classList.toggle('show');
@@ -122,6 +124,18 @@
                     const tabContent = document.querySelector(tab.getAttribute('href'));
                     tabContent.classList.add('active');
                 });
+            });
+
+            // Toggle panel content
+            panelContentToggle.addEventListener('click', function () {
+              const panelContent = document.getElementById('panelContent');
+              const panelToggleIcon = document.getElementById('panelToggleIcon');
+              panelContent.classList.toggle('hidden');
+              if (panelContent.classList.contains('hidden')) {
+                panelToggleIcon.setAttribute('d', 'M19 9l-7 7-7-7');
+              } else {
+                panelToggleIcon.setAttribute('d', 'M19 15l-7-7-7 7');
+              }
             });
         });
     </script>
