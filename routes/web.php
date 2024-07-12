@@ -27,6 +27,8 @@ Route::get('/programhead/questionbank', [PHController::class, 'questionbank'])->
 
 Route::get('/programhead/class', [PHController::class, 'class'])->name('ph.class');
 Route::get('/programhead/class/nameofclass', [PHController::class, 'clickedClass'])->name('ph.class1');
+Route::get('/programhead/class/nameofclass/createtest', [PHController::class, 'createtest'])->name('ph.createtest');
+Route::get('/programhead/class/nameofclass/createtest/addassessmentdetails', [PHController::class, 'assessmentdetails'])->name('ph.assessmentdetails');
 
 Route::get('/programhead/facultymanagement', [PHController::class, 'faculty'])->name('ph.faculty');
 Route::get('/programhead/facultymanagement/assignfaculty', [PHController::class, 'addfaculty'])->name('ph.addfaculty');

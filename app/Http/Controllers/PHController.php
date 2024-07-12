@@ -40,6 +40,16 @@ class PHController extends Controller
       return view('programhead.classmanage.class1inside');
     }
 
+    public function createtest()
+    {
+      return view('programhead.classmanage.createassessment');
+    }
+
+    public function assessmentdetails()
+    {
+      return view('programhead.classmanage.assessmentdetails');
+    }
+
     public function faculty()
     {
       return view('programhead.faculty');

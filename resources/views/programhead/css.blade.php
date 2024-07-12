@@ -7,10 +7,6 @@
 
     @vite('resources/css/app.css')
     <style>
-        body {
-            background-color: red;
-        }
-
         #sidebar {
             transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
             width: 4rem;

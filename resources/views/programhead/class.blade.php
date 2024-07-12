@@ -17,7 +17,7 @@
             <div id="main-content" class="h-screen flex-1 transition-all duration-300 ease-in-out">
 
                 <div class="antialiased p-8 h-full"> <!-- SAMPLE CLASS CARD ONLY FOR ROUTING -->
-                    <div id="class1" class="flex flex-wrap gap-10 justify-start mb-28">
+                    <div id="class1" class="flex flex-wrap gap-10 justify-start mb-10">
                       <div class="rounded-t-lg rounded-b-lg w-1/4 cursor-pointer">
                         <div class="p-4 bg-[#D0D9D3] border rounded-t-lg h-40 flex items-center justify-center" style="background-image: url('{{ asset('images/classbg.png') }}'); background-size: cover; background-position: center;"></div>
                           <div class="p-4 bg-white border rounded-b-lg shadow-lg w-full items-center justify-center">
@@ -41,17 +41,17 @@
                             </div>
                           </div>
                         </div>
+                    </div>
 
-                        <div id="openModal" class="rounded-t-lg rounded-b-lg w-1/4 cursor-pointer">
-                          <div class="p-4 bg-[#D0D9D3] border rounded-t-lg w-ful h-40 flex items-center justify-center">
-                                <svg width="120" height="120" viewBox="0 0 147 147" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M80.7913 7.87492C80.7913 3.84788 77.5269 0.583252 73.4997 0.583252C69.4725 0.583252 66.208 3.84788 66.208 7.87492V66.2083H7.87467C3.84763 66.2083 0.583008 69.4727 0.583008 73.4999C0.583008 77.5271 3.84763 80.7916 7.87467 80.7916H66.208V139.125C66.208 143.152 69.4725 146.417 73.4997 146.417C77.5269 146.417 80.7913 143.152 80.7913 139.125V80.7916H139.125C143.152 80.7916 146.416 77.5271 146.416 73.4999C146.416 69.4727 143.152 66.2083 139.125 66.2083H80.7913V7.87492Z" fill="#5E866B"/>
-                                </svg>
-                          </div>
-                            <div class="p-4 bg-white border rounded-b-lg shadow-lg w-full flex items-center justify-center">
-                              <p class="text-center">Add New<br>Class</p>
-                          </div>
-                        </div>
+                    <div id="openModal" class="rounded-t-lg rounded-b-lg w-1/4 cursor-pointer">
+                      <div class="p-4 bg-[#D0D9D3] border rounded-t-lg w-ful h-40 flex items-center justify-center">
+                            <svg width="120" height="120" viewBox="0 0 147 147" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M80.7913 7.87492C80.7913 3.84788 77.5269 0.583252 73.4997 0.583252C69.4725 0.583252 66.208 3.84788 66.208 7.87492V66.2083H7.87467C3.84763 66.2083 0.583008 69.4727 0.583008 73.4999C0.583008 77.5271 3.84763 80.7916 7.87467 80.7916H66.208V139.125C66.208 143.152 69.4725 146.417 73.4997 146.417C77.5269 146.417 80.7913 143.152 80.7913 139.125V80.7916H139.125C143.152 80.7916 146.416 77.5271 146.416 73.4999C146.416 69.4727 143.152 66.2083 139.125 66.2083H80.7913V7.87492Z" fill="#5E866B"/>
+                            </svg>
+                      </div>
+                        <div class="p-4 bg-white border rounded-b-lg shadow-lg w-full flex items-center justify-center">
+                          <p class="text-center">Add New<br>Class</p>
+                      </div>
                     </div>
 
                     <!-- Modal -->
