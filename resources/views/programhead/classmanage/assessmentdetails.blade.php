@@ -15,7 +15,7 @@
         <header class="bg-[#42604C] text-white border-b border-gray-100">
           <div class="p-4 flex items-start justify-between">
             <div class="flex items-center w-full">
-              <a href="{{route('ph.createtest')}}">
+              <a href="{{route('ph.class1')}}">
                 <svg width="30px" height="30px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style>.cls-1{fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:20px;}</style> </defs> <g data-name="Layer 2" id="Layer_2"> <g data-name="E421, Back, buttons, multimedia, play, stop" id="E421_Back_buttons_multimedia_play_stop"> <circle class="cls-1" cx="256" cy="256" r="246"></circle> <line class="cls-1" x1="352.26" x2="170.43" y1="256" y2="256"></line> <polyline class="cls-1" points="223.91 202.52 170.44 256 223.91 309.48"></polyline> </g> </g> </g></svg>
               </a>
               <h2 class="ml-4 font-semibold">Assessment Details</h2>
@@ -51,8 +51,16 @@
 
             <div id="panelContent" class="">
               <header class="bg-[#42604C] text-white border-b border-gray-100 mb-1">
-                <div class="p-2 flex items-start justify-between">
-                  <h2 class="ml-4 font-semibold">EASY QUESTIONS</h2>
+                <div class="p-2 flex items-start justify-start">
+                  <h2 class="ml-4 font-semibold">
+                    Topic: TAXATION
+                  </h2>
+                  <h2 class="ml-4 font-semibold">
+                    Items: 2
+                  </h2>
+                  <h2 class="ml-4 font-semibold">
+                    Difficulty: EASY
+                  </h2>
                 </div>
               </header>
 
@@ -110,7 +118,17 @@
 
               <header class="bg-[#42604C] text-white border-b border-gray-100 mb-1">
                 <div class="p-2 flex items-start justify-between">
-                  <h2 class="ml-4 font-semibold">MODERATE QUESTIONS</h2>
+                  <div class="p-2 flex items-start justify-start">
+                    <h2 class="ml-4 font-semibold">
+                      Topic: TAXATION
+                    </h2>
+                    <h2 class="ml-4 font-semibold">
+                      Items: 2
+                    </h2>
+                    <h2 class="ml-4 font-semibold">
+                      Difficulty: MODERATE
+                    </h2>
+                  </div>
                 </div>
               </header>
               <div class="flex flex-wrap justify-center space-x-2">
@@ -167,7 +185,17 @@
 
               <header class="bg-[#42604C] text-white border-b border-gray-100 mb-1">
                 <div class="p-2 flex items-start justify-between">
-                  <h2 class="ml-4 font-semibold">DIFFICULT QUESTIONS</h2>
+                  <div class="p-2 flex items-start justify-start">
+                    <h2 class="ml-4 font-semibold">
+                      Topic: TAXATION
+                    </h2>
+                    <h2 class="ml-4 font-semibold">
+                      Items: 2
+                    </h2>
+                    <h2 class="ml-4 font-semibold">
+                      Difficulty: DIFFICULT
+                    </h2>
+                  </div>
                 </div>
               </header>
               <div class="flex flex-wrap justify-center space-x-2">
@@ -301,62 +329,11 @@
       });
 
       closeModal.addEventListener('click', function() {
-      const dynamicSets = parametersContainer.querySelectorAll('.parameterSet:not(:first-child)');
-      dynamicSets.forEach(set => set.remove());
-
         assessmentForm.reset();
         assessModal.classList.add('hidden');
       });
 
-      addParameterSet.addEventListener('click', function() {
-      const parameterSet = document.createElement('div');
-      parameterSet.classList.add('parameterSet', 'mb-4', 'flex');
-      parameterSet.innerHTML = `
-        <div class="flex flex-col">
-          <label for="numItems"><b>Number of Items</b></label>
-          <input id="numItems" type="number" min="1" name="numItems" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-24 h-12 p-5 mr-24 mb-2 ease-linear transition-all duration-150">
-        </div>
-
-        <div class="flex flex-col">
-          <label for="levelDifficulty"><b>Level of Difficulty</b></label>
-          <input id="levelDifficulty" list=difficulty type="text" name="levelDifficulty" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-36 h-12 p-5 mr-24 mb-2 ease-linear transition-all duration-150">
-          <datalist id="difficulty">
-            <option value="Easy">
-            <option value="Moderate">
-            <option value="Difficult">
-            </datalist>
-        </div>
-
-        <div id="topicsContainer" class="flex flex-col">
-          <label for="topicCovered"><b>Topic Covered</b></label>
-          <input id="topicCovered" type="text" name="topicCovered" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-96 h-12 p-5 mb-2 ease-linear transition-all duration-150">
-        </div>
-      `;
-        parametersContainer.appendChild(parameterSet);
-      });
-
-
       assessmentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const parameterSets = document.querySelectorAll('.parameterSet');
-        const assessmentParameters = [];
-
-        parameterSets.forEach(set => {
-          const numItems = set.querySelector('input[name="numItems"]').value;
-          const levelDifficulty = set.querySelector('input[name="levelDifficulty"]').value;
-          const topicCovered = set.querySelector('input[name="topicCovered"]').value;
-
-          const parameter = {
-            numItems,
-            levelDifficulty,
-            topicCovered
-          };
-
-          assessmentParameters.push(parameter);
-        });
-
-        console.log(assessmentParameters);
       });
   });
 </script>
