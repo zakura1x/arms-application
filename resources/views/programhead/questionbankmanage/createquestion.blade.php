@@ -116,10 +116,13 @@
       const navButton = document.getElementById('nav-button');
       const sidebar = document.getElementById('sidebar');
       const mainContainer = document.getElementById('main-container');
+
       const backButton = document.getElementById('cancelbtn');
 
       const addOptionButton = document.getElementById('addOptionButton');
       const optionsContainer = document.getElementById('optionsContainer');
+      const difficultyInput = document.getElementById('difficultyInput');
+      const subDifficultyInput = document.getElementById('subDifficultyInput');
       let optionIndex = 4;
 
       navButton.addEventListener('click', function () {
@@ -140,6 +143,37 @@
         `;
         optionsContainer.appendChild(newOption);
         optionIndex++;
+      });
+
+      const subDifficultyOptions = {
+        easy: [
+          { value: "sub-easy", text: "Remembering" },
+          { value: "sub-easy", text: "Understanding" },
+        ],
+        medium: [
+          { value: "sub-moderate", text: "Applying" },
+        ],
+        hard: [
+          { value: "sub-difficult", text: "Analyzing" },
+          { value: "sub-difficult", text: "Evaluating" },
+          { value: "sub-difficult", text: "Creating" },
+        ]
+      };
+
+      difficultyInput.addEventListener('change', function () {
+        const selectedDifficulty = difficultyInput.value;
+        // Clear the sub-difficulty options
+        subDifficultyInput.innerHTML = '<option value="" selected disabled>Select Sub-Difficulty</option>';
+
+        // Populate the sub-difficulty options based on the selected difficulty
+        if (subDifficultyOptions[selectedDifficulty]) {
+          subDifficultyOptions[selectedDifficulty].forEach(function (option) {
+            const newOption = document.createElement('option');
+            newOption.value = option.value;
+            newOption.text = option.text;
+            subDifficultyInput.appendChild(newOption);
+          });
+        }
       });
     });
   </script>
