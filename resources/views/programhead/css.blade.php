@@ -100,9 +100,8 @@
           outline: none;
         }
 
-        .inline-flex {
-          display: inline-flex;
-          align-items: center;
+        .hidden-row {
+          display: none;
         }
     </style>
 

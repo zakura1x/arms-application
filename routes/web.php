@@ -25,6 +25,7 @@ Route::get('/programhead/plan/createtos',[PHController::class, 'createtos'])->na
 Route::get('/programhead/plan/createplan/addplandetails',[PHController::class, 'plandetails'])->name('ph.plandetails');
 
 Route::get('/programhead/questionbank', [PHController::class, 'questionbank'])->name('ph.questionbank');
+Route::get('/programhead/questionbank/createquestion', [PHController::class, 'createquestion'])->name('ph.createquestion');
 
 Route::get('/programhead/class', [PHController::class, 'class'])->name('ph.class');
 Route::get('/programhead/class/nameofclass', [PHController::class, 'clickedClass'])->name('ph.class1');

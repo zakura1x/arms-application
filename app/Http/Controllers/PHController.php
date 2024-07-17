@@ -35,6 +35,11 @@ class PHController extends Controller
       return view('programhead.questionbank');
     }
 
+    public function createquestion()
+    {
+      return view('programhead.questionbankmanage.createquestion');
+    }
+
     public function class()
     {
       return view('programhead.class');
