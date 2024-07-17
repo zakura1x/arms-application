@@ -96,9 +96,6 @@
               return;
           }
 
-          localStorage.setItem('lessonTitle', lessonTitle);
-          localStorage.setItem('subject', subject);
-
           ldpForm.submit();
       });
   });

@@ -139,7 +139,7 @@
         });
 
         createLdp.addEventListener('click', function() {
-        window.location.href = '{{ route('ph.createplan') }}';
+        window.location.href = '{{ route('ph.createtos') }}';
         });
     });
 </script>
