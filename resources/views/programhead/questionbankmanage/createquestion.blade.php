@@ -21,34 +21,12 @@
           </header>
           <form id="questionForm" class="p-4">
             <div class="mb-4">
-              <label class="block text-gray-700">Question</label>
-              <textarea class="bg-[#D0D9D3] h-20 w-full p-2 border border-gray-300 rounded mt-1" required></textarea>
-            </div>
-            <div class="mb-4">
-              <label class="block text-gray-700">Options</label>
-              <div id="optionsContainer">
-                <div class="flex items-center mb-2">
-                  <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1 mr-2" required>
-                  <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2" value="0">
-                </div>
-                <div class="flex items-center mb-2">
-                  <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1 mr-2" required>
-                  <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2" value="1">
-                </div>
-                <div class="flex items-center mb-2">
-                  <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1 mr-2" required>
-                  <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2" value="2">
-                </div>
-                <div class="flex items-center mb-2">
-                  <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1 mr-2" required>
-                  <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2" value="3">
-                </div>
-              </div>
-              <button type="button" id="addOptionButton" class="bg-[#42604C] text-white p-2 rounded mt-2">Add Option</button>
+              <label class="block text-gray-700">Attachment (PNG file that contains the questions equation)</label>
+              <input type="file" id="attachmentInput" name="attachments[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1">
             </div>
             <div class="flex items-center justify-between">
               <div class="mb-4 w-1/4 mr-2">
-                <label class="block text-gray-700">Question Point</label>
+                <label class="block text-gray-700">Question Weight</label>
                 <input type="number" id="pointInput" min=1 max=15 class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1" required>
               </div>
               <div class="mb-4 w-full">
@@ -95,10 +73,31 @@
                 </select>
               </div>
             </div>
-
             <div class="mb-4">
-              <label class="block text-gray-700">Attachments</label>
-              <input type="file" id="attachmentInput" name="attachments[]" multiple class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1">
+              <label class="block text-gray-700">Question</label>
+              <textarea class="bg-[#D0D9D3] h-20 w-full p-2 border border-gray-300 rounded mt-1" required></textarea>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700">Options</label>
+              <div id="optionsContainer">
+                <div class="flex items-center mb-2">
+                  <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2 mr-2" value="0">
+                  <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1" required>
+                </div>
+                <div class="flex items-center mb-2">
+                  <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2 mr-2" value="1">
+                  <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1" required>
+                </div>
+                <div class="flex items-center mb-2">
+                  <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2 mr-2" value="2">
+                  <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1" required>
+                </div>
+                <div class="flex items-center mb-2">
+                  <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2 mr-2" value="3">
+                  <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1" required>
+                </div>
+              </div>
+              <button type="button" id="addOptionButton" class="bg-[#42604C] text-white p-2 rounded mt-2">Add Option</button>
             </div>
 
             <div class="flex justify-end">
@@ -138,8 +137,8 @@
         const newOption = document.createElement('div');
         newOption.classList.add('flex', 'items-center', 'mb-2');
         newOption.innerHTML = `
-          <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1 mr-2" required>
-          <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2" value="${optionIndex}">
+          <input type="checkbox" name="correctAnswers[]" class="form-checkbox mt-2  mr-2" value="${optionIndex}">
+          <input type="text" name="options[]" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1" required>
         `;
         optionsContainer.appendChild(newOption);
         optionIndex++;
