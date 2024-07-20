@@ -36,6 +36,9 @@
                       <div class="font-semibold text-left">Created By</div>
                   </th>
                   <th class="w-1/4 p-2">
+                      <div class="font-semibold text-left">Number of Items</div>
+                  </th>
+                  <th class="w-1/4 p-2">
                       <div class="font-semibold text-left">Date</div>
                   </th>
                   <th class="w-1/4 p-2">
@@ -62,6 +65,11 @@
                         <path d="M11.9997 23.0993C18.0608 23.0993 23.0991 18.072 23.0991 12C23.0991 5.93888 18.0499 0.900635 11.9888 0.900635C5.91681 0.900635 0.900391 5.93888 0.900391 12C0.900391 18.072 5.92772 23.0993 11.9997 23.0993ZM11.9997 5.73213C14.0781 5.73213 15.7321 7.56026 15.7321 9.75837C15.7321 12.0979 14.089 13.8825 11.9997 13.8608C9.89955 13.839 8.2673 12.0979 8.2673 9.75837C8.24553 7.56026 9.91041 5.73213 11.9997 5.73213ZM18.6158 18.442L18.6484 18.5834C16.9727 20.368 14.4916 21.3909 11.9997 21.3909C9.49692 21.3909 7.01587 20.368 5.34012 18.5834L5.37276 18.442C6.31944 17.1361 8.64816 15.7107 11.9997 15.7107C15.3404 15.7107 17.68 17.1361 18.6158 18.442Z" fill="black"/>
                       </svg>
                       <div class="ml-4 text-left">Mr. Professor</div>
+                    </div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="ml-4 text-left font-medium">30</div>
                     </div>
                   </td>
                   <td class="p-2 whitespace-nowrap">
