@@ -102,7 +102,7 @@
 
             <div class="flex justify-end">
               <button type="button" id="cancelbtn" class="bg-gray-500 text-white p-2 rounded mr-2">Cancel</button>
-              <button type="submit" class="bg-[#42604C] text-white p-2 rounded">Add Question</button>
+              <button id="addButton" class="bg-[#42604C] text-white p-2 rounded">Add Question</button>
             </div>
           </form>
         </div>
@@ -115,8 +115,9 @@
       const navButton = document.getElementById('nav-button');
       const sidebar = document.getElementById('sidebar');
       const mainContainer = document.getElementById('main-container');
-
       const backButton = document.getElementById('cancelbtn');
+
+      const addButton = document.getElementById('addButton');
 
       const addOptionButton = document.getElementById('addOptionButton');
       const optionsContainer = document.getElementById('optionsContainer');
@@ -130,6 +131,11 @@
       });
 
       backButton.addEventListener('click', function () {
+        window.location.href = '{{ route('ph.questionbank') }}';
+      });
+
+      addButton.addEventListener('click', function () {
+        window.alert('Question Saved on Database');
         window.location.href = '{{ route('ph.questionbank') }}';
       });
 

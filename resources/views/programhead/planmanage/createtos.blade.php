@@ -251,7 +251,9 @@
           const rowData = Array.from(inputs).map(input => input.value);
           data.push(rowData);
         });
-        console.log(data);
+
+        window.alert('Saved on Database: ' + JSON.stringify(data));
+        window.location.href = '{{ route('ph.plan') }}';
       });
 
       function updateSum() {
