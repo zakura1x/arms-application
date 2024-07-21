@@ -13,7 +13,6 @@
     <div id="main-container" class="flex-1 transition-all duration-300 ease-in-out">
       @include('programhead.header')
 
-      <!-- Main content -->
       <div id="main-content" class="h-screen flex-1 transition-all duration-300 ease-in-out p-4">
         <div class="w-full bg-white border border-gray-300">
           <header class="bg-[#42604C] text-white p-4">

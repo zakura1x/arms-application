@@ -27,7 +27,7 @@
         </header>
         <div class="overflow-x-auto h-screen bg-[#D0D9D3]">
           <div class="p-8">
-            <form id="assessmentForm" action="#" method="#">
+            <form id="assessmentForm">
               <div class="flex items-center">
                 <div class="w-1/2 mr-5">
                   <label for="assessName"><b>Assessment Name</b></label>
@@ -140,8 +140,8 @@
       const sidebar = document.getElementById('sidebar');
       const mainContainer = document.getElementById('main-container');
       const backbtn = document.getElementById('backButton');
+
       const generateButton = document.getElementById('generateButton');
-      const assessmentForm = document.getElementById('assessmentForm');
 
       const addRowButton = document.getElementById('addRowButton');
       const tableBody = document.querySelector('#editableTable tbody');
