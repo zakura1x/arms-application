@@ -36,7 +36,7 @@
                 <th rowspan="2">No. of Items</th>
                 <th class="text-center" colspan="2">EASY (30%)</th>
                 <th colspan="1">MODERATE (50%)</th>
-                <th colspan="3">DIFFICULT (20%)</th>
+                <th colspan="4">DIFFICULT (20%)</th>
               </tr>
               <tr>
                 <th>Remembering</th>
@@ -44,7 +44,7 @@
                 <th>Applying</th>
                 <th>Analyzing</th>
                 <th>Evaluating</th>
-                <th>Creating</th>
+                <th colspan="2">Creating</th>
               </tr>
             </thead>
             <tbody class="text-sm divide-y divide-gray-100">
@@ -64,6 +64,7 @@
                 <td><input type="number" min="1" class="sum-column" data-column="7"/></td>
                 <td><input type="number" min="1" class="sum-column" data-column="8"/></td>
                 <td><input type="number" min="1" class="sum-column" data-column="9"/></td>
+                <td><button type="button" class="remove-row-button">Remove</button></td>
               </tr>
             </tbody>
             <tfoot>
@@ -89,6 +90,7 @@
         </div>
 
         <div class="bg-[#EFF4F6] border border-gray-300 rounded-lg p-4 m-2">
+          <!-- 1ST TOGGLE -->
           <div class="flex items-center justify-between">
             <div class="flex items-center">
               <button id="togglePanelButton" class="text-gray-500 focus:outline-none">
@@ -98,34 +100,15 @@
               </button>
               <h3 class="font-semibold ml-4">SAMPLE TOPIC TITLE</h3>
             </div>
-
             <div class="ml-auto flex items-center">
               <div id="openMaterialModal" class="bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
-                <button type="button" class="ml-2 mr-2">
-                  ADD MATERIALS
-                </button>
-              </div>
-              <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn btn-circle avatar">
-                  <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" stroke="#000000">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <circle cx="5" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                        <circle cx="12" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                        <circle cx="19" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                    </g>
-                  </svg>
-                </div>
-                <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#EFF4F6] rounded-box w-52 border border-black border-opacity-50">
-                  <li><a>Edit Class</a></li>
-                  <li><a>Delete Class</a></li>
-                </ul>
+                <button type="button" class="ml-2 mr-2">ADD MATERIALS</button>
               </div>
             </div>
           </div>
 
-          <div id="panelContent" class="">
+          <!-- 2ND TOGGLE -->
+          <div id="panelContent" class="hidden">
             <ul class="uploadedFiles list-disc pl-5">
               <li class="flex items-center">
                 <button id="toggleFileButton" class="text-gray-500 focus:outline-none">
@@ -135,61 +118,57 @@
                 </button>
                 <span class="ml-4"><a href="#" target="_blank">Sample Material Title</a></span>
               </li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="bg-[#EFF4F6] border border-gray-300 rounded-lg p-4 m-2">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <button id="togglePanelButton" class="text-gray-500 focus:outline-none">
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path id="panelToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </button>
-              <h3 class="font-semibold ml-4">SAMPLE TOPIC TITLE</h3>
-            </div>
-
-            <div class="ml-auto flex items-center">
-              <div id="openMaterialModal" class="bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
-                <button type="button" class="ml-2 mr-2">
-                  ADD MATERIALS
-                </button>
-              </div>
-              <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn btn-circle avatar">
-                  <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" stroke="#000000">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <circle cx="5" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                        <circle cx="12" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                        <circle cx="19" cy="12" r="2" stroke="#117325" stroke-width="0.648"></circle>
-                    </g>
-                  </svg>
+              <!-- 3RD TOGGLE -->
+              <div id="fileContent" class="hidden pl-5">
+                <li class="flex items-center">
+                  <button id="toggleInsideFileButton" class="text-gray-500 focus:outline-none">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path id="fileInsideToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+                  <span class="ml-4"><a href="#" target="_blank">Additional Information here</a></span>
+                </li>
+                <div id="fileInsideContent" class="hidden pl-5">
+                  <p>Nested additional content here.</p>
                 </div>
-                <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#EFF4F6] rounded-box w-52 border border-black border-opacity-50">
-                  <li><a>Edit Class</a></li>
-                  <li><a>Delete Class</a></li>
-                </ul>
               </div>
-            </div>
-          </div>
-
-          <div id="panelContent" class="">
-            <ul class="uploadedFiles list-disc pl-5">
-              <li class="flex items-center">
-                <button id="toggleFileButton" class="text-gray-500 focus:outline-none">
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path id="fileToggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-                <span class="ml-4"><a href="#" target="_blank">Sample Material Title</a></span>
-              </li>
             </ul>
           </div>
         </div>
 
+
+
+        <!-- Add Materials Modal -->
+        <div id="materialModal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-25 hidden">
+          <div class="bg-white rounded-lg shadow-lg w-1/2">
+              <header class="bg-[#42604C] text-white border-b border-gray-100 rounded-t-lg">
+                  <div class="p-4 flex items-center justify-between">
+                      <h2 class="font-semibold">Add New Materials</h2>
+                  </div>
+              </header>
+              <div class="p-4">
+                  <form id="materialForm" action="#" method="#" enctype="multipart/form-data">
+                      <label for="materialTitle"><b>Material Title</b></label>
+                      <input id="materialTitle" type="text" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
+                      <input id="materialDescription" type="text" placeholder="Material Description" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
+                      <label for="materialFile"><b>Attach File</b></label>
+                      <input id="materialFile" type="file" accept="application/pdf" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-15 p-2 ease-linear transition-all duration-150">
+
+                      <div class="flex items-center justify-end space-x-6 p-2">
+                          <button type="button" id="closeMaterialModal" class="font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">CANCEL</button>
+                          <div class="flex items-center bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.71986 1.72855C2.84248 3.13072 0.859863 6.08382 0.859863 9.49999C0.859863 14.2718 4.72812 18.14 9.49986 18.14C14.2716 18.14 18.1399 14.2718 18.1399 9.49999C18.1399 4.72824 14.2716 0.859985 9.49986 0.859985V11.66" stroke="white" stroke-width="1.2"/>
+                              <path d="M13.2797 7.88L9.49973 11.66L5.71973 7.88" stroke="white" stroke-width="1.2"/>
+                            </svg>
+                            <button type="submit" class="ml-2">ADD</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -201,9 +180,18 @@
       const sidebar = document.getElementById('sidebar');
       const mainContainer = document.getElementById('main-container');
       const backbtn = document.getElementById('backButton');
+
       const saveButton = document.getElementById('saveButton');
       const addRowButton = document.getElementById('addRowButton');
       const tableBody = document.querySelector('#editableTable tbody');
+
+      const openMaterialModal = document.getElementById('openMaterialModal');
+      const closeMaterialModal = document.getElementById('closeMaterialModal');
+      const materialModal = document.getElementById('materialModal');
+
+      const togglePanelButton = document.getElementById('togglePanelButton');
+      const toggleFileButton = document.getElementById('toggleFileButton');
+      const toggleInsideFileButton = document.getElementById('toggleInsideFileButton');
 
       navButton?.addEventListener('click', function() {
         sidebar.classList.toggle('show');
@@ -212,6 +200,15 @@
 
       backbtn?.addEventListener('click', function() {
         window.location.href = '{{ route('ph.plan') }}';
+      });
+
+      openMaterialModal.addEventListener('click', function() {
+        materialModal.classList.remove('hidden');
+      });
+
+      closeMaterialModal.addEventListener('click', function() {
+          materialForm.reset();
+          materialModal.classList.add('hidden');
       });
 
       addRowButton.addEventListener('click', function() {
@@ -232,11 +229,17 @@
           <td><input type="number" min="1" class="sum-column" data-column="7"/></td>
           <td><input type="number" min="1" class="sum-column" data-column="8"/></td>
           <td><input type="number" min="1" class="sum-column" data-column="9"/></td>
+          <td><button type="button" class="remove-row-button">Remove</button></td>
         `;
         tableBody.appendChild(newRow);
 
         newRow.querySelectorAll('.sum-column').forEach(input => {
           input.addEventListener('input', updateSum);
+        });
+
+        newRow.querySelector('.remove-row-button').addEventListener('click', function() {
+          newRow.remove();
+          updateSum();
         });
 
         updateSum();
@@ -268,7 +271,8 @@
             sumCell.textContent = sum + '%';
             if (sum > 100) {
               sumCell.style.color = 'red';
-            } else {              sumCell.style.color = '';
+            } else {
+              sumCell.style.color = '';
             }
           } else {
             sumCell.textContent = sum;
@@ -280,7 +284,50 @@
         input.addEventListener('input', updateSum);
       });
 
+      document.querySelectorAll('.remove-row-button').forEach(button => {
+        button.addEventListener('click', function() {
+          button.closest('tr').remove();
+          updateSum();
+        });
+      });
+
       updateSum();
+
+      // Toggle panel content
+      togglePanelButton.addEventListener('click', function () {
+        const panelContent = document.getElementById('panelContent');
+        const panelToggleIcon = document.getElementById('panelToggleIcon');
+        panelContent.classList.toggle('hidden');
+        if (panelContent.classList.contains('hidden')) {
+          panelToggleIcon.setAttribute('d', 'M19 9l-7 7-7-7');
+        } else {
+          panelToggleIcon.setAttribute('d', 'M19 15l-7-7-7 7');
+        }
+      });
+
+      // Toggle file content
+      toggleFileButton.addEventListener('click', function () {
+        const fileContent = document.getElementById('fileContent');
+        const fileToggleIcon = document.getElementById('fileToggleIcon');
+        fileContent.classList.toggle('hidden');
+        if (fileContent.classList.contains('hidden')) {
+          fileToggleIcon.setAttribute('d', 'M19 9l-7 7-7-7');
+        } else {
+          fileToggleIcon.setAttribute('d', 'M19 15l-7-7-7 7');
+        }
+      });
+
+      // Toggle inside file content
+      toggleInsideFileButton.addEventListener('click', function () {
+        const fileInsideContent = document.getElementById('fileInsideContent');
+        const fileInsideToggleIcon = document.getElementById('fileInsideToggleIcon');
+        fileInsideContent.classList.toggle('hidden');
+        if (fileInsideContent.classList.contains('hidden')) {
+          fileInsideToggleIcon.setAttribute('d', 'M19 9l-7 7-7-7');
+        } else {
+          fileInsideToggleIcon.setAttribute('d', 'M19 15l-7-7-7 7');
+        }
+      });
     });
   </script>
 </body>
