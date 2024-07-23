@@ -99,22 +99,23 @@
               <div class="p-4">
                 <form id="topicForm" action="#" method="#">
                   <label for="topicName"><b>Topic Name</b></label>
-                  <input id="topicName" type="text" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
+                  <input id="topicName" type="text" placeholder="Enter Topic Name" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
                   <div class="flex items-center mb-4">
                     <div class="w-full mr-2">
                       <label for="noHours"><b>No. of Hours</b></label>
-                      <input id="noHours" type="number" min=1 required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
+                      <input id="noHours" type="number" min=1 placeholder="Indicate the number of hours" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
                     </div>
                     <div class="w-full mr-2">
                       <label for="percentage"><b>Percentage</b></label>
-                      <input id="percentage" type="number" min=1 required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
+                      <input id="percentage" type="number" min=1 placeholder="Indicate the number of percentage" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
                     </div>
                     <div class="w-full">
                       <label for="noItems"><b>No. of Items</b></label>
-                      <input id="noItems" type="number" min=1 required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
+                      <input id="noItems" type="number" min=1 placeholder="Indicate the number of items" required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
                     </div>
                   </div>
                   <div class="border-2 border-green-700 mt-2 mb-2"></div>
+                  <a>Please indicate the number of questions under the <b>EASY</b> Level</a>
                   <div class="flex items-center">
                     <div class="w-full mr-2">
                       <label for="remembering"><b>Remembering</b></label>
@@ -126,9 +127,13 @@
                     </div>
                   </div>
                   <div class="border-2 border-green-700 mt-2 mb-2"></div>
-                  <label for="applying"><b>Applying</b></label>
-                  <input id="applying" type="number" min=1 required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
+                  <a>Please indicate the number of questions under the <b>MODERATE</b> Level</a>
+                  <div>
+                    <label for="applying"><b>Applying</b></label>
+                    <input id="applying" type="number" min=1 required class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
+                  </div>
                   <div class="border-2 border-green-700 mt-2 mb-2"></div>
+                  <a>Please indicate the number of questions under the <b>DIFFICULT</b> Level</a>
                   <div class="flex items-center">
                     <div class="w-full mr-2">
                       <label for="analyzing"><b>Analyzing</b></label>
