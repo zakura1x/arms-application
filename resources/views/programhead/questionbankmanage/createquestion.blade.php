@@ -28,8 +28,8 @@
                 <label class="block text-gray-700">Question Weight</label>
                 <input type="number" id="pointInput" min=1 max=15 class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1" required>
               </div>
-              <div class="mb-4 w-full">
-                <label class="block text-gray-700">Topic Covered</label>
+              <div class="mb-4 w-full mr-2">
+                <label for="topicInput" class="block text-gray-700">Topic Covered</label>
                 <select id="topicInput" class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1" required>
                   <option value="" selected disabled>Select Topic</option>
                   <option value="Management Advisory Services">Management Advisory Services</option>
@@ -39,6 +39,14 @@
                   <option value="Financial Accounting and Reporting">Financial Accounting and Reporting</option>
                   <option value="Advanced Financial Accounting and Reporting">Advanced Financial Accounting and Reporting</option>
                 </select>
+              </div>
+              <div class="mb-4 w-full">
+                <label fo="moduleInput" class="block text-gray-700">Module Covered</label>
+                <input id="moduleInput" list="modules" placeholder="Enter Module Covered" name="Modules" required class="bg-[#D0D9D3] w-full p-2 border border-gray-300 rounded mt-1">
+                <datalist id="modules">
+                  <option value="M1">
+                  <option value="M2">
+                </datalist>
               </div>
             </div>
             <div class="flex items-center justify-between">
