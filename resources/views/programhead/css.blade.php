@@ -103,5 +103,23 @@
         .hidden-row {
           display: none;
         }
+
+        .question-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 5px;
+          padding: 4px;
+        }
+        .question-item {
+          flex: 1 1 calc(33.333% - 10px);
+          background-color: white;
+          border: 1px solid black;
+          border-radius: 8px;
+          margin: 5px 0;
+        }
+        .question-item p {
+          margin: 0;
+        }
     </style>
 
