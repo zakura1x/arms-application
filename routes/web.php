@@ -22,7 +22,7 @@ Route::get('/programhead/home', [PHController::class, 'index'])->name('ph.home')
 Route::get('/programhead/plan', [PHController::class, 'plan'])->name('ph.plan');
 Route::get('/programhead/plan/createplan',[PHController::class, 'createplan'])->name('ph.createplan');
 Route::get('/programhead/plan/createtos',[PHController::class, 'createtos'])->name('ph.createtos');
-Route::get('/programhead/plan/createplan/addplandetails',[PHController::class, 'plandetails'])->name('ph.plandetails');
+Route::get('/programhead/plan/editplan',[PHController::class, 'editplan'])->name('ph.editplan');
 
 Route::get('/programhead/questionbank', [PHController::class, 'questionbank'])->name('ph.questionbank');
 Route::get('/programhead/questionbank/createquestion', [PHController::class, 'createquestion'])->name('ph.createquestion');

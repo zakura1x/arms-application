@@ -99,7 +99,7 @@
                                     </td>
                                     <td class="p-2">
                                       <div class="flex items-center justify-end space-x-6">
-                                        <button id="editldp" class="flex items-center text-white rounded-lg p-5 w-24 h-8 bg-[#42604C]">
+                                        <button id="editButton" class="flex items-center text-white rounded-lg p-5 w-24 h-8 bg-[#42604C]">
                                           <svg width="26" height="26" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M18.1497 5.93991L6.27971 17.8099C5.21971 18.8799 2.04971 19.3698 1.27971 18.6598C0.509711 17.9498 1.06969 14.7799 2.12969 13.7099L13.9997 1.83994C14.5478 1.31795 15.2783 1.03091 16.0351 1.04013C16.7919 1.04936 17.5151 1.35412 18.0503 1.88932C18.5855 2.42451 18.8903 3.14775 18.8995 3.90457C18.9088 4.6614 18.6217 5.39183 18.0997 5.93991H18.1497Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M19 19H10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -130,7 +130,9 @@
         const navButton = document.getElementById('nav-button');
         const sidebar = document.getElementById('sidebar');
         const mainContainer = document.getElementById('main-container');
+
         const createLdp = document.getElementById('createldp');
+        const editButton = document.getElementById('editButton');
 
         navButton.addEventListener('click', function() {
             sidebar.classList.toggle('show');
@@ -139,6 +141,10 @@
 
         createLdp.addEventListener('click', function() {
         window.location.href = '{{ route('ph.createtos') }}';
+        });
+
+        editButton.addEventListener('click', function() {
+        window.location.href = '{{ route('ph.editplan') }}';
         });
     });
 </script>

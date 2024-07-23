@@ -21,6 +21,11 @@ class PHController extends Controller
       return view('programhead.planmanage.createldp');
     }
 
+    public function editplan()
+    {
+      return view('programhead.planmanage.edittos');
+    }
+
     public function createtos()
     {
       return view('programhead.planmanage.createtos');
