@@ -194,11 +194,23 @@
     const navButton = document.getElementById('nav-button');
     const sidebar = document.getElementById('sidebar');
     const mainContainer = document.getElementById('main-container')
+    const togglePanelButton = document.getElementById('togglePanelButton');
 
     navButton.addEventListener('click', function() {
       sidebar.classList.toggle('show');
       mainContainer.classList.toggle('shifted');
     });
+
+    togglePanelButton.addEventListener('click', function () {
+        const panelContent = document.getElementById('panelContent');
+        const panelToggleIcon = document.getElementById('panelToggleIcon');
+        panelContent.classList.toggle('hidden');
+        if (panelContent.classList.contains('hidden')) {
+          panelToggleIcon.setAttribute('d', 'M19 9l-7 7-7-7');
+        } else {
+          panelToggleIcon.setAttribute('d', 'M19 15l-7-7-7 7');
+        }
+      });
   });
 </script>
 </html>
