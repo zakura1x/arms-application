@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name');
-            $table->string('description');
+            $table->string('no_of_items');
             $table->boolean('is_approved')->default(false);
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
@@ -28,6 +28,7 @@ return new class extends Migration
 
         Schema::create('assessment_question', function (Blueprint $table) {
             $table->id();
+            $table->integer('item_no');
             $table->foreignId('assessment_id')->constrained('assessments')->onDelete('cascade');
             $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
             $table->timestamps();

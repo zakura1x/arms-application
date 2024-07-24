@@ -10,14 +10,15 @@ class Attachment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'module_id',
         'attachment_path',
         'attachment_name',
         'attachment_type',
+        'module_id',
+        'question_id'
     ];
 
     public function module(){
-        return $this->belongsTo(Module::class);
+        return $this->hasOne(Module::class);
     }
 
     public function questions(){

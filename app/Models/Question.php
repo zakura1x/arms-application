@@ -11,20 +11,22 @@ class Question extends Model
 
     protected $fillable = [
         'question',
+        'type',
         'options',
         'correct_answer',
         'is_approved',
-        'module_id',
-        'attachment_id',
-        'user_id',
         'points',
-        'difficulty_level',
+        'difficulty',
+        'taxonomy',
+        'module_id',
+        'topic_id',
+        'user_id'
     ];
 
     public function module(){
         return $this->belongsTo(Module::class);
     }
-
+    
     public function attachment(){
         return $this->belongsTo(Attachment::class);
     }

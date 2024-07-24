@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('topic_difficulty_taxonomy', function (Blueprint $table) {
             $table->id();
-            $table->string('module_name');
-            $table->text('module_description')->nullable();
+            $table->enum('difficulty', ['easy', 'moderate', 'difficult']);
+            $table->enum('taxonomy', ['remembering', 'understanding', 'applying', 'analyzing' , 'evaluating', 'creating']);
             $table->unsignedBigInteger('topic_id');
-            $table->timestamps();
+            $table->integer('item_count');
 
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
-        
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('topic_difficulty_taxonomy');
     }
 };

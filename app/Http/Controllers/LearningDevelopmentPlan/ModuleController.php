@@ -26,26 +26,27 @@ class ModuleController extends Controller
         } else {
             $attachmentName = null; // Handle the case where the file is not uploaded
         }
+
+        
         
         $module = Module::create([
             'module_name' => $validated['module_name'],
             'module_description' => $validated['module_description'],
             'topic_id' => $request->topic_id,
         ]);
-        
+
         if ($attachmentName) {
-            Attachment::create([
-                'module_id' => $module->id,
-                'attachment_path' => $attachmentName,
-                'attachment_name' => $attachmentName,
-                'attachment_type' => 'pdf',
-            ]);
-        }
-        
+            $attachment_id = Attachment::create([
+                 'attachment_path' => $attachmentName,
+                 'attachment_name' => $attachmentName,
+                 'attachment_type' => 'pdf',
+                 'module_id' => $module->id,
+             
+             ]);
+         }
 
         return redirect()->route('ph.edit-ldp', ['ldpID' => $request->ldp_id]);
 
-    
     }
 
     //Get the modules 

@@ -15,10 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('topic_name');
             $table->text('topic_description')->nullable();
+            $table->string('no_of_hours');
+            $table->string('percentage');
+            $table->string('no_of_items');
+            $table->unsignedBigInteger('tos_id');
             $table->unsignedBigInteger('learning_development_plan_id');
             $table->timestamps();
 
             $table->foreign('learning_development_plan_id')->references('id')->on('learning_development_plans')->onDelete('cascade');
+            $table->foreign('tos_id')->references('id')->on('table_of_specifications')->onDelete('cascade');
         });
     }
 

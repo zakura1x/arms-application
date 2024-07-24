@@ -7,6 +7,7 @@ use App\Http\Controllers\LearningDevelopmentPlan\ModuleController;
 use App\Http\Controllers\LearningDevelopmentPlan\TopicController;
 use App\Http\Controllers\PHHomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionBank\QuestionController;
 use App\Http\Controllers\Registration\RegisterFaculty;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,11 @@ Route::middleware(['auth', CheckRole::class.':program_head'])->group(function ()
     Route::get('/program-head/class-view/{classID}',[ClassController::class, 'class_view'])->name('ph.class-view');
     Route::get('/program-head/class',[ClassController::class, 'index'])->name('ph.class-list');
     Route::post('/program-head/add-class',[ClassController::class, 'store'])->name('ph.add-class');
+
+    //QuestionBank
+    Route::get('/program-head/questionbank',[QuestionController::class, 'index'])->name('ph.questionbank');
+    Route::get('/program-head/question-create',[QuestionController::class, 'create'])->name('ph.question-create');
+    Route::post('/program-head/question-store',[QuestionController::class, 'store'])->name('ph.question-store');
 
     //Assessment
     Route::get('/program-head/assessment-create/{classID}',[AssessmentController::class, 'assessment_create'])->name('ph.assessment-create');

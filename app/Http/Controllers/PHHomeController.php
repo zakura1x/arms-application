@@ -17,7 +17,7 @@ class PHHomeController extends Controller
     }
     public function questionbank()
     {
-      return view('programhead.questionbank');
+      return view('programhead.questionBankManage.questionbank');
     }
 
     public function class()

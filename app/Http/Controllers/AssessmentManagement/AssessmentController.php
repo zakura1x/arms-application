@@ -7,16 +7,21 @@ use App\Models\Assessment;
 use App\Models\ClassModel;
 use App\Models\Module;
 use App\Models\Question;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AssessmentController extends Controller
 {
 
     public function assessment_create($classID){
         $class = ClassModel::findOrFail($classID);
+        $topics = Topic::all();
+        $modules = Module::all();
 
-        return view('programhead.classManage.assessment_create', compact('class'));
+        return view('programhead.classManage.assessment_create', compact('class', 'topics', 'modules'));
+   
     }
 
     // public function assessment_view(){
@@ -34,9 +39,9 @@ class AssessmentController extends Controller
 
         $assessment = Assessment::create([
             'name' => $validated['assessment_name'],
-            'description' => $validated['assessment_description'],
             'user_id' => Auth::id(),
             'class_id' => $request->class_id,
+            'no_of_items' => 0,
         ]);
 
         return redirect()->route('ph.assessment-edit', ['assessmentID' => $assessment->id]);
@@ -71,12 +76,12 @@ class AssessmentController extends Controller
                 })
             ];
         });
+
+        $topics = Topic::all();
+        $modules = Module::all();
     
         // Pass data to the view
-        return view('programhead.classManage.assessment_edit', [
-            'assessment' => $assessment,
-            'modules' => $module_questions,
-        ]);
+        return view('programhead.classManage.assessment_edit', compact('assessment', 'module_questions', 'topics', 'modules'));
     }
        
     
@@ -85,31 +90,64 @@ class AssessmentController extends Controller
      */
     public function store(Request $request){
         $validated = $request->validate([
-            'number_of_questions' => 'required|integer|min:1',
-            'difficulty' => 'required|string',
-            'topic' => 'required|string',
+            'topic' => 'string|nullable',
+            'module' => 'string|nullable',
+            'remembering' => 'integer|nullable',
+            'understanding' => 'integer|nullable',
+            'applying' => 'integer|nullable',
+            'analyzing' => 'integer|nullable',
+            'evaluating' => 'integer|nullable',
+            'creating' => 'integer|nullable',
         ]);
-
-        //get the topic from the module id
-        $module = Module::where('module_name', $validated['topic'])->first();
-
-        $questions = Question::where('module_id', $module->id)
-            ->where('difficulty_level', $validated['difficulty'])
-            ->where('is_approved', 1)
-            ->get();
-
-        if ($questions->count() < $validated['number_of_questions']) {
-            return back()->with('error', 'Insufficient questions');
+    
+        // Determine module based on topic or module name
+        if (!empty($validated['topic'])) {
+            $module = Topic::where('topic_name', $validated['topic'])->first()->module;
+        } else {
+            $module = Module::where('module_name', $validated['module'])->first();
         }
-
-        $selected_questions = $questions->random($validated['number_of_questions']);
-
-        // Attach selected questions to assessment
-        $assessment = Assessment::findOrFail($request->assessmentID);
-        $assessment->questions()->attach($selected_questions->pluck('id'));
-
+    
+        $taxonomyDifficultyMap = [
+            'remembering' => 'easy',
+            'understanding' => 'easy',
+            'applying' => 'moderate',
+            'analyzing' => 'difficult',
+            'evaluating' => 'difficult',
+            'creating' => 'difficult',
+        ];
+    
+        $questions = collect();
+    
+        foreach ($taxonomyDifficultyMap as $taxonomy => $difficulty) {
+            if (!empty($validated[$taxonomy])) {
+                $questionsByTaxonomy = Question::where('module_id', $module->id)
+                    ->where('difficulty', $difficulty)
+                    ->where('taxonomy', $taxonomy)
+                    ->where('is_approved', true)
+                    ->inRandomOrder()
+                    ->limit($validated[$taxonomy])
+                    ->get();
+    
+                $questions = $questions->merge($questionsByTaxonomy);
+            }
+        }
+    
+        // Assuming you need to save the questions to an assessment
+        $assessment = Assessment::find($request->assessmentID);
+    
+        foreach ($questions as $index => $question) {
+            DB::table('assessment_question')->insert([
+                'item_no' => $index + 1,
+                'assessment_id' => $assessment->id,
+                'question_id' => $question->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+    
         return redirect()->route('ph.assessment-edit', ['assessmentID' => $request->assessmentID]);
     }
+    
 
 
     /**

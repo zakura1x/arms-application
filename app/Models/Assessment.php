@@ -12,12 +12,12 @@ class Assessment extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'description',
         'is_approved',
         'is_published',
         'published_at',
         'status',
         'class_id',
+        'no_of_items',
     ];
 
     public function questions()

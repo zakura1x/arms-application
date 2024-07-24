@@ -29,7 +29,7 @@ class Student extends Model
     }
 
     public function course(){
-        return $this->belongsTo(Course::class, 'class_id');
+        return $this->belongsTo(ClassModel::class, 'class_id');
     }
 
     protected $table = 'students';

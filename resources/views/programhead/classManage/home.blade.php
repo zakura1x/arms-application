@@ -82,7 +82,7 @@
                         </div>
 
                         <div id="tab2" class="tab-content bg-white border border-gray-200 rounded-lg hidden">
-                            {{-- @include('programhead.classmanage.moduletab') --}}
+                            @include('programhead.classmanage.modules')
                         </div>
 
                         <div id="tab3" class="tab-content bg-white border border-gray-200 rounded-lg hidden">

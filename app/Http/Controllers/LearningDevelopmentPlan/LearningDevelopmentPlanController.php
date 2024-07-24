@@ -7,8 +7,11 @@ use App\Models\ClassModel;
 use App\Models\Course;
 use App\Models\LearningDevelopmentPlan;
 use App\Models\Subject;
+use App\Models\TableOfSpecification;
+use App\Models\TopicDifficultyTaxonomy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use League\CommonMark\Extension\Table\Table;
 
 class LearningDevelopmentPlanController extends Controller
 {
@@ -30,10 +33,19 @@ class LearningDevelopmentPlanController extends Controller
 
     public function create_ldp(Request $request){
         $validated = $request->validate([
-            'plan_name'=> 'required|string',
             'subject_name' => 'required|string',
+            'topic_name' => 'required|array',
+            'no_of_hours' => 'required|array',
+            'no_of_items' => 'required|array',
+            'easy_remembering' => 'required|array',
+            'easy_understanding' => 'required|array',
+            'moderate_applying' => 'required|array',
+            'difficult_analyzing' => 'required|array',
+            'difficult_evaluating' => 'required|array',
+            'difficult_creating' => 'required|array',
         ]);
 
+        //
         $subject = Subject::where('name', $validated['subject_name'])->first();
         //Check if the subject exists
         if(!$subject){
@@ -43,23 +55,67 @@ class LearningDevelopmentPlanController extends Controller
             ]);
         }
 
+        //Create the LDP
         $ldp = LearningDevelopmentPlan::create([
-            'plan_name' => $validated['plan_name'],
             'user_id' => Auth::id(),
-            'subject_id' => $subject->id
+            'subject_id' => $subject->id,
+            'plan_name' => $subject->name,
         ]);
 
-        //Redirect to the edit ldp page with the ldp id
+        //Create the TOS
+        $tos = TableOfSpecification::create([
+            'subject_id' => $subject->id,
+        ]);
+
+        //Create the topics
+        for($i = 0; $i < count($validated['topic_name']); $i++){
+            $topic = $ldp->topics()->create([
+                'topic_name' => $validated['topic_name'][$i],
+                'no_of_hours' => $validated['no_of_hours'][$i],
+                'no_of_items' => $validated['no_of_items'][$i],
+                'tos_id' => $tos->id,
+                'percentage' => $validated['no_of_items'][$i] / array_sum($validated['no_of_items']) * 100,
+            ]);
+    
+            $difficulty_levels = [
+                'easy' => [
+                    'remembering' => $validated['easy_remembering'][$i] ?? 0,
+                    'understanding' => $validated['easy_understanding'][$i] ?? 0,
+                ],
+                'moderate' => [
+                    'applying' => $validated['moderate_applying'][$i] ?? 0,
+                ],
+                'difficult' => [
+                    'analyzing' => $validated['difficult_analyzing'][$i] ?? 0,
+                    'evaluating' => $validated['difficult_evaluating'][$i] ?? 0,
+                    'creating' => $validated['difficult_creating'][$i] ?? 0,
+                ],
+            ];
+    
+            foreach ($difficulty_levels as $difficulty => $taxonomies) {
+                foreach ($taxonomies as $taxonomy => $item_count) {
+                    TopicDifficultyTaxonomy::create([
+                        'topic_id' => $topic->id,
+                        'taxonomy' => $taxonomy,
+                        'difficulty' => $difficulty,
+                        'item_count' => $item_count > 0 ? $item_count : 0,
+                    ]);
+                }
+            }
+        }
+    
+        //Redirect to edit the LDP
         return redirect()->route('ph.edit-ldp', ['ldpID' => $ldp->id]);
     
     }
 
     public function edit_ldp($ldpID)
     {
-        $ldp = LearningDevelopmentPlan::findOrFail($ldpID);
-        $ldp->load('subject', 'topics.modules.attachments'); // Load nested relationships
+        // Find the Learning Development Plan with all related models
+    $ldp = LearningDevelopmentPlan::with(['subject', 'topics.modules.attachments'])->findOrFail($ldpID);
     
-        return view('programhead.ldpManage.ldp_edit', compact('ldp'));
+    // Pass the loaded data to the view
+    return view('programhead.ldpManage.ldp_edit', compact('ldp'));
     }
     
 

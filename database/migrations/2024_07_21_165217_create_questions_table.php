@@ -14,19 +14,22 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->text('question');
+            $table->enum('type', ['practice', 'assessment']);
             $table->json('options')->nullable();
             $table->string('correct_answer');
             $table->boolean('is_approved')->default(false);
             $table->integer('points')->default(1);
-            $table->string('difficulty_level');
+            $table->enum('difficulty', ['easy', 'moderate', 'difficult']);
+            $table->enum('taxonomy', ['remembering', 'understanding', 'applying', 'analyzing' , 'evaluating', 'creating']);
+
 
             $table->unsignedBigInteger('module_id');
-            $table->unsignedBigInteger('attachment_id')->nullable();
+            $table->unsignedBigInteger('topic_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
-            $table->foreign('attachment_id')->references('id')->on('attachments')->onDelete('set null');
+            $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         
         

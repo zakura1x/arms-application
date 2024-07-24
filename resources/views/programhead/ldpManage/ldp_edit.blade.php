@@ -50,15 +50,39 @@
 
                         <div class="border-2 border-green-700 mt-4 mb-4"></div>
 
-                        <button id="openModal"
+                        <button id="openTopicModal"
                             class="bg-[#42604C] text-white font-medium m-2 py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
                             <a>CREATE NEW TOPIC</a>
                         </button>
 
 
+
                         @foreach ($ldp->topics as $topic)
                             <div class="bg-[#EFF4F6] border border-gray-300 rounded-lg p-4 mt-2">
+                                <!-- 1ST TOGGLE -->
                                 <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <button class="text-gray-500 focus:outline-none toggleTopicButton"
+                                            data-target="#topicContent{{ $topic->id }}">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path id="panelToggleIcon" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <h3 class="font-semibold ml-4">{{ $topic->topic_name }}</h3>
+                                    </div>
+                                    <div class="ml-auto flex items-center">
+                                        <div class="material-modal-trigger bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer"
+                                            data-target="#materialModal{{ $topic->id }}">
+                                            <button type="button" class="ml-2 mr-2">
+                                                ADD MATERIALS
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- <div class="flex items-center justify-between">
                                     <div class="flex items-center">
                                         <button class="text-gray-500 focus:outline-none toggleTopicButton"
                                             data-target="#topicContent{{ $topic->id }}">
@@ -77,27 +101,8 @@
                                                 ADD MATERIALS
                                             </button>
                                         </div>
-                                        <div class="dropdown dropdown-end">
-                                            <div tabindex="0" role="button" class="btn btn-circle avatar">
-                                                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg" transform="rotate(90)"
-                                                    stroke="#000000">
-                                                    <circle cx="5" cy="12" r="2" stroke="#117325"
-                                                        stroke-width="0.648"></circle>
-                                                    <circle cx="12" cy="12" r="2" stroke="#117325"
-                                                        stroke-width="0.648"></circle>
-                                                    <circle cx="19" cy="12" r="2" stroke="#117325"
-                                                        stroke-width="0.648"></circle>
-                                                </svg>
-                                            </div>
-                                            <ul tabindex="0"
-                                                class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#EFF4F6] rounded-box w-52 border border-black border-opacity-50">
-                                                <li><a>Edit Class</a></li>
-                                                <li><a>Delete Class</a></li>
-                                            </ul>
-                                        </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <!-- Modules for the current topic -->
                                 <div id="topicContent{{ $topic->id }}" class="hidden">
@@ -131,7 +136,7 @@
                             </div>
                     </div>
 
-
+                    @include('programhead.ldpManage.topicmodal')
 
                     <!-- Modal for adding materials -->
                     <div id="materialModal{{ $topic->id }}"
@@ -183,44 +188,9 @@
             </div>
         </div>
 
-        <div id="topicModal"
-            class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-25 hidden">
-            <div class="bg-white rounded-lg shadow-lg w-1/2">
-                <header class="bg-[#42604C] text-white border-b border-gray-100 rounded-t-lg">
-                    <div class="p-4 flex items-center">
-                        <h2 class="font-semibold">Create New Topic</h2>
-                    </div>
-                </header>
-                <div class="p-4">
-                    <form id="topicForm" action="{{ route('ph.topic.store') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="ldp_id" value="{{ $ldp->id }}">
-                        <label for="topicTitle"><b>Topic Title</b></label>
-                        <input name="topic_name" id="topicTitle" type="text" required
-                            class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
-                        <label for="topicDescription"><b>Topic Description</b></label>
-                        <input name="topic_description" id="topicDescription" type="text" required
-                            class="bg-[#D0D9D3] border-0 rounded-lg text-l shadow w-full h-12 p-5 ease-linear transition-all duration-150">
-                        <div class="flex items-center justify-end space-x-6 p-2">
-                            <button type="button" id="closeTopicModal"
-                                class="close font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                                CANCEL
-                            </button>
-                            <div id="createButton"
-                                class="flex items-center bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                                <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg" class="mr-2">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M8.778 18.056c-.882 0-1.72-.343-2.345-.968l-5.778-5.779c-1.291-1.29-1.291-3.398 0-4.688L6.3.977a3.313 3.313 0 0 1 4.688 0l5.778 5.778a3.313 3.313 0 0 1 0 4.688l-5.778 5.779a3.308 3.308 0 0 1-2.344.968zm-3.467-3.01l5.778-5.778 2.344 2.343-5.778 5.779a1.656 1.656 0 0 1-2.344-2.344zm10.156-5.467L9.69 4.845 12.034 2.5l3.778 3.779a1.656 1.656 0 0 1 0 2.344l-2.345 2.345z"
-                                        fill="#fff" />
-                                </svg>
-                                <button type="submit">CREATE</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+
+
+
     </div>
 </body>
 
@@ -233,8 +203,8 @@
         const backbtn = document.getElementById('backButton');
         const createbtn = document.getElementById('createButton');
 
-        const openModalButton = document.getElementById('openModal');
-        const closeModalButton = document.getElementById('closeTopicModal');
+        const openTopicModal = document.getElementById('openTopicModal');
+        const closeTopicModal = document.getElementById('closeTopicModal');
         const topicModal = document.getElementById('topicModal');
 
         const materialModal = document.getElementById('materialModal');
@@ -287,11 +257,12 @@
             window.location.href = '{{ route('ph.ldp-list') }}';
         });
 
-        openModalButton.addEventListener('click', function() {
+        openTopicModal.addEventListener('click', function() {
             topicModal.classList.remove('hidden');
         });
 
-        closeModalButton.addEventListener('click', function() {
+        closeTopicModal.addEventListener('click', function() {
+            topicForm.reset();
             topicModal.classList.add('hidden');
         });
 

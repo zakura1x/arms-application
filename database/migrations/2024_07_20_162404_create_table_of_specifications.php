@@ -11,25 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('learning_development_plans', function (Blueprint $table) {
+        Schema::create('table_of_specifications', function (Blueprint $table) {
             $table->id();
-            $table->string('plan_name');
-            $table->boolean('is_approved')->default(false);
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('subject_id');
-            $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-        
+
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down():  void
     {
-        Schema::dropIfExists('learning_development_plans');
+        Schema::dropIfExists('table_of_specifications');
     }
 };

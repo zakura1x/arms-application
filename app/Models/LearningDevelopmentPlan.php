@@ -13,7 +13,8 @@ class LearningDevelopmentPlan extends Model
         'plan_name',
         'is_approved',
         'user_id',
-        'subject_id'
+        'subject_id',
+        'tos_id'
     ];
 
     public function user(){
@@ -23,6 +24,10 @@ class LearningDevelopmentPlan extends Model
     public function subject(){
         return $this->belongsTo(Subject::class);
     
+    }
+
+    public function tableOfSpecification(){
+        return $this->belongsTo(TableOfSpecification::class, 'tos_id');
     }
 
     public function courses(){

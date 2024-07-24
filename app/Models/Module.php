@@ -12,8 +12,7 @@ class Module extends Model
     protected $fillable = [
         'module_name',
         'module_description',
-        'topic_id'
-    
+        'topic_id',
     ];
 
     public function topic(){

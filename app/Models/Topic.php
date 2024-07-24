@@ -12,8 +12,16 @@ class Topic extends Model
     protected $fillable =[
         'topic_name',
         'topic_description',
-        'learning_development_plan_id'
+        'learning_development_plan_id',
+        'no_of_hours',
+        'percentage',
+        'no_of_items',
+        'tos_id'
     ];
+
+    public function tableOfSpecification(){
+        return $this->belongsTo(TableOfSpecification::class, 'tos_id');
+    }
 
     public function questions()
     {

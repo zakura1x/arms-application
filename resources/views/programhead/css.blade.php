@@ -64,6 +64,68 @@
         box-shadow: 2px 0 3px #739072;
     }
 
+    .shadow-right {
+        box-shadow: 2px 0 3px #739072;
+    }
+
+    .uploadedFiles a {
+        color: #000000;
+        text-decoration: none;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .uploadedFiles a:hover {
+        color: #16a145;
+        text-decoration: underline;
+    }
+
+    .editable-table th,
+    .editable-table td {
+        padding: 12px;
+        border: 1px solid #e2e8f0;
+    }
+
+    .editable-table th {
+        background-color: #42604C;
+    }
+
+    .editable-table td input,
+    .editable-table td select {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        background-color: transparent;
+        font-size: 14px;
+    }
+
+    .editable-table td input:focus,
+    .editable-table td select:focus {
+        outline: none;
+        border-bottom: 2px solid #0eaa42;
+    }
+
+    .button {
+        background-color: #16a145;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .button:hover {
+        background-color: #0f6b2e;
+    }
+
+    .button:focus {
+        outline: none;
+    }
+
+    .hidden-row {
+        display: none;
+    }
+
     /* .modal {
           display: none;
           position: fixed;

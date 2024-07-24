@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attachments', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('module_id');
-            $table->string('attachment_path');
-            $table->string('attachment_name');
-            $table->string('attachment_type');
+            $table->string('module_name');
+            $table->text('module_description')->nullable();
+            $table->unsignedBigInteger('topic_id');
             $table->timestamps();
 
-            $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
+            $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
+        
         
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attachments');
+        Schema::dropIfExists('modules');
     }
 };

@@ -5,7 +5,7 @@
     @include('programhead.css')
 </head>
 
-<body class="font-poppins antialiased text-black no-scrollbar">
+<body class="font-sans antialiased text-black">
     <div id="layout" class="flex">
         @include('programhead.sidebar')
 
@@ -42,7 +42,7 @@
                 </header>
                 <div class="overflow-x-auto h-screen bg-[#D0D9D3]">
                     <div class="p-8">
-                        <form action="{{ route('ph.assessment-add') }}" method="POST">
+                        <form id="assessmentForm" action="{{ route('ph.assessment-add') }}" method="POST">
                             @csrf
                             <input type="hidden" name="class_id" value="{{ $class->id }}">
                             <div class="flex items-center">
@@ -60,33 +60,263 @@
                                 </div>
                             </div>
 
-                            <div class="flex items-end justify-end space-x-6">
-                                <button type="button" id="backButton"
-                                    class="close bg-[#D0D9D3] font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
-                                    CANCEL
-                                </button>
-                                <div
-                                    class="flex items-center justify-center bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
-                                    <svg width="23px" height="23px" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
-                                        </g>
-                                        <g id="SVGRepo_iconCarrier">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M18.1716 1C18.702 1 19.2107 1.21071 19.5858 1.58579L22.4142 4.41421C22.7893 4.78929 23 5.29799 23 5.82843V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H18.1716ZM4 3C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21L5 21L5 15C5 13.3431 6.34315 12 8 12L16 12C17.6569 12 19 13.3431 19 15V21H20C20.5523 21 21 20.5523 21 20V6.82843C21 6.29799 20.7893 5.78929 20.4142 5.41421L18.5858 3.58579C18.2107 3.21071 17.702 3 17.1716 3H17V5C17 6.65685 15.6569 8 14 8H10C8.34315 8 7 6.65685 7 5V3H4ZM17 21V15C17 14.4477 16.5523 14 16 14L8 14C7.44772 14 7 14.4477 7 15V21L17 21ZM9 3H15V5C15 5.55228 14.5523 6 14 6H10C9.44772 6 9 5.55228 9 5V3Z"
-                                                fill="#ffffff"></path>
-                                        </g>
-                                    </svg>
-                                    <button id="saveButton" type="submit" class="ml-2">
+                            <div class="flex items-center">
+                                <div class="w-1/2 mr-5">
+                                    <label for="subject"><b>Subject Area</b></label>
+                                    <input id="subject" list="subjects" placeholder="Select Subject Area"
+                                        name="Subjects"
+                                        class="bg-[#EFF4F6] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
+                                    <datalist id="subjects">
+                                        <option value="Management Advisory Services">
+                                        <option value="Auditing">
+                                        <option value="Regulatory Framework for Business">
+                                        <option value="Taxation">
+                                        <option value="Financial Accounting and Reporting">
+                                        <option value="Advanced Financial Accounting and Reporting">
+                                    </datalist>
+                                </div>
+                                <div class="w-1/2 mr-5">
+                                    <label for="assessmenttype"><b>Assessment Type</b></label>
+                                    <input id="assessmenttype" list="types" placeholder="Select Assessment Type"
+                                        name="Types"
+                                        class="bg-[#EFF4F6] border-0 rounded-lg text-l shadow w-full h-12 p-5 mb-4 ease-linear transition-all duration-150">
+                                    <datalist id="types">
+                                        <option value="Pre-Test">
+                                        <option value="Post-Test">
+                                        <option value="Custom Test">
+                                    </datalist>
+                                </div>
+                                <div class="w-1/4">
+                                    <label><b>Jumbled Items</b></label>
+                                    <div class="flex items-center justify-evenly">
+                                        <div class="flex items-center mb-4 mt-4">
+                                            <input type="radio" id="includeJumbledYes" name="includeJumbled"
+                                                value="yes" class="mr-2">
+                                            <label for="includeJumbledYes">Yes</label>
+                                        </div>
+                                        <div class="flex items-center mb-4 mt-4">
+                                            <input type="radio" id="includeJumbledNo" name="includeJumbled"
+                                                value="no" class="mr-2">
+                                            <label for="includeJumbledNo">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-end justify-between mt-2">
+                                <div class="flex">
+                                    <div id="openTopicModal"
+                                        class="bg-[#42604C] text-white font-medium py-2 px-4 mr-2 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
+                                        <button type="button" class="ml-2 mr-2">ADD TOPIC</button>
+                                    </div>
+                                    <div id="previewButton"
+                                        class="bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
+                                        <button type="button" class="">PREVIEW ASSESSMENT</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="button" id="backButton"
+                                        class="close bg-[#D0D9D3] font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
+                                        CANCEL
+                                    </button>
+                                    <button type="submit"
+                                        class="bg-[#42604C] text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline cursor-pointer">
                                         SAVE
                                     </button>
                                 </div>
                             </div>
                         </form>
                         <div class="border-2 border-green-700 mt-4 mb-4"></div>
+
+                        <div class="overflow-x-auto h-screen bg-[#D0D9D3]">
+                            <div class="border-b-4 border-green-700">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <button id="togglePanelButton" class="ml-4 text-gray-500 focus:outline-none">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path id="panelToggleIcon" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <h3 class="font-semibold ml-4">SAMPLE ASSESSMENT NAME</h3>
+                                    </div>
+
+                                    <div class="flex items-center justify-center">
+                                        <button type="button" class="ml-2 mr-4 m-2">
+                                            <svg width="30px" height="30px"
+                                                viewBox="-102.4 -102.4 1228.80 1228.80"
+                                                xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path fill="#ff0000"
+                                                        d="M160 256H96a32 32 0 0 1 0-64h256V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V256zm448-64v-64H416v64h192zM224 896h576V256H224v640zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zm192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="panelContent" class="hidden">
+                                <div class="question-container">
+                                    <div class="question-item">
+                                        <div class="flex flex-col border-b border-black rounded-t-lg p-2">
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Subject Area:</span> <a>Sample
+                                                    Subject Area</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Topic:</span><a>Sample Topic</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Module:</span><a>Sample Module</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Difficulty:</span><a>Sample
+                                                    Difficulty</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Sub-Difficulty:</span><a>Sample
+                                                    Sub-Difficulty</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Point/s:</span><a>Sample
+                                                    Point/s</a>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center border-b border-black p-2">
+                                            <p>1.</p>
+                                            <p class="ml-2">What is the capital of the Philippines?</p>
+                                        </div>
+                                        <div class="flex flex-col p-2 space-y-2 ml-5">
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question1" value="a" disabled>
+                                                <label for="a" class="ml-2">A. Manila</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question1" value="b" disabled>
+                                                <label for="b" class="ml-2">B. Cebu</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question1" value="c" disabled>
+                                                <label for="c" class="ml-2">C. Davao</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question1" value="d" disabled>
+                                                <label for="d" class="ml-2">D. Quezon City</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="question-item">
+                                        <div class="flex flex-col border-b border-black rounded-t-lg p-2">
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Subject Area:</span> <a>Sample
+                                                    Subject Area</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Topic:</span><a>Sample Topic</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Module:</span><a>Sample Module</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Difficulty:</span><a>Sample
+                                                    Difficulty</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Sub-Difficulty:</span><a>Sample
+                                                    Sub-Difficulty</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Point/s:</span><a>Sample
+                                                    Point/s</a>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center border-b border-black rounded-t-lg p-2">
+                                            <p>2.</p>
+                                            <p class="ml-2">What is the capital of the Philippines?</p>
+                                        </div>
+                                        <div class="flex flex-col p-2 space-y-2 ml-5">
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question2" value="a" disabled>
+                                                <label for="a" class="ml-2">A. Manila</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question2" value="b" disabled>
+                                                <label for="b" class="ml-2">B. Cebu</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question2" value="c" disabled>
+                                                <label for="c" class="ml-2">C. Davao</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question2" value="d" disabled>
+                                                <label for="d" class="ml-2">D. Quezon City</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="question-item">
+                                        <div class="flex flex-col border-b border-black rounded-t-lg p-2">
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Subject Area:</span> <a>Sample
+                                                    Subject Area</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Topic:</span><a>Sample Topic</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Module:</span><a>Sample Module</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Difficulty:</span><a>Sample
+                                                    Difficulty</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Sub-Difficulty:</span><a>Sample
+                                                    Sub-Difficulty</a>
+                                            </div>
+                                            <div>
+                                                <span class="mr-1 font-bold text-sm">Point/s:</span><a>Sample
+                                                    Point/s</a>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center border-b border-black rounded-t-lg p-2">
+                                            <p>3.</p>
+                                            <p class="ml-2">What is the capital of the Philippines?</p>
+                                        </div>
+                                        <div class="flex flex-col p-2 space-y-2 ml-5">
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question3" value="a" disabled>
+                                                <label for="a" class="ml-2">A. Manila</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question3" value="b" disabled>
+                                                <label for="b" class="ml-2">B. Cebu</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question3" value="c" disabled>
+                                                <label for="c" class="ml-2">C. Davao</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="radio" name="question3" value="d" disabled>
+                                                <label for="d" class="ml-2">D. Quezon City</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- add question --}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {{-- @include('programhead.classmanage.topicmodal') --}}
             </div>
         </div>
     </div>
@@ -98,7 +328,12 @@
         const sidebar = document.getElementById('sidebar');
         const mainContainer = document.getElementById('main-container');
         const backbtn = document.getElementById('backButton');
-        const saveButton = document.getElementById('saveButton');
+
+        const openTopicModal = document.getElementById('openTopicModal');
+        const closeTopicModal = document.getElementById('closeTopicModal');
+        const topicModal = document.getElementById('topicModal');
+
+        const togglePanelButton = document.getElementById('togglePanelButton');
 
         navButton.addEventListener('click', function() {
             sidebar.classList.toggle('show');
@@ -106,19 +341,29 @@
         });
 
         backbtn.addEventListener('click', function() {
+            //go back
             window.history.back();
+
         });
 
-        saveButton.addEventListener('click', function(event) {
-            const assessName = document.getElementById('assessName').value;
-            const assessDescrip = document.getElementById('assessDescrip').value;
+        openTopicModal.addEventListener('click', function() {
+            topicModal.classList.remove('hidden');
+        });
 
-            if (!assessName || !assessDescrip) {
-                event.preventDefault();
-                alert('Please fill in all fields.');
-                return;
+        closeTopicModal.addEventListener('click', function() {
+            topicForm.reset();
+            topicModal.classList.add('hidden');
+        });
+
+        togglePanelButton.addEventListener('click', function() {
+            const panelContent = document.getElementById('panelContent');
+            const panelToggleIcon = document.getElementById('panelToggleIcon');
+            panelContent.classList.toggle('hidden');
+            if (panelContent.classList.contains('hidden')) {
+                panelToggleIcon.setAttribute('d', 'M19 9l-7 7-7-7');
+            } else {
+                panelToggleIcon.setAttribute('d', 'M19 15l-7-7-7 7');
             }
-
         });
     });
 </script>
